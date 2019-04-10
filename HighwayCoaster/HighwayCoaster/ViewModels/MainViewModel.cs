@@ -22,5 +22,12 @@ namespace HighwayCoaster.ViewModels
             }
 
         }
+        public ImageSource Logo
+        {
+            get
+            {
+                return new BitmapImage(new Uri(sc.LogoIMG, UriKind.Relative));
+            }
+        }
     }
 }
