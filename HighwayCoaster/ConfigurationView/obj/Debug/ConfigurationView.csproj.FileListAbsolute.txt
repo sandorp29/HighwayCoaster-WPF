@@ -1,0 +1,6 @@
+C:\Users\Felhasználó\source\repos\HighwayCoaster\ConfigurationView\bin\Debug\ConfigurationView.dll
+C:\Users\Felhasználó\source\repos\HighwayCoaster\ConfigurationView\bin\Debug\ConfigurationView.pdb
+C:\Users\Felhasználó\source\repos\HighwayCoaster\ConfigurationView\obj\Debug\ConfigurationView.csprojAssemblyReference.cache
+C:\Users\Felhasználó\source\repos\HighwayCoaster\ConfigurationView\obj\Debug\ConfigurationView.csproj.CoreCompileInputs.cache
+C:\Users\Felhasználó\source\repos\HighwayCoaster\ConfigurationView\obj\Debug\ConfigurationView.dll
+C:\Users\Felhasználó\source\repos\HighwayCoaster\ConfigurationView\obj\Debug\ConfigurationView.pdb
