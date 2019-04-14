@@ -4,13 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HighwayCoaster"
-        xmlns:vm="clr-namespace:HighwayCoaster.ViewModels"
+        xmlns:vm="clr-namespace:HighwayCoaster.ViewModels"    
+        xmlns:controls="clr-namespace:HighwayCoaster.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         >
-
+    <!--<controls:MainMenuWindow/>-->
     <Window.Resources>
-        <vm:MainViewModel x:Key="VM"/>
+        <vm:LoginPageViewModel x:Key="VM"/>
     </Window.Resources>
     <Grid DataContext="{Binding Source={StaticResource VM}}">
         <Grid.Background>
@@ -36,10 +37,10 @@
         </Grid>
         <Label Content="USERNAME:" Grid.Row="1" Grid.Column="1" FontFamily="Comic Sans MS Bold" Foreground="Gold"/>
         <Label Content="PASSWORD:" Grid.Row="3" Grid.Column="1" FontFamily="Comic Sans MS Bold" Foreground="Gold"/>
-        <TextBox Grid.Column="1" Grid.Row="2" FontSize="18" />
+        <TextBox Grid.Column="1" Grid.Row="2" FontSize="18"  />
         <PasswordBox Grid.Column="1" Grid.Row="4" FontSize="18" />
-        <Button Content="Login" Margin="139,10,10,110" Grid.Row="5" Grid.Column="1" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" />
-        <Button Content="Register" Margin="10,10,139,110" Grid.Row="5" Grid.Column="1" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
+        <Button Content="Login" Margin="139,10,10,110" Grid.Row="5" Grid.Column="1" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Stretch" Width="100" />
+        <Button Content="Register" Margin="10,10,139,110" Grid.Row="5" Grid.Column="1" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Stretch" Width="100"/>
         <Button Content="Highscores" Margin="102,10,10,87" Grid.Row="0" Grid.Column="2" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
     </Grid>
 </Window>

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HighwayCoaster
+namespace HighwayCoaster.Controls
 {
     /// <summary>
-    /// Interaction logic for MainMenuWindow.xaml
+    /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenuWindow : UserControl
+    public partial class MainMenu : UserControl
     {
-        public MainMenuWindow()
+        public MainMenu()
         {
             InitializeComponent();
         }
