@@ -114,6 +114,10 @@
       <Project>{61CB5C51-4174-4AA2-B3EB-96625440F0E0}</Project>
       <Name>ConfigurationView</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HighwayCoaster.Logic\HighwayCoaster.Logic.csproj">
+      <Project>{f61b4d90-65e6-449a-b033-6b005d88fed8}</Project>
+      <Name>HighwayCoaster.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

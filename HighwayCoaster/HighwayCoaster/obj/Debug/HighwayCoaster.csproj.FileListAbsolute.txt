@@ -38,3 +38,7 @@ C:\Users\Felhasználó\Documents\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster
 C:\Users\Felhasználó\Documents\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster\obj\Debug\HighwayCoaster.csproj.CopyComplete
 C:\Users\Felhasználó\Documents\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster\obj\Debug\Controls\MainMenu.baml
 C:\Users\Felhasználó\Documents\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster\obj\Debug\Controls\MainMenu.g.cs
+C:\Users\Felhasználó\Documents\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster\bin\Debug\HighwayCoaster.Logic.dll
+C:\Users\Felhasználó\Documents\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster\bin\Debug\HighwayCoaster.Logic.pdb
+C:\Users\Felhasználó\Documents\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster\obj\Debug\Controls\MainMenuPage.g.cs
+C:\Users\Felhasználó\Documents\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster\obj\Debug\Controls\MainMenuPage.baml

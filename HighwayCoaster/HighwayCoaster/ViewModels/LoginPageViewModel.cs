@@ -1,9 +1,11 @@
-﻿using HighwayCoaster.Logic;
+﻿using HighwayCoaster.Controls;
+using HighwayCoaster.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WPFZH.Helpers;
 
@@ -24,11 +26,13 @@ namespace HighwayCoaster.ViewModels
         public ICommand RegisterCommand { get; private set; }
 
         public void LoginMethod(object o) {
+            MainMenu mm = new MainMenu();
+            
             
         }
 
         public void RegisterMethod(object o) {
-
+            UL.Login();
         }
     }
 }
