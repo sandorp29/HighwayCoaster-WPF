@@ -1,4 +1,5 @@
-﻿using HighwayCoaster.Controls;
+﻿using GalaSoft.MvvmLight.Command;
+using HighwayCoaster.Controls;
 using HighwayCoaster.Logic;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
-using WPFZH.Helpers;
 
 namespace HighwayCoaster.ViewModels
 {
@@ -18,20 +18,20 @@ namespace HighwayCoaster.ViewModels
         UserLogic UL;
         public LoginPageViewModel()
         {
-            LoginCommand = new RelayCommand(LoginMethod, t => UserName !=null && PassWord != null);
-            RegisterCommand = new RelayCommand(RegisterMethod, t => UserName != null && PassWord != null);
+            LoginCommand = new RelayCommand(LoginMethod, () => UserName !=null && PassWord != null);
+            RegisterCommand = new RelayCommand(RegisterMethod, () => UserName != null && PassWord != null);
         }
 
         public ICommand LoginCommand { get; private set; }
         public ICommand RegisterCommand { get; private set; }
 
-        public void LoginMethod(object o) {
+        public void LoginMethod() {
             MainMenu mm = new MainMenu();
             
             
         }
 
-        public void RegisterMethod(object o) {
+        public void RegisterMethod() {
             UL.Login();
         }
     }

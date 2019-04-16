@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using GalaSoft.MvvmLight;
 
 namespace HighwayCoaster.ViewModels
 {
 
-    class MainViewModel
+    public class MainViewModel : ViewModelBase
     {
         Sources sc = new Sources();
 
