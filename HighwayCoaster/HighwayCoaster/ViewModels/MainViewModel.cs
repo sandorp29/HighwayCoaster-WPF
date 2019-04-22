@@ -7,27 +7,35 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using GalaSoft.MvvmLight;
+using System.ComponentModel;
+using System.Windows;
+using HighwayCoaster.Logic;
 
 namespace HighwayCoaster.ViewModels
 {
 
     public class MainViewModel : ViewModelBase
     {
-        Sources sc = new Sources();
+        Sources sc = new Sources(DesignerProperties.GetIsInDesignMode(new DependencyObject()));
+
+        public MainViewModel()
+        {
+        }
 
         public ImageSource Background
         {
             get
             {
-                return new BitmapImage(new Uri(sc.BackgroundIMG, UriKind.Relative));
+                return new BitmapImage(new Uri(this.sc.BackgroundIMG, UriKind.Relative));
             }
 
         }
+
         public ImageSource Logo
         {
             get
             {
-                return new BitmapImage(new Uri(sc.LogoIMG, UriKind.Relative));
+                return new BitmapImage(new Uri(this.sc.LogoIMG, UriKind.Relative));
             }
         }
     }

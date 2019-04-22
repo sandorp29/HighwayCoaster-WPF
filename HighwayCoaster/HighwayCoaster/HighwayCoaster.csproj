@@ -76,6 +76,7 @@
     <Compile Include="Controls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IView.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainMenuWindowViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
