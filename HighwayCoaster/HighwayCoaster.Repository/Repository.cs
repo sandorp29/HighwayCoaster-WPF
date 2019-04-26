@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    class Repository : IRepository
+    public class Repository : IRepository
     {
 
         HighwayCoasterDatabaseEntities en;

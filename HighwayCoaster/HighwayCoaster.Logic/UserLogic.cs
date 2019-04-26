@@ -1,16 +1,26 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using HighwayCoaster.Repository;
-
-namespace HighwayCoaster.Logic
+﻿namespace HighwayCoaster.Logic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Controls;
+    using HighwayCoaster.Repository;
+
     public class UserLogic : ILogic
     {
+        IRepository repo;
+
+        public UserLogic(IRepository repo)
+        {
+            this.repo = repo;
+        }
+
+        public UserLogic() {
+            this.repo = new Repository();
+        }
+
         public string UserName { get; set; }
 
         public string PassWord { get; set; }
@@ -31,34 +41,32 @@ namespace HighwayCoaster.Logic
 
         public void DeleteUser(decimal playerId)
         {
-            throw new NotImplementedException();
+            this.repo.DeleteUser(playerId);
         }
 
         public IEnumerable<Car> GetCars()
         {
-            throw new NotImplementedException();
+            return this.repo.GetCars();
         }
 
         public IEnumerable<Player> GetPlayers()
         {
-            throw new NotImplementedException();
+            return this.repo.GetPlayers();
         }
-
-        
 
         public Player Login(string userName, string password)
         {
-            throw new NotImplementedException();
+            return this.repo.Login(userName, password);
         }
 
         public bool Register(string userName, string password)
         {
-            throw new NotImplementedException();
+            return this.repo.Register(userName, password);
         }
 
         public void SaveHighscore(decimal playerId, int highScore)
         {
-            throw new NotImplementedException();
+            this.repo.SaveHighscore(playerId, highScore);
         }
 
         public void StartGame()

@@ -20,8 +20,8 @@
 
         public LoginPageViewModel()
         {
-            LoginCommand = new RelayCommand(this.LoginMethod, () => this.UserName !=null && this.PassWord != null);
-            RegisterCommand = new RelayCommand(this.RegisterMethod, () => this.UserName != null && this.PassWord != null);
+            this.LoginCommand = new RelayCommand(this.LoginMethod, () => this.UserName !=null && this.PassWord != null);
+            this.RegisterCommand = new RelayCommand(this.RegisterMethod, () => this.UserName != null && this.PassWord != null);
         }
 
         public ICommand LoginCommand { get; private set; }
@@ -34,7 +34,7 @@
         }
 
         public void RegisterMethod() {
-            UL.Register(this.UserName, this.PassWord);
+            this.UL.Register(this.UserName, this.PassWord);
         }
     }
 }
