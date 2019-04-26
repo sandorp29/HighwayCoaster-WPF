@@ -1,12 +1,12 @@
-﻿using HighwayCoaster.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HighwayCoaster.Logic
+﻿namespace HighwayCoaster.Logic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using HighwayCoaster.Repository;
+
     public interface ILogic
     {
         event EventHandler OnGameOver;
