@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace HighwayCoaster.Resources
 {
-    public class Sources
+    public class FileSources
     {      
         private string resourceFolderPath;
 
         public string LogoIMG { get { return resourceFolderPath + @"LOGO.png"; } }
         public string BackgroundIMG { get { return resourceFolderPath + @"1.jpg"; } }
 
-        public Sources(bool isInDesignerMode)
+        public FileSources(bool isInDesignerMode)
         {
             if (isInDesignerMode)
             {

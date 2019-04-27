@@ -16,7 +16,7 @@ namespace HighwayCoaster.ViewModels
 
     public class MainViewModel : ViewModelBase
     {
-        Sources sc = new Sources(DesignerProperties.GetIsInDesignMode(new DependencyObject()));
+        FileSources sc = new FileSources(DesignerProperties.GetIsInDesignMode(new DependencyObject()));
 
         public MainViewModel()
         {
