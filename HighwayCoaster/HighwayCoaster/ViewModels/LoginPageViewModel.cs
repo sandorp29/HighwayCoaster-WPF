@@ -11,30 +11,32 @@
     using HighwayCoaster.Controls;
     using HighwayCoaster.Logic;
 
-    class LoginPageViewModel : MainViewModel
+    public class LoginPageViewModel : MainViewModel
     {
-        public string UserName { get; set; }
-        public string PassWord { get; set; }
-
-        UserLogic UL;
+        private GameLogic uL;
 
         public LoginPageViewModel()
         {
-            this.LoginCommand = new RelayCommand(this.LoginMethod, () => this.UserName !=null && this.PassWord != null);
+            this.LoginCommand = new RelayCommand(this.LoginMethod, () => this.UserName != null && this.PassWord != null);
             this.RegisterCommand = new RelayCommand(this.RegisterMethod, () => this.UserName != null && this.PassWord != null);
         }
+
+        public string UserName { get; set; }
+
+        public string PassWord { get; set; }
 
         public ICommand LoginCommand { get; private set; }
 
         public ICommand RegisterCommand { get; private set; }
 
-        public void LoginMethod() {
+        public void LoginMethod()
+        {
             MainMenu mm = new MainMenu();
-
         }
 
-        public void RegisterMethod() {
-            this.UL.Register(this.UserName, this.PassWord);
+        public void RegisterMethod()
+        {
+            this.uL.Register(this.UserName, this.PassWord);
         }
     }
 }

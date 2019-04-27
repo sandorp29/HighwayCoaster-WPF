@@ -11,67 +11,60 @@
     using NUnit.Framework;
 
     [TestFixture]
-    class Tests
+    public class Tests
     {
-        private Mock<IRepository> mockRepo;
+        private Mock<IGameRepository> mockRepo;
         private Player testPlayer;
         private Car testCar;
-        private UserLogic uLogic;
+        private GameLogic gameLogic;
 
         [SetUp]
         public void Setup()
         {
-            this.mockRepo = new Mock<IRepository>();
-            this.testPlayer = new Player() {PlayerId = 1, CarId = 1, Highscore = 1000, IsAdmin = false, Username = "prog4" };
-            this.uLogic = new UserLogic(this.mockRepo.Object);
+            this.mockRepo = new Mock<IGameRepository>();
+            this.testPlayer = new Player() {PlayerId = 1, CarId = 1, Highscore = 1000, IsAdmin = false, Username = "prog4", PW = GameRepository.CreateMD5("jelszo") };
+            this.gameLogic = new GameLogic(this.mockRepo.Object);
             this.testCar = new Car() { CarId = 1, PointRequirement = 10000, ViewResourcesPath = "C:\\" };
-    }
+
+            this.mockRepo.Setup(x => x.GetPlayers).Returns(new[] { this.testPlayer });
+            this.mockRepo.Setup(x => x.GetCars).Returns(new[] { this.testCar });
+        }
+
+        [Test]
+        public void TestRegistration()
+        {
+            Player testplayer2 = new Player()
+            {
+                Username = "teszt1",
+                PW = GameRepository.CreateMD5("asd123"),
+                CarId = this.gameLogic.GetCars.First(y => y.PointRequirement == this.gameLogic.GetCars.Min(z => z.PointRequirement)).CarId,
+                IsAdmin = false,
+                Highscore = null,
+            };
+
+            this.mockRepo.Setup(x => x.Register(testplayer2)).Throws(new Exception());
+
+            Assert.That(this.gameLogic.Register("teszt1", "asd123") == false);
+            Assert.That(this.gameLogic.Register("teszt2", "asd123") == true);
+        }
 
         [Test]
         public void TestLogin()
         {
-            this.mockRepo.Setup(x => x.Login(It.IsAny<string>(), It.IsAny<string>()));
-            this.uLogic.Login("ad", "ada");
-            this.mockRepo.Verify(x => x.Login(It.IsAny<string>(), It.IsAny<string>()));
-        }
-
-        [Test]
-        public void TestSaveHighScore()
-        {
-            this.mockRepo.Setup(x => x.SaveHighscore(It.IsAny<decimal>(), It.IsAny<int>()));
-            this.uLogic.SaveHighscore(3, 40000);
-            this.mockRepo.Verify(x => x.SaveHighscore(It.IsAny<decimal>(), It.IsAny<int>()));
+            Assert.That(this.gameLogic.Login("prog4", "jelszo").Username == this.testPlayer.Username);
+            Assert.That(this.gameLogic.Login("prog5", "jelszo") == null);
         }
 
         [Test]
         public void TestGetAllPlayers()
         {
-            List<Player> players = new List<Player>() { this.testPlayer };
-            this.mockRepo.Setup(x => x.GetPlayers()).Returns(this.TestReturn(players));
-            this.uLogic.GetPlayers();
-            this.mockRepo.Verify(x => x.GetPlayers());
+            Assert.That(this.gameLogic.GetPlayers.Count() == 1);
         }
 
         [Test]
         public void TestGetAllCars()
         {
-            List<Car> cars = new List<Car>() { this.testCar };
-            this.mockRepo.Setup(x => x.GetCars()).Returns(this.TestReturn(cars));
-            this.uLogic.GetCars();
-            this.mockRepo.Verify(x => x.GetCars());
-        }
-
-        [Test]
-        public void TestDeleteUser()
-        {
-            this.mockRepo.Setup(x => x.DeleteUser(It.IsAny<decimal>()));
-            this.uLogic.DeleteUser(3);
-            this.mockRepo.Verify(x => x.DeleteUser(It.IsAny<decimal>()));
-        }
-
-        private IEnumerable<T> TestReturn<T>(List<T> list)
-        {
-            return list.AsEnumerable();
+            Assert.That(this.gameLogic.GetCars.Count() == 1);
         }
     }
 }

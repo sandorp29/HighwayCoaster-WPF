@@ -2,15 +2,13 @@
 {
     using System.Collections.Generic;
 
-    public interface IRepository
+    public interface IGameRepository
     {
         IEnumerable<Player> GetPlayers { get; }
 
         IEnumerable<Car> GetCars { get; }
 
-        Player Login(string userName, string password);
-
-        bool Register(string userName, string password);
+        void Register(Player player);
 
         void DeleteHighscore(decimal playerId);
 

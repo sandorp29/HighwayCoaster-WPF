@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILogic.cs" />
-    <Compile Include="UserLogic.cs" />
+    <Compile Include="IGameLogic.cs" />
+    <Compile Include="GameLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

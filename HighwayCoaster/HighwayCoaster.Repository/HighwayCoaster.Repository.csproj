@@ -84,12 +84,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HighwayCoasterDatabaseModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="IRepository.cs" />
+    <Compile Include="IGameRepository.cs" />
     <Compile Include="Player.cs">
       <DependentUpon>HighwayCoasterDatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
+    <Compile Include="GameRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
