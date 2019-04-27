@@ -16,7 +16,7 @@ namespace HighwayCoaster.Repository
     {
         public decimal PlayerId { get; set; }
         public string Username { get; set; }
-        internal byte[] PW { get; set; }
+        public byte[] PW { get; set; }
         public Nullable<int> Highscore { get; set; }
         public bool IsAdmin { get; set; }
         public decimal CarId { get; set; }

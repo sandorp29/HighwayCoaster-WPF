@@ -4,6 +4,10 @@
 
     public interface IRepository
     {
+        IEnumerable<Player> GetPlayers { get; }
+
+        IEnumerable<Car> GetCars { get; }
+
         Player Login(string userName, string password);
 
         bool Register(string userName, string password);
@@ -15,9 +19,5 @@
         void SaveHighscore(decimal playerId, int highScore);
 
         void ChangeCar(decimal playerId, decimal carId);
-
-        IEnumerable<Player> GetPlayers();
-
-        IEnumerable<Car> GetCars();
     }
 }

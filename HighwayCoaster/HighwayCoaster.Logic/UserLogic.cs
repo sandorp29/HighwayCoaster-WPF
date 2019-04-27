@@ -46,12 +46,12 @@
 
         public IEnumerable<Car> GetCars()
         {
-            return this.repo.GetCars();
+            return this.repo.GetCars;
         }
 
         public IEnumerable<Player> GetPlayers()
         {
-            return this.repo.GetPlayers();
+            return this.repo.GetPlayers;
         }
 
         public Player Login(string userName, string password)
