@@ -33,16 +33,7 @@
         [Test]
         public void TestRegistration()
         {
-            Player testplayer2 = new Player()
-            {
-                Username = "teszt1",
-                PW = GameRepository.CreateMD5("asd123"),
-                CarId = this.gameLogic.GetCars.First(y => y.PointRequirement == this.gameLogic.GetCars.Min(z => z.PointRequirement)).CarId,
-                IsAdmin = false,
-                Highscore = null,
-            };
-
-            this.mockRepo.Setup(x => x.Register(testplayer2)).Throws(new Exception());
+            this.mockRepo.Setup(x => x.Register(It.Is<Player>(y => y.Username.Equals("teszt1")))).Throws(new Exception());
 
             Assert.That(this.gameLogic.Register("teszt1", "asd123") == false);
             Assert.That(this.gameLogic.Register("teszt2", "asd123") == true);
