@@ -19,7 +19,14 @@ namespace HighwayCoaster.Resources
         {
             if (isInDesignerMode)
             {
-                resourceFolderPath = @"C:\Users\Felhasználó\Documents\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster.Resources\Resources\";
+                if (Environment.MachineName == "DESKTOP-PEM11MB")
+                {
+                    resourceFolderPath = @"E:\Workspace\School\dev\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster.Resources\Resources\";
+                }
+                else
+                {
+                    resourceFolderPath = @"C:\Users\Felhasználó\Documents\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster.Resources\Resources\";
+                }
             }
             else
             {
