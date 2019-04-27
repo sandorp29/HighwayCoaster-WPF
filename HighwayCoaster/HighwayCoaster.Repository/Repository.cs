@@ -28,7 +28,14 @@
 
         public void DeleteUser(decimal playerId)
         {
-            throw new NotImplementedException();
+            foreach (var item in this.en.Player)
+            {
+                if (item.PlayerId == playerId)
+                {
+                    this.en.Player.Remove(item);
+                    this.en.SaveChanges();
+                }
+            }
         }
 
         public IEnumerable<Car> GetCars()

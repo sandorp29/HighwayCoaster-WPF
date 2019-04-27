@@ -61,6 +61,14 @@
             this.mockRepo.Verify(x => x.GetCars());
         }
 
+        [Test]
+        public void TestDeleteUser()
+        {
+            this.mockRepo.Setup(x => x.DeleteUser(It.IsAny<decimal>()));
+            this.uLogic.DeleteUser(3);
+            this.mockRepo.Verify(x => x.DeleteUser(It.IsAny<decimal>()));
+        }
+
         private IEnumerable<T> TestReturn<T>(List<T> list)
         {
             return list.AsEnumerable();
