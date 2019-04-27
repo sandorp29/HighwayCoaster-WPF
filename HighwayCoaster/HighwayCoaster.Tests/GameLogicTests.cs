@@ -11,7 +11,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class Tests
+    public class GameLogicTests
     {
         private Mock<IGameRepository> mockRepo;
         private Player testPlayer;
