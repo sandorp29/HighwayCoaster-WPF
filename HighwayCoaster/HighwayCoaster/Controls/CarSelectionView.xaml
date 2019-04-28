@@ -13,6 +13,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="{Binding Background}"/>
         </Grid.Background>
+        <Label Margin ="5 0 5 0"  Content="Select your car" FontFamily="Comic Sans MS Bold" Foreground="Gold" HorizontalAlignment="Center"/>
         <Grid Background="{StaticResource TransparentBlack}"  Margin="25 30 25 100">
 
             <Grid.ColumnDefinitions>
@@ -27,9 +28,14 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
+            <ItemsControl Grid.Column="0" Grid.Row="0" Background="Aqua"/>
+            <ItemsControl Grid.Column="1" Grid.Row="0" Background="Azure"/>
+            <ItemsControl Grid.Column="2" Grid.Row="0" Background="BlanchedAlmond"/>
+            <ItemsControl Grid.Column="3" Grid.Row="0" Background="CornflowerBlue"/>
+            <ItemsControl Grid.Column="0" Grid.Row="1" Background="Gray"/>
             <Border Grid.RowSpan="4" Grid.ColumnSpan="4" BorderBrush="LightGray" BorderThickness="5 5 5 5"/>
         </Grid>
-        <StackPanel VerticalAlignment="Bottom" Margin="200,0,200,20" Height="58">
+        <StackPanel VerticalAlignment="Bottom" Margin="200,0,200,20" Height="58" MaxWidth="400">
             <Grid Height="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>

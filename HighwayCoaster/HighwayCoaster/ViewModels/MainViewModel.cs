@@ -21,7 +21,7 @@
 
         public MainViewModel()
         {
-            this.WindowContent = new LoginView();
+            this.WindowContent = new CarSelectionView();
         }
 
         public ContentControl WindowContent { get; private set; }
