@@ -6,7 +6,46 @@
              xmlns:local="clr-namespace:HighwayCoaster.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="TransparentBlack" Color="#000000" Opacity="0.5" />
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="31*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" MaxHeight="50">
+            <Label Content="Highscores" Grid.Row="0" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </StackPanel>
+        <ListView Background="{StaticResource TransparentBlack}" Margin="10,10.4,10,10.2" Grid.Row="1" HorizontalAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Username:" Width="394">
+                        <GridViewColumn.HeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </Style>
+                        </GridViewColumn.HeaderContainerStyle>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Highscore:" Width="394">
+                        <GridViewColumn.HeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="HorizontalAlignment" Value="Left"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="IsEnabled" Value="False"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                            </Style>
+                        </GridViewColumn.HeaderContainerStyle>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Row="2" Width="150" HorizontalAlignment="Left"  Margin="10,10.4,10,10.2">
+            <Button Content="Cancel" Height="40"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
+        </StackPanel>
     </Grid>
 </UserControl>
