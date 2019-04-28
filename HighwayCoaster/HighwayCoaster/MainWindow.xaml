@@ -7,6 +7,6 @@
         xmlns:Controls="clr-namespace:HighwayCoaster.Controls"
         mc:Ignorable="d"
         Title="HighwayCoaster" Height="450" Width="800" MinWidth="800" MinHeight="450"
-        >
-    <Controls:LoginView />
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}" >
+    <ContentControl Content="{Binding WindowContent}"/>
 </Window>

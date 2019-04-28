@@ -10,6 +10,8 @@ using GalaSoft.MvvmLight;
 using System.ComponentModel;
 using System.Windows;
 using HighwayCoaster.Logic;
+using System.Windows.Controls;
+using HighwayCoaster.Controls;
 
 namespace HighwayCoaster.ViewModels
 {
@@ -20,7 +22,10 @@ namespace HighwayCoaster.ViewModels
 
         public MainViewModel()
         {
+            WindowContent = new LoginView();
         }
+
+        public ContentControl WindowContent { get; private set; }
 
         public ImageSource Background
         {

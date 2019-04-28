@@ -24,11 +24,7 @@ namespace HighwayCoaster
         public MainWindow()
         {
             InitializeComponent();
-            
-        }
-
-        private void MainMenuControl_Loaded(object sender, RoutedEventArgs e) {
-            
+            //this.WindowContentControl.Content = new LoginView();
         }
     }
 }
