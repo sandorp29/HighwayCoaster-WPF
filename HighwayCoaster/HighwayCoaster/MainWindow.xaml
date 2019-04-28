@@ -8,5 +8,16 @@
         mc:Ignorable="d"
         Title="HighwayCoaster" Height="450" Width="800" MinWidth="800" MinHeight="450"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}" >
-    <ContentControl Content="{Binding WindowContent}"/>
+    <Grid>
+        <Grid.Background>
+            <VisualBrush>
+                <VisualBrush.Visual>
+                    <StackPanel Background="White">
+                        <MediaElement Source="{Binding Background}" Stretch="Uniform" Volume="0"></MediaElement>
+                    </StackPanel>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Grid.Background>
+        <ContentControl Content="{Binding WindowContent}"/>
+    </Grid>
 </Window>

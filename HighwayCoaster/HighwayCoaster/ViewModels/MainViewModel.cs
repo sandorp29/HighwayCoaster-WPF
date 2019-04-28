@@ -26,11 +26,11 @@
 
         public ContentControl WindowContent { get; private set; }
 
-        public ImageSource Background
+        public string Background
         {
             get
             {
-                return new BitmapImage(new Uri(this.sc.BackgroundIMG, UriKind.Relative));
+                return this.sc.BackgroundLoop;
             }
 
         }

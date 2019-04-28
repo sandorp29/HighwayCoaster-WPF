@@ -9,10 +9,6 @@
         <SolidColorBrush x:Key="TransparentBlack" Color="#000000" Opacity="0.5" />
     </UserControl.Resources>
     <Grid  Name="MainGrid">
-        <!--<controls:MainMenu x:Name="MM"/>-->
-        <Grid.Background>
-            <ImageBrush ImageSource="{Binding Background}"/>
-        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1.4*"/>

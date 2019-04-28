@@ -10,9 +10,6 @@
         <SolidColorBrush x:Key="TransparentBlack" Color="#000000" Opacity="0.5" />
     </UserControl.Resources>
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="{Binding Background}"/>
-        </Grid.Background>
         <Label Margin ="5 0 5 0"  Content="Select your car" FontFamily="Comic Sans MS Bold" Foreground="Gold" HorizontalAlignment="Center"/>
         <Grid Background="{StaticResource TransparentBlack}"  Margin="25 30 25 100">
 
