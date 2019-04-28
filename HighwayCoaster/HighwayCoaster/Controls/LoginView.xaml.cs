@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace HighwayCoaster.Controls
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class MainMenu : UserControl
+    public partial class LoginView : UserControl
     {
-        public MainMenu()
+        public LoginView()
         {
             InitializeComponent();
         }

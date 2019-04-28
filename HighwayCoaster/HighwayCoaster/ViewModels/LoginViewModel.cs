@@ -11,11 +11,11 @@
     using HighwayCoaster.Controls;
     using HighwayCoaster.Logic;
 
-    public class LoginPageViewModel : MainViewModel
+    public class LoginViewModel : MainViewModel
     {
         private GameLogic uL;
 
-        public LoginPageViewModel()
+        public LoginViewModel()
         {
             this.LoginCommand = new RelayCommand(this.LoginMethod, () => this.UserName != null && this.PassWord != null);
             this.RegisterCommand = new RelayCommand(this.RegisterMethod, () => this.UserName != null && this.PassWord != null);
@@ -29,9 +29,11 @@
 
         public ICommand RegisterCommand { get; private set; }
 
+        public ICommand HighscoreCommand { get; private set; }
+
         public void LoginMethod()
         {
-            MainMenu mm = new MainMenu();
+            MainMenuView mm = new MainMenuView();
         }
 
         public void RegisterMethod()

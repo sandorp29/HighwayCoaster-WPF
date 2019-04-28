@@ -7,12 +7,12 @@
         xmlns:vm="clr-namespace:HighwayCoaster.ViewModels"    
         xmlns:controls="clr-namespace:HighwayCoaster.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinWidth="800" MinHeight="450"
+        Title="HighwayCoaster" Height="450" Width="800" MinWidth="800" MinHeight="450"
         >
    
     <Window.Resources>
-        <vm:LoginPageViewModel x:Key="VM"/>
-        <controls:MainMenu x:Key="mvm"/>
+        <vm:LoginViewModel x:Key="VM"/>
+        <controls:MainMenuView x:Key="mvm"/>
         <SolidColorBrush x:Key="TransparentBlack" Color="#000000" Opacity="0.5" />
     </Window.Resources>
     <Grid DataContext="{Binding Source={StaticResource VM}}" Name="MainGrid">

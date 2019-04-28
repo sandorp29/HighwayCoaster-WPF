@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace HighwayCoaster.ViewModels
 {
-    class MainMenuWindowViewModel : MainViewModel
+    class HighscoreViewModel
     {
-        
     }
 }
