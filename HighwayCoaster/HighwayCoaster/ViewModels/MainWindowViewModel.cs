@@ -24,7 +24,7 @@
         public MainWindowViewModel()
         {
             this.gameLogic = new GameLogic();
-            this.ChangeWindowState(MainWindowState.CarSelection);
+            this.ChangeWindowState(MainWindowState.Login);
         }
 
         public string Background
@@ -36,30 +36,32 @@
 
         }
 
-        public ContentControl WindowContent { get => this.windowContent; }
+        public ContentControl WindowContent { get => this.windowContent; private set => windowContent = value; }
 
         public void ChangeWindowState(MainWindowState windowState)
         {
             switch (windowState)
             {
                 case MainWindowState.Login:
-                    this.windowContent = new LoginView(this.gameLogic, this);
+                    this.WindowContent = new LoginView(this.gameLogic, this);
                     break;
                 case MainWindowState.Highscore:
-                    this.windowContent = new HighscoreView(this.gameLogic, this);
+                    this.WindowContent = new HighscoreView(this.gameLogic, this);
                     break;
                 case MainWindowState.MainMenu:
-                    this.windowContent = new MainMenuView(this.gameLogic, this);
+                    this.WindowContent = new MainMenuView(this.gameLogic, this);
                     break;
                 case MainWindowState.CarSelection:
-                    this.windowContent = new CarSelectionView(this.gameLogic, this);
+                    this.WindowContent = new CarSelectionView(this.gameLogic, this);
                     break;
                 case MainWindowState.Play:
-                    this.windowContent = new PlayView();
+                    this.WindowContent = new PlayView();
                     break;
                 default:
                     break;
             }
+
+            this.RaisePropertyChanged("WindowContent");
         }
     }
 }

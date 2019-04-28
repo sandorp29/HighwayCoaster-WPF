@@ -16,19 +16,45 @@
 
     public class LoginViewModel : ViewModelBase
     {
+        private string userName;
+        private string password;
+
         public LoginViewModel()
         {
-            this.LoginCommand = new RelayCommand(this.LoginMethod, () => this.UserName == null && this.PassWord != null);
-            this.RegisterCommand = new RelayCommand(this.RegisterMethod, () => this.UserName != null && this.PassWord != null);
+            this.LoginCommand = new RelayCommand(this.LoginMethod, () => !string.IsNullOrEmpty(this.UserName) && !string.IsNullOrEmpty(this.Password));
+            this.RegisterCommand = new RelayCommand(this.RegisterMethod, () => !string.IsNullOrEmpty(this.UserName) && !string.IsNullOrEmpty(this.Password));
+            this.PasswordChanged = new RelayCommand<object>(this.OnPasswordChangedMethod);
         }
 
-        public string UserName { get; set; }
+        public string UserName
+        {
+            get => this.userName;
 
-        public string PassWord { get; set; }
+            set
+            {
+                this.userName = value;
+                (LoginCommand as RelayCommand).RaiseCanExecuteChanged();
+                (RegisterCommand as RelayCommand).RaiseCanExecuteChanged();
+            }
+        }
+
+        public string Password
+        {
+            get => this.password;
+
+            set
+            {
+                this.password = value;
+                (LoginCommand as RelayCommand).RaiseCanExecuteChanged();
+                (RegisterCommand as RelayCommand).RaiseCanExecuteChanged();
+            }
+        }
 
         public ICommand LoginCommand { get; private set; }
 
         public ICommand RegisterCommand { get; private set; }
+
+        public ICommand PasswordChanged { get; private set; }
 
         public ICommand HighscoreCommand { get; private set; }
 
@@ -44,13 +70,27 @@
             }
         }
 
+        public void OnPasswordChangedMethod(object obj)
+        {
+            this.Password = (obj as PasswordBox).Password;
+        }
+
         public void LoginMethod()
         {
+            GameLogic.Login(UserName, Password);
+
+            if (GameLogic.LoggedInPlayer != null)
+            {
+                this.MainWindowViewModel.ChangeWindowState(MainWindowState.MainMenu);
+            }
         }
 
         public void RegisterMethod()
         {
-
+            if (GameLogic.Register(UserName, Password))
+            {
+                LoginMethod();
+            }
         }
     }
 }

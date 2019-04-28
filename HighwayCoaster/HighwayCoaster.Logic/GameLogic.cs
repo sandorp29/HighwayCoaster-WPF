@@ -71,7 +71,6 @@
             loggedInPlayer = this.GetPlayers
                 .ToList()
                 .Find(x => x.Username.Equals(userName) && Enumerable.SequenceEqual(x.PW, GameRepository.CreateMD5(password)));
-
         }
 
         public bool Register(string userName, string password)
