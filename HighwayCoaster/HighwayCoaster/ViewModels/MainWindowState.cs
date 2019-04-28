@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace HighwayCoaster.ViewModels
 {
-    class MainMenuViewModel : MainWindowViewModel
+    public enum MainWindowState
     {
-        
+        Login, Highscore, MainMenu, CarSelection, Play
     }
 }

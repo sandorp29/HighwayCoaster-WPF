@@ -11,7 +11,7 @@
     using HighwayCoaster.Controls;
     using HighwayCoaster.Logic;
 
-    public class LoginViewModel : MainViewModel
+    public class LoginViewModel : MainWindowViewModel
     {
         private GameLogic uL;
 

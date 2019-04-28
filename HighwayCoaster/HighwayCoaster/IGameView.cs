@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HighwayCoaster
 {
-    public interface IView
+    public interface IGameView
     {
         event EventHandler OnMoveAction;
     }

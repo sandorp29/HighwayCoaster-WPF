@@ -88,12 +88,13 @@
     <Compile Include="Controls\PlayView.xaml.cs">
       <DependentUpon>PlayView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IView.cs" />
+    <Compile Include="IGameView.cs" />
     <Compile Include="ViewModels\CarSelectionViewModel.cs" />
     <Compile Include="ViewModels\HighscoreViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowState.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PlayViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="Controls\CarSelectionView.xaml">
@@ -164,6 +165,10 @@
     <ProjectReference Include="..\HighwayCoaster.Logic\HighwayCoaster.Logic.csproj">
       <Project>{f61b4d90-65e6-449a-b033-6b005d88fed8}</Project>
       <Name>HighwayCoaster.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HighwayCoaster.Repository\HighwayCoaster.Repository.csproj">
+      <Project>{57CFB301-F1C3-42B9-9E76-DF5E84893F31}</Project>
+      <Name>HighwayCoaster.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\HighwayCoaster.Resources\HighwayCoaster.Resources.csproj">
       <Project>{61cb5c51-4174-4aa2-b3eb-96625440f0e0}</Project>
