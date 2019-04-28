@@ -23,6 +23,7 @@ namespace HighwayCoaster.Repository
         public decimal CarId { get; set; }
         public int PointRequirement { get; set; }
         public string ViewResourcesPath { get; set; }
+        public string WheelResource { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player> Player { get; set; }
