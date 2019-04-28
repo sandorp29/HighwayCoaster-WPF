@@ -2,15 +2,20 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
     using System.Windows.Controls;
     using HighwayCoaster.Repository;
+    using HighwayCoaster.Resources;
 
     public class GameLogic : IGameLogic
     {
+        FileSources sc = new FileSources(DesignerProperties.GetIsInDesignMode(new DependencyObject()));
         private IGameRepository repo;
+        private Player loggedInPlayer;
 
         public GameLogic(IGameRepository repo)
         {
@@ -42,6 +47,10 @@
             }
         }
 
+        public Player LoggedInPlayer { get => this.loggedInPlayer; }
+
+        public FileSources Sc { get => sc; }
+
         public void ChangeCar(decimal playerId, decimal carId)
         {
             this.repo.ChangeCar(playerId, carId);
@@ -57,13 +66,12 @@
             this.repo.DeleteUser(playerId);
         }
 
-        public Player Login(string userName, string password)
+        public void Login(string userName, string password)
         {
-            Player loggedOnPlayer = this.GetPlayers
+            loggedInPlayer = this.GetPlayers
                 .ToList()
                 .Find(x => x.Username.Equals(userName) && Enumerable.SequenceEqual(x.PW, GameRepository.CreateMD5(password)));
 
-            return loggedOnPlayer;
         }
 
         public bool Register(string userName, string password)

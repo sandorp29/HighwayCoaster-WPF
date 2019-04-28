@@ -18,42 +18,32 @@
 
     public class MainWindowViewModel : ViewModelBase
     {
-        FileSources sc = new FileSources(DesignerProperties.GetIsInDesignMode(new DependencyObject()));
-        internal Player loggedInPlayer;
-        internal IGameLogic gameLogic;
-        internal ContentControl windowContent;
+        private IGameLogic gameLogic;
+        private ContentControl windowContent;
 
         public MainWindowViewModel()
         {
-            gameLogic = new GameLogic();
-            ChangeWindowState(MainWindowState.Login);
+            this.gameLogic = new GameLogic();
+            this.ChangeWindowState(MainWindowState.Login);
         }
-
-        public ContentControl WindowContent => this.windowContent;
 
         public string Background
         {
             get
             {
-                return this.sc.BackgroundLoop;
+                return this.gameLogic.Sc.BackgroundLoop;
             }
 
         }
 
-        public ImageSource Logo
-        {
-            get
-            {
-                return new BitmapImage(new Uri(this.sc.LogoIMG, UriKind.Relative));
-            }
-        }
+        public ContentControl WindowContent { get => this.windowContent; }
 
         public void ChangeWindowState(MainWindowState windowState)
         {
             switch (windowState)
             {
                 case MainWindowState.Login:
-                    this.windowContent = new LoginView();
+                    this.windowContent = new LoginView(this.gameLogic, this);
                     break;
                 case MainWindowState.Highscore:
                     this.windowContent = new HighscoreView();

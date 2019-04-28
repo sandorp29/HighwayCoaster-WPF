@@ -6,6 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using HighwayCoaster.Repository;
+    using HighwayCoaster.Resources;
 
     public interface IGameLogic
     {
@@ -17,7 +18,11 @@
 
         IEnumerable<Car> GetCars { get; }
 
-        Player Login(string userName, string password);
+        Player LoggedInPlayer { get; }
+
+        FileSources Sc { get; }
+
+        void Login(string userName, string password);
 
         bool Register(string userName, string password);
 

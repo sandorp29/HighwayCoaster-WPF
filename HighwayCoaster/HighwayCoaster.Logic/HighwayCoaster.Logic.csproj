@@ -41,6 +41,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IGameLogic.cs" />
@@ -58,6 +59,10 @@
     <ProjectReference Include="..\HighwayCoaster.Repository\HighwayCoaster.Repository.csproj">
       <Project>{57CFB301-F1C3-42B9-9E76-DF5E84893F31}</Project>
       <Name>HighwayCoaster.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HighwayCoaster.Resources\HighwayCoaster.Resources.csproj">
+      <Project>{61cb5c51-4174-4aa2-b3eb-96625440f0e0}</Project>
+      <Name>HighwayCoaster.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

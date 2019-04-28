@@ -9,11 +9,12 @@
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
+    using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using HighwayCoaster.Controls;
     using HighwayCoaster.Logic;
 
-    public class LoginViewModel : MainWindowViewModel
+    public class LoginViewModel : ViewModelBase
     {
         public LoginViewModel()
         {
@@ -31,14 +32,25 @@
 
         public ICommand HighscoreCommand { get; private set; }
 
+        public IGameLogic GameLogic { get; set; }
+
+        public MainWindowViewModel MainWindowViewModel { get; set; }
+
+        public ImageSource Logo
+        {
+            get
+            {
+                return new BitmapImage(new Uri(this.GameLogic.Sc.LogoIMG, UriKind.Relative));
+            }
+        }
+
         public void LoginMethod()
         {
-            MainMenuView mm = new MainMenuView();
         }
 
         public void RegisterMethod()
         {
-            this.gameLogic.Register(this.UserName, this.PassWord);
+
         }
     }
 }

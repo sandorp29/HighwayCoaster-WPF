@@ -88,7 +88,6 @@
     <Compile Include="Controls\PlayView.xaml.cs">
       <DependentUpon>PlayView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IGameView.cs" />
     <Compile Include="ViewModels\CarSelectionViewModel.cs" />
     <Compile Include="ViewModels\HighscoreViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
