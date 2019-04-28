@@ -49,9 +49,23 @@
     <Content Include="Resources\backgroundloop.wmv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Final_Assets\Audi.png" />
+    <Content Include="Resources\Final_Assets\Icecream.png" />
+    <Content Include="Resources\Final_Assets\mustang.gif" />
+    <Content Include="Resources\Final_Assets\Offroad.png" />
+    <Content Include="Resources\Final_Assets\Supercar.png" />
+    <Content Include="Resources\Final_Assets\truck.png" />
+    <Content Include="Resources\Final_Assets\Unknown.png" />
     <Content Include="Resources\LOGO.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Wheel\AudiWheel.png" />
+    <Content Include="Resources\Wheel\IcecreamWheel.png" />
+    <Content Include="Resources\Wheel\MustangWheel.gif" />
+    <Content Include="Resources\Wheel\OffroadWheel.png" />
+    <Content Include="Resources\Wheel\SupercarWheel.png" />
+    <Content Include="Resources\Wheel\TruckWheel.png" />
+    <Content Include="Resources\Wheel\unknownWheel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
