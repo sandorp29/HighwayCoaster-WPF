@@ -44,6 +44,7 @@ namespace HighwayCoaster.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainWindowViewModel>();
+            SimpleIoc.Default.Register<LoginViewModel>();
         }
 
         public MainWindowViewModel Main
@@ -53,7 +54,15 @@ namespace HighwayCoaster.ViewModel
                 return ServiceLocator.Current.GetInstance<MainWindowViewModel>();
             }
         }
-        
+
+        public LoginViewModel Login
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<LoginViewModel>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

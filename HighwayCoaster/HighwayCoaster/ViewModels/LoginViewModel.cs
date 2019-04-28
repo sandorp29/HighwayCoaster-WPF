@@ -7,17 +7,17 @@
     using System.Threading.Tasks;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
     using GalaSoft.MvvmLight.Command;
     using HighwayCoaster.Controls;
     using HighwayCoaster.Logic;
 
     public class LoginViewModel : MainWindowViewModel
     {
-        private GameLogic uL;
-
         public LoginViewModel()
         {
-            this.LoginCommand = new RelayCommand(this.LoginMethod, () => this.UserName != null && this.PassWord != null);
+            this.LoginCommand = new RelayCommand(this.LoginMethod, () => this.UserName == null && this.PassWord != null);
             this.RegisterCommand = new RelayCommand(this.RegisterMethod, () => this.UserName != null && this.PassWord != null);
         }
 
@@ -38,7 +38,7 @@
 
         public void RegisterMethod()
         {
-            this.uL.Register(this.UserName, this.PassWord);
+            this.gameLogic.Register(this.UserName, this.PassWord);
         }
     }
 }

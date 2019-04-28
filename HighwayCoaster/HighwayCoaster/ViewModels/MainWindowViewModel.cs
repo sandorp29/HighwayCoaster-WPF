@@ -19,38 +19,17 @@
     public class MainWindowViewModel : ViewModelBase
     {
         FileSources sc = new FileSources(DesignerProperties.GetIsInDesignMode(new DependencyObject()));
-        Player loggedInPlayer;
+        internal Player loggedInPlayer;
+        internal IGameLogic gameLogic;
+        internal ContentControl windowContent;
 
         public MainWindowViewModel()
         {
+            gameLogic = new GameLogic();
             ChangeWindowState(MainWindowState.Login);
         }
 
-        public void ChangeWindowState(MainWindowState windowState)
-        {
-            switch (windowState)
-            {
-                case MainWindowState.Login:
-                    this.WindowContent = new LoginView();
-                    break;
-                case MainWindowState.Highscore:
-                    this.WindowContent = new HighscoreView();
-                    break;
-                case MainWindowState.MainMenu:
-                    this.WindowContent = new MainMenuView();
-                    break;
-                case MainWindowState.CarSelection:
-                    this.WindowContent = new CarSelectionView();
-                    break;
-                case MainWindowState.Play:
-                    this.WindowContent = new PlayView();
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public ContentControl WindowContent { get; private set; }
+        public ContentControl WindowContent => this.windowContent;
 
         public string Background
         {
@@ -66,6 +45,30 @@
             get
             {
                 return new BitmapImage(new Uri(this.sc.LogoIMG, UriKind.Relative));
+            }
+        }
+
+        public void ChangeWindowState(MainWindowState windowState)
+        {
+            switch (windowState)
+            {
+                case MainWindowState.Login:
+                    this.windowContent = new LoginView();
+                    break;
+                case MainWindowState.Highscore:
+                    this.windowContent = new HighscoreView();
+                    break;
+                case MainWindowState.MainMenu:
+                    this.windowContent = new MainMenuView();
+                    break;
+                case MainWindowState.CarSelection:
+                    this.windowContent = new CarSelectionView();
+                    break;
+                case MainWindowState.Play:
+                    this.windowContent = new PlayView();
+                    break;
+                default:
+                    break;
             }
         }
     }

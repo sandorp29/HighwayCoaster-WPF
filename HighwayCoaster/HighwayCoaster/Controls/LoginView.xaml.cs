@@ -23,6 +23,7 @@ namespace HighwayCoaster.Controls
         public LoginView()
         {
             InitializeComponent();
+
         }
     }
 }

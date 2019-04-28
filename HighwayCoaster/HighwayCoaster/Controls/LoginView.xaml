@@ -8,12 +8,13 @@
     <UserControl.Resources>
         <SolidColorBrush x:Key="TransparentBlack" Color="#000000" Opacity="0.5" />
     </UserControl.Resources>
-    <Grid  Name="MainGrid">
+    <Grid  Name="MainGrid" DataContext="{Binding Path=Login}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1.4*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+        
         <StackPanel Grid.Column="1" VerticalAlignment="Center" MaxWidth="350" MinWidth="250">
             <Grid Margin ="5 5 5 0" Height="100">
                 <Grid.Background>
@@ -22,15 +23,15 @@
             </Grid>
             <StackPanel Background="{StaticResource TransparentBlack}" Margin="25 10 25 10">
                 <Label Margin ="5 0 5 0"  Content="USERNAME:" FontFamily="Comic Sans MS Bold" Foreground="Gold"/>
-                <TextBox Margin ="5 0 5 0"  FontSize="18"  />
+                <TextBox Margin ="5 0 5 0"  FontSize="18"  Text="{Binding UserName}" />
                 <Label  Margin ="5 0 5 0"  Content="PASSWORD:" FontFamily="Comic Sans MS Bold" Foreground="Gold"/>
-                <PasswordBox Margin ="5 0 5 0" FontSize="18" />
+                <PasswordBox x:Name="PasswordBox" Margin ="5 0 5 0" FontSize="18"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Login" Grid.Column="0" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
+                    <Button Content="Login" Grid.Column="0" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}" />
                     <Button Content="Register" Grid.Column="1" Margin="5 10 5 5" Height="35"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
                 </Grid>
             </StackPanel>

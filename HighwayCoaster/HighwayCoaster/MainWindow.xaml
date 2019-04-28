@@ -7,13 +7,25 @@
         xmlns:Controls="clr-namespace:HighwayCoaster.Controls"
         mc:Ignorable="d"
         Title="HighwayCoaster" Height="450" Width="800" MinWidth="800" MinHeight="450"
-        DataContext="{Binding Source={StaticResource Locator}, Path=Main}" >
-    <Grid>
+        DataContext="{Binding Source={StaticResource Locator}}" >
+    <Grid DataContext="{Binding Path=Main}">
         <Grid.Background>
             <VisualBrush>
                 <VisualBrush.Visual>
                     <StackPanel Background="White">
-                        <MediaElement Source="{Binding Background}" Stretch="Uniform" Volume="0"></MediaElement>
+                        <MediaElement Stretch="Uniform" Volume="0">
+                            <MediaElement.Triggers>
+                                <EventTrigger RoutedEvent="MediaElement.Loaded">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <MediaTimeline Source="{Binding Background}" RepeatBehavior="Forever" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger.Actions>
+                                </EventTrigger>
+                            </MediaElement.Triggers>
+                        </MediaElement>
                     </StackPanel>
                 </VisualBrush.Visual>
             </VisualBrush>
