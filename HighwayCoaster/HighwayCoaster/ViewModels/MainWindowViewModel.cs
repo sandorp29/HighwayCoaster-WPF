@@ -24,7 +24,7 @@
         public MainWindowViewModel()
         {
             this.gameLogic = new GameLogic();
-            this.ChangeWindowState(MainWindowState.Login);
+            this.ChangeWindowState(MainWindowState.CarSelection);
         }
 
         public string Background
@@ -46,13 +46,13 @@
                     this.windowContent = new LoginView(this.gameLogic, this);
                     break;
                 case MainWindowState.Highscore:
-                    this.windowContent = new HighscoreView();
+                    this.windowContent = new HighscoreView(this.gameLogic, this);
                     break;
                 case MainWindowState.MainMenu:
-                    this.windowContent = new MainMenuView();
+                    this.windowContent = new MainMenuView(this.gameLogic, this);
                     break;
                 case MainWindowState.CarSelection:
-                    this.windowContent = new CarSelectionView();
+                    this.windowContent = new CarSelectionView(this.gameLogic, this);
                     break;
                 case MainWindowState.Play:
                     this.windowContent = new PlayView();

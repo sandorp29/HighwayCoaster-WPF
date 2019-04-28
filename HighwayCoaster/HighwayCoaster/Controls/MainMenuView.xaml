@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <SolidColorBrush x:Key="TransparentBlack" Color="#000000" Opacity="0.5" />
     </UserControl.Resources>
-    <Grid >
+    <Grid  DataContext="{Binding Source={StaticResource Locator}, Path=Menu}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CommonServiceLocator;
+using HighwayCoaster.Logic;
+using HighwayCoaster.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +23,10 @@ namespace HighwayCoaster.Controls
     /// </summary>
     public partial class MainMenuView : UserControl
     {
-        public MainMenuView()
+        public MainMenuView(IGameLogic gameLogic, MainWindowViewModel mainWindowViewModel)
         {
+            ServiceLocator.Current.GetInstance<MainMenuViewModel>().GameLogic = gameLogic;
+            ServiceLocator.Current.GetInstance<MainMenuViewModel>().MainWindowViewModel = mainWindowViewModel;
             InitializeComponent();
         }
     }
