@@ -23,7 +23,7 @@
 
         public MainWindowViewModel()
         {
-            ChangeWindowState(MainWindowState.Login);
+            ChangeWindowState(MainWindowState.MainMenu);
         }
 
         public void ChangeWindowState(MainWindowState windowState)
