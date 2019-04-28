@@ -1,20 +1,19 @@
-﻿using HighwayCoaster.Resources;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using GalaSoft.MvvmLight;
-using System.ComponentModel;
-using System.Windows;
-using HighwayCoaster.Logic;
-using System.Windows.Controls;
-using HighwayCoaster.Controls;
-
-namespace HighwayCoaster.ViewModels
+﻿namespace HighwayCoaster.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using GalaSoft.MvvmLight;
+    using HighwayCoaster.Controls;
+    using HighwayCoaster.Logic;
+    using HighwayCoaster.Resources;
 
     public class MainViewModel : ViewModelBase
     {
@@ -22,7 +21,7 @@ namespace HighwayCoaster.ViewModels
 
         public MainViewModel()
         {
-            WindowContent = new LoginView();
+            this.WindowContent = new LoginView();
         }
 
         public ContentControl WindowContent { get; private set; }
