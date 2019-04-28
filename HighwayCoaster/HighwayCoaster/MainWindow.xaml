@@ -4,58 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HighwayCoaster"
-        xmlns:vm="clr-namespace:HighwayCoaster.ViewModels"    
-        xmlns:controls="clr-namespace:HighwayCoaster.Controls"
+        xmlns:Controls="clr-namespace:HighwayCoaster.Controls"
         mc:Ignorable="d"
         Title="HighwayCoaster" Height="450" Width="800" MinWidth="800" MinHeight="450"
         >
-   
-    <Window.Resources>
-        <vm:LoginViewModel x:Key="VM"/>
-        <controls:MainMenuView x:Key="mvm"/>
-        <SolidColorBrush x:Key="TransparentBlack" Color="#000000" Opacity="0.5" />
-    </Window.Resources>
-    <Grid DataContext="{Binding Source={StaticResource VM}}" Name="MainGrid">
-        <!--<controls:MainMenu x:Name="MM"/>-->
-        <Grid.Background>
-            <ImageBrush ImageSource="{Binding Background}"/>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1.4*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" VerticalAlignment="Center" MaxWidth="350" MinWidth="250">
-            <Grid Margin ="5 5 5 0" Height="100">
-                <Grid.Background>
-                    <ImageBrush ImageSource="{Binding Logo}"/>
-                </Grid.Background>
-            </Grid>
-            <StackPanel Background="{StaticResource TransparentBlack}" Margin="25 10 25 10">
-                <Label Margin ="5 0 5 0"  Content="USERNAME:" FontFamily="Comic Sans MS Bold" Foreground="Gold"/>
-                <TextBox Margin ="5 0 5 0"  FontSize="18"  />
-                <Label  Margin ="5 0 5 0"  Content="PASSWORD:" FontFamily="Comic Sans MS Bold" Foreground="Gold"/>
-                <PasswordBox Margin ="5 0 5 0" FontSize="18" />
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Content="Login" Grid.Column="0" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
-                    <Button Content="Register" Grid.Column="1" Margin="5 10 5 5" Height="35"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
-                </Grid>
-            </StackPanel>
-        </StackPanel>
-        <Grid Grid.Column="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="3*" MaxWidth="250" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" MaxHeight="100"/>
-                <RowDefinition Height="4*" />
-            </Grid.RowDefinitions>
-            <Button Content="Highscores" Margin="10 10 10 10" Grid.Column="2" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
-        </Grid>
-    </Grid>
+    <Controls:LoginView />
 </Window>
