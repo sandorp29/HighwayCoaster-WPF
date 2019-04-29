@@ -53,7 +53,7 @@
                 <RowDefinition Height="1*" MaxHeight="100"/>
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Button Content="Highscores" Margin="10 10 10 10" Grid.Column="2" Opacity="0.75" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
+            <Button Content="Highscores" Margin="10 10 10 10" Grid.Column="2" Opacity="0.75" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding HighscoreCommand}"/>
         </Grid>
     </Grid>
 </UserControl>
