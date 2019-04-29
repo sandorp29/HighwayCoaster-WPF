@@ -16,6 +16,10 @@ namespace HighwayCoaster.ViewModels
     {
         public MainMenuViewModel()
         {
+            this.PlayGameCommand = new RelayCommand(this.PlayGameMethod);
+            this.CarSelectCommand = new RelayCommand(this.CarSelectMethod);
+            this.HighscoreCommand = new RelayCommand(this.HighscoreMethod);
+            this.ExitCommand = new RelayCommand(this.ExitMethod);
         }
 
         public ICommand PlayGameCommand { get; private set; }
@@ -30,20 +34,24 @@ namespace HighwayCoaster.ViewModels
 
         public MainWindowViewModel MainWindowViewModel { get; set; }
 
-        public void PlayGameMethod(object o)
+        public void PlayGameMethod()
         {
+            this.MainWindowViewModel.ChangeWindowState(MainWindowState.Play);
         }
 
-        public void CarSelectMethod(object o)
+        public void CarSelectMethod()
         {
+            this.MainWindowViewModel.ChangeWindowState(MainWindowState.CarSelection);
         }
 
-        public void HighscoreMethod(object o)
+        public void HighscoreMethod()
         {
+            this.MainWindowViewModel.ChangeWindowState(MainWindowState.Highscore);
         }
 
-        public void ExitMethod(object o)
+        public void ExitMethod()
         {
+            Environment.Exit(0);
         }
 
         public ImageSource Logo

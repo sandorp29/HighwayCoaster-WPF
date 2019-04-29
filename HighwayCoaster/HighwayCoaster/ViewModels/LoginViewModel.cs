@@ -33,8 +33,8 @@
             set
             {
                 this.userName = value;
-                (LoginCommand as RelayCommand).RaiseCanExecuteChanged();
-                (RegisterCommand as RelayCommand).RaiseCanExecuteChanged();
+                (this.LoginCommand as RelayCommand).RaiseCanExecuteChanged();
+                (this.RegisterCommand as RelayCommand).RaiseCanExecuteChanged();
             }
         }
 
@@ -45,8 +45,8 @@
             set
             {
                 this.password = value;
-                (LoginCommand as RelayCommand).RaiseCanExecuteChanged();
-                (RegisterCommand as RelayCommand).RaiseCanExecuteChanged();
+                (this.LoginCommand as RelayCommand).RaiseCanExecuteChanged();
+                (this.RegisterCommand as RelayCommand).RaiseCanExecuteChanged();
             }
         }
 
@@ -77,9 +77,10 @@
 
         public void LoginMethod()
         {
-            GameLogic.Login(UserName, Password);
+            // TODO: Return message if not logged in
+            this.GameLogic.Login(this.UserName, this.Password);
 
-            if (GameLogic.LoggedInPlayer != null)
+            if (this.GameLogic.LoggedInPlayer != null)
             {
                 this.MainWindowViewModel.ChangeWindowState(MainWindowState.MainMenu);
             }
@@ -87,9 +88,10 @@
 
         public void RegisterMethod()
         {
-            if (GameLogic.Register(UserName, Password))
+            // TODO: Return message if register is not done
+            if (this.GameLogic.Register(this.UserName, this.Password))
             {
-                LoginMethod();
+                this.LoginMethod();
             }
         }
     }

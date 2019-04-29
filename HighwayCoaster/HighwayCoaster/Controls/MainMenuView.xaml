@@ -31,10 +31,10 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Content="Play" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
-                    <Button Grid.Row="1" Content="Car Selection" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
-                    <Button Grid.Row="2" Content="Highscores" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
-                    <Button Grid.Row="3" Content="Exit" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
+                    <Button Grid.Row="0" Opacity="0.75" Content="Play" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding PlayGameCommand}"/>
+                    <Button Grid.Row="1" Opacity="0.75" Content="Car Selection" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding CarSelectCommand}"/>
+                    <Button Grid.Row="2" Opacity="0.75" Content="Highscores" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding HighscoreCommand}"/>
+                    <Button Grid.Row="3" Opacity="0.75" Content="Exit" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding ExitCommand}"/>
                 </Grid>
             </StackPanel>
         </StackPanel>
