@@ -48,6 +48,7 @@ namespace HighwayCoaster.ViewModel
             SimpleIoc.Default.Register<MainMenuViewModel>();
             SimpleIoc.Default.Register<HighscoreViewModel>();
             SimpleIoc.Default.Register<CarSelectionViewModel>();
+            SimpleIoc.Default.Register<PlayViewModel>();
         }
 
         public MainWindowViewModel Main
@@ -90,7 +91,13 @@ namespace HighwayCoaster.ViewModel
             }
         }
 
-
+        public PlayViewModel Play
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<PlayViewModel>();
+            }
+        }
 
         public static void Cleanup()
         {

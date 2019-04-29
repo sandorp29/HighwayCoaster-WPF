@@ -7,8 +7,13 @@
         xmlns:Controls="clr-namespace:HighwayCoaster.Controls"
         mc:Ignorable="d"
         Title="HighwayCoaster" Height="450" Width="800" MinWidth="800" MinHeight="450"
-        DataContext="{Binding Source={StaticResource Locator}}" >
-    <Grid DataContext="{Binding Path=Main}">
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="ResizeMode" Value="{Binding ResizeMode}" />
+        </Style>
+    </Window.Style>
+    <Grid>
         <Grid.Background>
             <VisualBrush>
                 <VisualBrush.Visual>

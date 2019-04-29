@@ -42,6 +42,8 @@
 
         public ContentControl WindowContent { get => this.windowContent; private set => this.windowContent = value; }
 
+        public ResizeMode ResizeMode { get; set; }
+
         public void OpenModal(string msg)
         {
             new MessageWindow(Window.GetWindow(this.windowContent), msg).ShowDialog();
@@ -53,24 +55,30 @@
             {
                 case MainWindowState.Login:
                     this.WindowContent = new LoginView(this.gameLogic, this);
+                    this.ResizeMode = ResizeMode.CanResize;
                     break;
                 case MainWindowState.Highscore:
                     this.WindowContent = new HighscoreView(this.gameLogic, this);
+                    this.ResizeMode = ResizeMode.CanResize;
                     break;
                 case MainWindowState.MainMenu:
                     this.WindowContent = new MainMenuView(this.gameLogic, this);
+                    this.ResizeMode = ResizeMode.CanResize;
                     break;
                 case MainWindowState.CarSelection:
                     this.WindowContent = new CarSelectionView(this.gameLogic, this);
+                    this.ResizeMode = ResizeMode.CanResize;
                     break;
                 case MainWindowState.Play:
                     this.WindowContent = new PlayView();
+                    this.ResizeMode = ResizeMode.NoResize;
                     break;
                 default:
                     break;
             }
 
             this.RaisePropertyChanged("WindowContent");
+            this.RaisePropertyChanged("ResizeMode");
         }
     }
 }
