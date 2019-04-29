@@ -10,10 +10,6 @@
 
     public interface IGameLogic : IDisposable
     {
-        event EventHandler OnGameOver;
-
-        event EventHandler OnGameTicks;
-
         IEnumerable<Player> GetPlayers { get; }
 
         IEnumerable<Car> GetCars { get; }

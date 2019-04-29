@@ -6,11 +6,15 @@
         xmlns:local="clr-namespace:HighwayCoaster"
         xmlns:Controls="clr-namespace:HighwayCoaster.Controls"
         mc:Ignorable="d"
-        Title="HighwayCoaster" Height="450" Width="800" MinWidth="800" MinHeight="450"
+        Title="HighwayCoaster"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
     <Window.Style>
         <Style TargetType="Window">
             <Setter Property="ResizeMode" Value="{Binding ResizeMode}" />
+            <Setter Property="Height" Value="{Binding WindowHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="MinHeight" Value="450" />
+            <Setter Property="Width" Value="{Binding WindowWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Setter Property="MinWidth" Value="800" />
         </Style>
     </Window.Style>
     <Grid>

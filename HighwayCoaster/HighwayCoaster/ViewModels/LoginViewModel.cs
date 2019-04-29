@@ -79,7 +79,6 @@
 
         public void LoginMethod()
         {
-            // TODO: Return message if not logged in
             this.GameLogic.Login(this.UserName, this.Password);
 
             if (this.GameLogic.LoggedInPlayer != null)
@@ -94,7 +93,6 @@
 
         public void RegisterMethod()
         {
-            // TODO: Return message if register is not done
             if (this.GameLogic.Register(this.UserName, this.Password))
             {
                 this.LoginMethod();

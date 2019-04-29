@@ -1,4 +1,5 @@
 ﻿using HighwayCoaster.Logic;
+using HighwayCoaster.ViewModels.ViewModelHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,10 @@ namespace HighwayCoaster.ViewModels
     {
         public PlayViewModel()
         {
-            GameArea = new FrameworkElement();
+            this.GA = new GameArea();
         }
 
-        public FrameworkElement GameArea { get; set; }
+        public GameArea GA { get; set; }
 
         public IGameLogic GameLogic { get; set; }
 

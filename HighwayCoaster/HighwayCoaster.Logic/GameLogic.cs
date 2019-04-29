@@ -28,10 +28,6 @@
             this.repo = new GameRepository();
         }
 
-        public event EventHandler OnGameOver;
-
-        public event EventHandler OnGameTicks;
-
         public IEnumerable<Car> GetCars
         {
             get
