@@ -37,7 +37,7 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            base.OnRender(drawingContext);
+            drawingContext.DrawGeometry(Brushes.Transparent, new Pen(Brushes.White, 6), this.gAreaLogic.Line);
         }
 
         private void DT_Tick(object sender, EventArgs e)
