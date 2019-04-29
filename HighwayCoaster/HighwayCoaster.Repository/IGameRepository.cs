@@ -1,8 +1,9 @@
 ﻿namespace HighwayCoaster.Repository
 {
+    using System;
     using System.Collections.Generic;
 
-    public interface IGameRepository
+    public interface IGameRepository: IDisposable
     {
         IEnumerable<Player> GetPlayers { get; }
 

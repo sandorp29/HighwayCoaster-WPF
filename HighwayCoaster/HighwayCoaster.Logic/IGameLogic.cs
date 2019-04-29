@@ -8,7 +8,7 @@
     using HighwayCoaster.Repository;
     using HighwayCoaster.Resources;
 
-    public interface IGameLogic
+    public interface IGameLogic : IDisposable
     {
         event EventHandler OnGameOver;
 

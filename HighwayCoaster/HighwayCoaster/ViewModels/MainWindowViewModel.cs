@@ -24,6 +24,9 @@
         public MainWindowViewModel()
         {
             this.gameLogic = new GameLogic();
+
+            AppDomain.CurrentDomain.ProcessExit += (s, e) => this.gameLogic.Dispose();
+
             this.ChangeWindowState(MainWindowState.Login);
         }
 
@@ -36,7 +39,7 @@
 
         }
 
-        public ContentControl WindowContent { get => this.windowContent; private set => windowContent = value; }
+        public ContentControl WindowContent { get => this.windowContent; private set => this.windowContent = value; }
 
         public void ChangeWindowState(MainWindowState windowState)
         {

@@ -9,6 +9,7 @@
     public class GameRepository : IGameRepository
     {
         private HighwayCoasterDatabaseEntities en;
+        private bool disposedValue = false; // To detect redundant calls
 
         public GameRepository()
         {
@@ -70,6 +71,26 @@
         {
             this.en.Player.Find(playerId).Highscore = highScore;
             this.en.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposedValue)
+            {
+                if (disposing)
+                {
+                    this.en.Dispose();
+                }
+
+                this.disposedValue = true;
+            }
         }
     }
 }

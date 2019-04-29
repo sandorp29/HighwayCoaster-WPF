@@ -16,6 +16,7 @@
         FileSources sc = new FileSources(DesignerProperties.GetIsInDesignMode(new DependencyObject()));
         private IGameRepository repo;
         private Player loggedInPlayer;
+        private bool disposedValue = false; // To detect redundant calls
 
         public GameLogic(IGameRepository repo)
         {
@@ -104,6 +105,26 @@
         public void StartGame()
         {
             throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposedValue)
+            {
+                if (disposing)
+                {
+                    this.repo.Dispose();
+                }
+
+                this.disposedValue = true;
+            }
         }
     }
 }
