@@ -70,7 +70,7 @@
                     this.ResizeMode = ResizeMode.CanResize;
                     break;
                 case MainWindowState.Play:
-                    this.WindowContent = new PlayView();
+                    this.WindowContent = new PlayView(this.gameLogic, this);
                     this.ResizeMode = ResizeMode.NoResize;
                     break;
                 default:

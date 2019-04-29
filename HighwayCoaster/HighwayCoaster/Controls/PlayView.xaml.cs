@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CommonServiceLocator;
+using HighwayCoaster.Logic;
+using HighwayCoaster.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,12 @@ namespace HighwayCoaster.Controls
     /// </summary>
     public partial class PlayView : UserControl
     {
-        public PlayView()
+        public PlayView(IGameLogic gameLogic, MainWindowViewModel mainWindowViewModel)
         {
-            InitializeComponent();
+            ServiceLocator.Current.GetInstance<PlayViewModel>().GameLogic = gameLogic;
+            ServiceLocator.Current.GetInstance<PlayViewModel>().MainWindowViewModel = mainWindowViewModel;
+
+            this.InitializeComponent();
         }
     }
 }
