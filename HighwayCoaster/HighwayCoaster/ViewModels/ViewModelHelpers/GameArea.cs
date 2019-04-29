@@ -1,4 +1,5 @@
 ﻿using HighwayCoaster.Logic;
+using HighwayCoaster.Logic.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace HighwayCoaster.ViewModels.ViewModelHelpers
@@ -28,7 +30,7 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
             this.direction = Direction.None;
 
             this.dt = new DispatcherTimer();
-            this.dt.Interval = TimeSpan.FromMilliseconds(5000);
+            this.dt.Interval = TimeSpan.FromMilliseconds(10);
             this.dt.Tick += this.DT_Tick;
             this.dt.Start();
         }
@@ -40,6 +42,15 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
 
         private void DT_Tick(object sender, EventArgs e)
         {
+            if (!this.gAreaLogic.GameOver)
+            {
+                this.gAreaLogic.Step(this.direction);
+            }
+            else
+            {
+                this.dt.Stop();
+            }
+
             this.InvalidateVisual();
         }
 
@@ -69,9 +80,18 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
                     }
 
                     break;
+                case System.Windows.Input.Key.Escape:
+                    this.Leave();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private void Leave()
+        {
+            this.mainWindowViewModel.UnsubscribeEventOnWindow(this.GameArea_KeyDown);
+            this.mainWindowViewModel.ChangeWindowState(MainWindowState.MainMenu);
         }
     }
 }

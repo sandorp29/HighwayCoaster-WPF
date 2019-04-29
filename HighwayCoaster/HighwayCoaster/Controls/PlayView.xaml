@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:HighwayCoaster.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid DataContext="{Binding Path=Play}">
+    <Grid DataContext="{Binding Source={StaticResource Locator}, Path=Play}">
         <ContentControl Content="{Binding GA}" />
     </Grid>
 </UserControl>

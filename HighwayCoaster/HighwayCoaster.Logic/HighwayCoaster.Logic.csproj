@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameAreaLogic.cs" />
+    <Compile Include="Helpers\Direction.cs" />
     <Compile Include="IGameLogic.cs" />
     <Compile Include="GameLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

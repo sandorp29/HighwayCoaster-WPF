@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HighwayCoaster.ViewModels.ViewModelHelpers
+namespace HighwayCoaster.Logic.Helpers
 {
     public enum Direction
     {
