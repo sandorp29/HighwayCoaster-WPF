@@ -14,6 +14,8 @@
 
         IEnumerable<Car> GetCars { get; }
 
+        GameAreaLogic GAreaLogic { get; }
+
         Player LoggedInPlayer { get; }
 
         FileSources Sc { get; }
@@ -30,6 +32,6 @@
 
         void ChangeCar(decimal playerId, decimal carId);
 
-        void StartGame();
+        void SetupGameAreaLogic(int areaHeight, int areaWidth);
     }
 }

@@ -21,5 +21,10 @@ namespace HighwayCoaster.ViewModels
         public IGameLogic GameLogic { get; set; }
 
         public MainWindowViewModel MainWindowViewModel { get; set; }
+
+        public void Start()
+        {
+            this.GA.Setup(this.GameLogic, this.MainWindowViewModel);
+        }
     }
 }

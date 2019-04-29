@@ -105,6 +105,7 @@
     <Compile Include="ViewModels\MainWindowState.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PlayViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelHelpers\Direction.cs" />
     <Compile Include="ViewModels\ViewModelHelpers\GameArea.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="Controls\CarSelectionView.xaml">

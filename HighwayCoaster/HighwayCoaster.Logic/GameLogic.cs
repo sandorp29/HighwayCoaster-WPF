@@ -13,7 +13,7 @@
 
     public class GameLogic : IGameLogic
     {
-        FileSources sc = new FileSources(DesignerProperties.GetIsInDesignMode(new DependencyObject()));
+        private FileSources sc = new FileSources(DesignerProperties.GetIsInDesignMode(new DependencyObject()));
         private IGameRepository repo;
         private Player loggedInPlayer;
         private bool disposedValue = false; // To detect redundant calls
@@ -47,6 +47,8 @@
         public Player LoggedInPlayer { get => this.loggedInPlayer; }
 
         public FileSources Sc { get => sc; }
+
+        public GameAreaLogic GAreaLogic { get; private set; }
 
         public void ChangeCar(decimal playerId, decimal carId)
         {
@@ -98,9 +100,9 @@
             this.repo.SaveHighscore(playerId, highScore);
         }
 
-        public void StartGame()
+        public void SetupGameAreaLogic(int areaHeight, int areaWidth)
         {
-            throw new NotImplementedException();
+            this.GAreaLogic = new GameAreaLogic(areaHeight, areaWidth);
         }
 
         public void Dispose()

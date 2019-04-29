@@ -7,11 +7,15 @@ using System.Windows;
 
 namespace HighwayCoaster.Logic
 {
-    class GameAreaLogic
+    public class GameAreaLogic
     {
-        public GameAreaLogic()
-        {
+        private int areaHeight;
+        private int areaWidth;
 
+        public GameAreaLogic(int areaHeight, int areaWidth)
+        {
+            this.areaHeight = areaHeight;
+            this.areaWidth = areaWidth;
         }
     }
 }

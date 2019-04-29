@@ -8,14 +8,17 @@
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
+    using CommonServiceLocator;
     using GalaSoft.MvvmLight;
     using HighwayCoaster.Controls;
     using HighwayCoaster.Controls.ModalControls;
     using HighwayCoaster.Logic;
     using HighwayCoaster.Repository;
     using HighwayCoaster.Resources;
+    using HighwayCoaster.ViewModel;
 
     public class MainWindowViewModel : ViewModelBase
     {
@@ -53,6 +56,18 @@
             new MessageWindow(Window.GetWindow(this.windowContent), msg).ShowDialog();
         }
 
+        public void SubscribeEventOnWindow(KeyEventHandler func)
+        {
+            Window.GetWindow(this.windowContent).KeyDown += func;
+            Window.GetWindow(this.windowContent).KeyUp += func;
+        }
+
+        public void UnsubscribeEventOnWindow(KeyEventHandler func)
+        {
+            Window.GetWindow(this.windowContent).KeyDown -= func;
+            Window.GetWindow(this.windowContent).KeyUp -= func;
+        }
+
         public void ChangeWindowState(MainWindowState windowState)
         {
             switch (windowState)
@@ -76,6 +91,8 @@
                 case MainWindowState.Play:
                     this.WindowContent = new PlayView(this.gameLogic, this);
                     this.ResizeMode = ResizeMode.NoResize;
+                    this.RaisePropertyChanged("WindowContent");
+                    ServiceLocator.Current.GetInstance<PlayViewModel>().Start();
                     break;
                 default:
                     break;
