@@ -49,6 +49,8 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
             else
             {
                 this.dt.Stop();
+                this.mainWindowViewModel.OpenModal($"Game Over!\nYour score: {this.gAreaLogic.Score}");
+                this.Leave();
             }
 
             this.InvalidateVisual();
