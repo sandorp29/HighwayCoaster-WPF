@@ -12,6 +12,7 @@
     using System.Windows.Media.Imaging;
     using GalaSoft.MvvmLight;
     using HighwayCoaster.Controls;
+    using HighwayCoaster.Controls.ModalControls;
     using HighwayCoaster.Logic;
     using HighwayCoaster.Repository;
     using HighwayCoaster.Resources;
@@ -40,6 +41,11 @@
         }
 
         public ContentControl WindowContent { get => this.windowContent; private set => this.windowContent = value; }
+
+        public void OpenModal(string msg)
+        {
+            new MessageWindow(Window.GetWindow(this.windowContent), msg).ShowDialog();
+        }
 
         public void ChangeWindowState(MainWindowState windowState)
         {

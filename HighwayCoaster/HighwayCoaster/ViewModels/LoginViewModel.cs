@@ -12,6 +12,7 @@
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using HighwayCoaster.Controls;
+    using HighwayCoaster.Controls.ModalControls;
     using HighwayCoaster.Logic;
 
     public class LoginViewModel : ViewModelBase
@@ -24,6 +25,7 @@
             this.LoginCommand = new RelayCommand(this.LoginMethod, () => !string.IsNullOrEmpty(this.UserName) && !string.IsNullOrEmpty(this.Password));
             this.RegisterCommand = new RelayCommand(this.RegisterMethod, () => !string.IsNullOrEmpty(this.UserName) && !string.IsNullOrEmpty(this.Password));
             this.PasswordChanged = new RelayCommand<object>(this.OnPasswordChangedMethod);
+            this.HighscoreCommand = new RelayCommand(this.HighscoreMethod);
         }
 
         public string UserName
@@ -84,6 +86,10 @@
             {
                 this.MainWindowViewModel.ChangeWindowState(MainWindowState.MainMenu);
             }
+            else
+            {
+                this.MainWindowViewModel.OpenModal("Login failed!\nThere is no player with the given username and password!");
+            }
         }
 
         public void RegisterMethod()
@@ -93,6 +99,15 @@
             {
                 this.LoginMethod();
             }
+            else
+            {
+                this.MainWindowViewModel.OpenModal("Registration failed!\nThere is a player already registered with the same username!");
+            }
+        }
+
+        public void HighscoreMethod()
+        {
+            this.MainWindowViewModel.ChangeWindowState(MainWindowState.Highscore);
         }
     }
 }
