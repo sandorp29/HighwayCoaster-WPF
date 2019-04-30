@@ -45,7 +45,7 @@
             </ListView.View>
         </ListView>
         <StackPanel Grid.Row="2" Width="150" HorizontalAlignment="Left"  Margin="10,10.4,10,10.2">
-            <Button Content="Cancel" Height="40"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
+            <Button Content="Cancel" Height="40"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding CancelCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

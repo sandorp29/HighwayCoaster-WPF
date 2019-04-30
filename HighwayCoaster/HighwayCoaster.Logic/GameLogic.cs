@@ -17,6 +17,7 @@
         private IGameRepository repo;
         private Player loggedInPlayer;
         private bool disposedValue = false; // To detect redundant calls
+        private bool prevWindow;
 
         public GameLogic(IGameRepository repo)
         {
@@ -49,6 +50,8 @@
         public FileSources Sc { get => sc; }
 
         public GameAreaLogic GAreaLogic { get; private set; }
+
+        public bool PrevWindow { get => prevWindow; set => prevWindow = value; }
 
         public void ChangeCar(decimal playerId, decimal carId)
         {

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Linq;
     using System.Text;
@@ -24,6 +25,7 @@
     {
         private IGameLogic gameLogic;
         private ContentControl windowContent;
+        private Car selectedCar;
 
         public MainWindowViewModel()
         {
@@ -50,6 +52,8 @@
         public int WindowWidth { get; set; }
 
         public int WindowHeight { get; set; }
+
+        public Car SelectedCar { get => selectedCar; set => selectedCar = value; }
 
         public void OpenModal(string msg)
         {

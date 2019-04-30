@@ -38,8 +38,8 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Select" Grid.Column="0" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
-                <Button Content="Cancel" Grid.Column="1" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
+                <Button Content="Select" Grid.Column="0" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding SelectCommand}"/>
+                <Button Content="Cancel" Grid.Column="1" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding CancelCommand}"/>
             </Grid>
         </StackPanel>
     </Grid>

@@ -46,6 +46,7 @@ namespace HighwayCoaster.ViewModels
 
         public void HighscoreMethod()
         {
+            this.GameLogic.PrevWindow = true;
             this.MainWindowViewModel.ChangeWindowState(MainWindowState.Highscore);
         }
 
