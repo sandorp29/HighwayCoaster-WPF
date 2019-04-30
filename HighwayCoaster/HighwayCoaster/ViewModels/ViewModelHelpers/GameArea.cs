@@ -30,7 +30,7 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
             this.direction = Direction.None;
 
             this.dt = new DispatcherTimer();
-            this.dt.Interval = TimeSpan.FromMilliseconds(10);
+            this.dt.Interval = TimeSpan.FromMilliseconds(15);
             this.dt.Tick += this.DT_Tick;
             this.dt.Start();
         }
