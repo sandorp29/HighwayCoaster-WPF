@@ -17,14 +17,19 @@ namespace HighwayCoaster.Logic
         private bool gameOver;
         private int score;
         private PathGeometry line;
-        Direction previousDirection;
+        private Direction previousDirection;
+        private Random r;
+
 
         List<Point> points;
+        List<Rect> obstacles;
 
         int stepCount;
 
         public GameAreaLogic(int areaHeight, int areaWidth)
         {
+            r = new Random();
+
             previousDirection = Direction.None;
             this.areaHeight = areaHeight;
             this.areaWidth = areaWidth;
@@ -36,15 +41,51 @@ namespace HighwayCoaster.Logic
             points = new List<Point>();
             points.Add(new Point(0, areaHeight / 2));
             points.Add(new Point(areaWidth / 3, areaHeight / 2));
+
+            obstacles = new List<Rect>();
+            obstacles.Add(new Rect(areaWidth + areaWidth / 14, r.Next(areaWidth / 14, areaHeight - 45 - areaWidth / 14), areaWidth / 7, areaWidth / 7));
         }
 
         public bool GameOver { get => this.gameOver; }
 
         public int Score { get => this.score; }
 
-        public PathGeometry Line { get => line; }
+        public PathGeometry Line { get => this.line; }
+
+        public List<Rect> Obstacles { get => obstacles;  }
 
         public void Step(Direction direction)
+        {
+            StepLine(direction);
+            StepCar();
+            StepObstacle();
+            score++;
+        }
+
+        public void StepCar()
+        {
+
+        }
+
+        public void StepObstacle()
+        {
+            for (int i = 0; i < obstacles.Count; i++)
+            {
+                this.obstacles[i] = new Rect(this.obstacles[i].X - 5, this.obstacles[i].Y, this.obstacles[i].Width, this.obstacles[i].Height);
+
+                if (obstacles[i].X < 0 - areaWidth/ 8)
+                {
+                    obstacles.RemoveAt(i);
+                }
+            }
+
+            if (obstacles.Last().X < areaWidth - areaWidth/5)
+            {
+                obstacles.Add(new Rect(r.Next(areaWidth + areaWidth / 14, areaWidth + areaWidth / 14 + areaWidth/ 3), r.Next(areaWidth / 14, areaHeight - 45 - areaWidth / 14), areaWidth / 7, areaWidth / 7));
+            }
+        }
+
+        public void StepLine(Direction direction)
         {
             stepCount++;
 
@@ -71,14 +112,14 @@ namespace HighwayCoaster.Logic
                 case Direction.Up:
                     if (points.Last().Y - 5 > 0)
                     {
-                        points[points.Count - 1] = new Point(points.Last().X, points.Last().Y - 5);
+                        points[points.Count - 1] = new Point(points.Last().X, points.Last().Y - 4);
                     }
 
                     break;
                 case Direction.Down:
                     if (points.Last().Y + 5 < areaHeight - 45)
                     {
-                        points[points.Count - 1] = new Point(points.Last().X, points.Last().Y + 5);
+                        points[points.Count - 1] = new Point(points.Last().X, points.Last().Y + 4);
                     }
 
                     break;
@@ -89,8 +130,6 @@ namespace HighwayCoaster.Logic
             line = MakeCurve(points.ToArray(), 0.2);
             previousDirection = direction;
         }
-
-
 
         private Point[] MakeCurvePoints(Point[] points, double tension)
         {

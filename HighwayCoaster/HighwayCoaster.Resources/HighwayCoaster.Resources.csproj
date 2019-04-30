@@ -59,6 +59,9 @@
     <Content Include="Resources\LOGO.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\obstacle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Wheel\AudiWheel.png" />
     <Content Include="Resources\Wheel\IcecreamWheel.png" />
     <Content Include="Resources\Wheel\MustangWheel.gif" />

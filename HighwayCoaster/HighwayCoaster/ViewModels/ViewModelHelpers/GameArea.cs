@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
@@ -37,6 +38,11 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
 
         protected override void OnRender(DrawingContext drawingContext)
         {
+            foreach (var item in this.gAreaLogic.Obstacles)
+            {
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(this.gameLogic.Sc.ObstacleImg))), null, item);
+            }
+
             drawingContext.DrawGeometry(Brushes.Transparent, new Pen(Brushes.White, 6), this.gAreaLogic.Line);
         }
 
