@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameAreaLogic.cs" />
+    <Compile Include="Helpers\CarObject.cs" />
     <Compile Include="Helpers\Direction.cs" />
     <Compile Include="IGameLogic.cs" />
     <Compile Include="GameLogic.cs" />

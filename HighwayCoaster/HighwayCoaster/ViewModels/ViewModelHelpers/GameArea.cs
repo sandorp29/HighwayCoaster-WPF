@@ -39,6 +39,25 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
 
         protected override void OnRender(DrawingContext drawingContext)
         {
+            drawingContext.DrawEllipse(
+                new ImageBrush(this.gAreaLogic.CarObj.CarWheelImage),
+                null,
+                this.gAreaLogic.CarObj.FrontWheelPoint,
+                this.gAreaLogic.CarObj.WheelSize,
+                this.gAreaLogic.CarObj.WheelSize);
+
+            drawingContext.DrawEllipse(
+                new ImageBrush(this.gAreaLogic.CarObj.CarWheelImage),
+                null,
+                this.gAreaLogic.CarObj.RearWheelPoint,
+                this.gAreaLogic.CarObj.WheelSize,
+                this.gAreaLogic.CarObj.WheelSize);
+
+            drawingContext.DrawRectangle(
+                new ImageBrush(this.gAreaLogic.CarObj.CarBodyImage),
+                null,
+                this.gAreaLogic.CarObj.CarBody);
+
             foreach (var item in this.gAreaLogic.Obstacles)
             {
                 drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(this.gameLogic.Sc.ObstacleImg))), null, item);

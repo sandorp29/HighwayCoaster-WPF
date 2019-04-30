@@ -1,4 +1,5 @@
 ﻿using HighwayCoaster.Logic.Helpers;
+using HighwayCoaster.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +23,14 @@ namespace HighwayCoaster.Logic
 
         private List<Point> points;
         private List<Rect> obstacles;
+        private CarObject carObj;
 
         private double speed;
         private double ySpeed;
 
         private int stepCount;
 
-        public GameAreaLogic(int areaHeight, int areaWidth)
+        public GameAreaLogic(int areaHeight, int areaWidth, Car car)
         {
             r = new Random();
 
@@ -48,6 +50,8 @@ namespace HighwayCoaster.Logic
 
             this.obstacles = new List<Rect>();
             this.obstacles.Add(new Rect(areaWidth + (areaWidth / 14), this.r.Next(areaWidth / 14, areaHeight - 45 - (areaWidth / 14)), areaWidth / 7, areaWidth / 7));
+
+            this.carObj = new CarObject(car, areaWidth, areaHeight);
         }
 
         public bool GameOver { get => this.gameOver; }
@@ -57,6 +61,8 @@ namespace HighwayCoaster.Logic
         public PathGeometry Line { get => this.line; }
 
         public List<Rect> Obstacles { get => this.obstacles;  }
+
+        public CarObject CarObj { get => this.carObj; }
 
         public void Step(Direction direction)
         {

@@ -102,7 +102,7 @@
 
         public void SetupGameAreaLogic(int areaHeight, int areaWidth)
         {
-            this.GAreaLogic = new GameAreaLogic(areaHeight, areaWidth);
+            this.GAreaLogic = new GameAreaLogic(areaHeight, areaWidth, loggedInPlayer.Car);
         }
 
         public void Dispose()
