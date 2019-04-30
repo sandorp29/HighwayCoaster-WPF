@@ -2,6 +2,7 @@
 using HighwayCoaster.Logic.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,8 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
             }
 
             drawingContext.DrawGeometry(Brushes.Transparent, new Pen(Brushes.White, 6), this.gAreaLogic.Line);
+
+            drawingContext.DrawText(new FormattedText($"Score: {this.gAreaLogic.Score}", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Comic Sans MS Bold"), mainWindowViewModel.WindowWidth / 50, Brushes.Gold), new Point(mainWindowViewModel.WindowWidth - mainWindowViewModel.WindowWidth / 5, mainWindowViewModel.WindowHeight / 16));
         }
 
         private void DT_Tick(object sender, EventArgs e)
