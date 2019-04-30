@@ -20,30 +20,32 @@ namespace HighwayCoaster.Logic
         private Direction previousDirection;
         private Random r;
 
+        private List<Point> points;
+        private List<Rect> obstacles;
 
-        List<Point> points;
-        List<Rect> obstacles;
+        private double speed;
 
-        int stepCount;
+        private int stepCount;
 
         public GameAreaLogic(int areaHeight, int areaWidth)
         {
             r = new Random();
 
-            previousDirection = Direction.None;
+            this.previousDirection = Direction.None;
             this.areaHeight = areaHeight;
             this.areaWidth = areaWidth;
             this.gameOver = false;
             this.score = 0;
-            stepCount = 0;
+            this.stepCount = 0;
+            this.speed = areaWidth / 160;
 
             this.line = new PathGeometry();
-            points = new List<Point>();
-            points.Add(new Point(0, areaHeight / 2));
-            points.Add(new Point(areaWidth / 3, areaHeight / 2));
+            this.points = new List<Point>();
+            this.points.Add(new Point(0, areaHeight / 2));
+            this.points.Add(new Point(areaWidth / 3, areaHeight / 2));
 
-            obstacles = new List<Rect>();
-            obstacles.Add(new Rect(areaWidth + (areaWidth / 14), r.Next(areaWidth / 14, areaHeight - 45 - (areaWidth / 14)), areaWidth / 7, areaWidth / 7));
+            this.obstacles = new List<Rect>();
+            this.obstacles.Add(new Rect(areaWidth + (areaWidth / 14), this.r.Next(areaWidth / 14, areaHeight - 45 - (areaWidth / 14)), areaWidth / 7, areaWidth / 7));
         }
 
         public bool GameOver { get => this.gameOver; }
@@ -52,14 +54,14 @@ namespace HighwayCoaster.Logic
 
         public PathGeometry Line { get => this.line; }
 
-        public List<Rect> Obstacles { get => obstacles;  }
+        public List<Rect> Obstacles { get => this.obstacles;  }
 
         public void Step(Direction direction)
         {
-            StepLine(direction);
-            StepCar();
-            StepObstacle();
-            score++;
+            this.StepLine(direction);
+            this.StepCar();
+            this.StepObstacle();
+            this.score++;
         }
 
         public void StepCar()
@@ -69,57 +71,64 @@ namespace HighwayCoaster.Logic
 
         public void StepObstacle()
         {
-            for (int i = 0; i < obstacles.Count; i++)
+            for (int i = 0; i < this.obstacles.Count; i++)
             {
-                this.obstacles[i] = new Rect(this.obstacles[i].X - 5, this.obstacles[i].Y, this.obstacles[i].Width, this.obstacles[i].Height);
+                this.obstacles[i] = new Rect(this.obstacles[i].X - this.speed, this.obstacles[i].Y, this.obstacles[i].Width, this.obstacles[i].Height);
 
-                if (obstacles[i].X < 0 - areaWidth/ 8)
+                if (this.obstacles[i].X < 0 - (this.areaWidth / 8))
                 {
-                    obstacles.RemoveAt(i);
+                    this.obstacles.RemoveAt(i);
                 }
             }
 
-            if (obstacles.Last().X < areaWidth - areaWidth/5)
+            if (this.obstacles.Last().X < this.areaWidth - (this.areaWidth / 5))
             {
-                obstacles.Add(new Rect(r.Next(areaWidth + areaWidth / 14, areaWidth + areaWidth / 14 + areaWidth/ 3), r.Next(areaWidth / 14, areaHeight - 45 - areaWidth / 14), areaWidth / 7, areaWidth / 7));
+                this.obstacles.Add(
+                    new Rect(
+                        this.r.Next(
+                            this.areaWidth + (this.areaWidth / 14),
+                        this.areaWidth + (this.areaWidth / 14) + (this.areaWidth / 3)),
+                        this.r.Next(this.areaWidth / 14, this.areaHeight - 45 - (this.areaWidth / 14)),
+                        this.areaWidth / 7,
+                        this.areaWidth / 7));
             }
         }
 
         public void StepLine(Direction direction)
         {
-            stepCount++;
+            this.stepCount++;
 
-            if (previousDirection != direction || stepCount == 30)
+            if (this.previousDirection != direction || this.stepCount == 30)
             {
-                points.Add(new Point(points.Last().X, points.Last().Y));
-                stepCount = 0;
+                this.points.Add(new Point(this.points.Last().X, this.points.Last().Y));
+                this.stepCount = 0;
             }
 
-            for (int i = 0; i < points.Count - 1; i++)
+            for (int i = 0; i < this.points.Count - 1; i++)
             {
-                if (points[i].X < 0 && points.Count(x => x.X < 0) > 2)
+                if (this.points[i].X < 0 && this.points.Count(x => x.X < 0) > 2)
                 {
-                    points.RemoveAt(i);
+                    this.points.RemoveAt(i);
                 }
                 else
                 {
-                    points[i] = new Point(points[i].X - 5, points[i].Y);
+                    this.points[i] = new Point(this.points[i].X - this.speed, this.points[i].Y);
                 }
             }
 
             switch (direction)
             {
                 case Direction.Up:
-                    if (points.Last().Y - 5 > 0)
+                    if (this.points.Last().Y - 5 > 0)
                     {
-                        points[points.Count - 1] = new Point(points.Last().X, points.Last().Y - 4);
+                        this.points[this.points.Count - 1] = new Point(this.points.Last().X, this.points.Last().Y - 4);
                     }
 
                     break;
                 case Direction.Down:
-                    if (points.Last().Y + 5 < areaHeight - 45)
+                    if (this.points.Last().Y + 5 < this.areaHeight - 45)
                     {
-                        points[points.Count - 1] = new Point(points.Last().X, points.Last().Y + 4);
+                        this.points[this.points.Count - 1] = new Point(this.points.Last().X, this.points.Last().Y + 4);
                     }
 
                     break;
@@ -127,8 +136,8 @@ namespace HighwayCoaster.Logic
                     break;
             }
 
-            line = MakeCurve(points.ToArray(), 0.2);
-            previousDirection = direction;
+            this.line = this.MakeCurve(this.points.ToArray(), 0.2);
+            this.previousDirection = direction;
         }
 
         private Point[] MakeCurvePoints(Point[] points, double tension)
@@ -201,7 +210,9 @@ namespace HighwayCoaster.Logic
             PointCollection point_collection =
                 new PointCollection(points.Length - 1);
             for (int i = 1; i < points.Length; i++)
+            {
                 point_collection.Add(points[i]);
+            }
 
             // Make a PolyBezierSegment from the points.
             PolyBezierSegment bezier_segment = new PolyBezierSegment();
@@ -216,11 +227,15 @@ namespace HighwayCoaster.Logic
         // Make a Bezier curve connecting these points.
         private PathGeometry MakeCurve(Point[] points, double tension)
         {
-            if (points.Length < 2) return null;
-            Point[] result_points = MakeCurvePoints(points, tension);
+            if (points.Length < 2)
+            {
+                return null;
+            }
+
+            Point[] result_points = this.MakeCurvePoints(points, tension);
 
             // Use the points to create the path.
-            return MakeBezierPath(result_points.ToArray());
+            return this.MakeBezierPath(result_points.ToArray());
         }
     }
 }
