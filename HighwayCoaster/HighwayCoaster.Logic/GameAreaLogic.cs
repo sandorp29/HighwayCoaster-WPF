@@ -22,6 +22,7 @@ namespace HighwayCoaster.Logic
         private Random r;
 
         private List<Point> points;
+        private List<Point> carGuidePoints;
         private List<Rect> obstacles;
         private CarObject carObj;
 
@@ -45,6 +46,7 @@ namespace HighwayCoaster.Logic
 
             this.line = new PathGeometry();
             this.points = new List<Point>();
+            this.carGuidePoints = new List<Point>();
             this.points.Add(new Point(0, areaHeight / 2));
             this.points.Add(new Point(areaWidth / 3, areaHeight / 2));
 
@@ -52,6 +54,11 @@ namespace HighwayCoaster.Logic
             this.obstacles.Add(new Rect(areaWidth + (areaWidth / 14), this.r.Next(areaWidth / 14, areaHeight - 45 - (areaWidth / 14)), areaWidth / 7, areaWidth / 7));
 
             this.carObj = new CarObject(car, areaWidth, areaHeight);
+
+            for (int i = 0; i < (areaWidth / 3) - 1; i++)
+            {
+                carGuidePoints.Add(new Point(i, areaHeight / 2));
+            }
         }
 
         public bool GameOver { get => this.gameOver; }
@@ -74,7 +81,7 @@ namespace HighwayCoaster.Logic
 
         public void StepCar()
         {
-            carObj.Step();
+            carObj.Step(carGuidePoints);
         }
 
         public void StepObstacle()
@@ -147,6 +154,20 @@ namespace HighwayCoaster.Logic
                     break;
                 default:
                     break;
+            }
+
+            carGuidePoints.Add(new Point(this.points.Last().X, this.points.Last().Y));
+
+            for (int i = 0; i < this.carGuidePoints.Count - 1; i++)
+            {
+                if (this.carGuidePoints[i].X < 0)
+                {
+                    this.carGuidePoints.RemoveAt(i);
+                }
+                else
+                {
+                    this.carGuidePoints[i] = new Point(this.carGuidePoints[i].X - this.speed, this.carGuidePoints[i].Y);
+                }
             }
 
             this.line = this.MakeCurve(this.points.ToArray(), 0.2);

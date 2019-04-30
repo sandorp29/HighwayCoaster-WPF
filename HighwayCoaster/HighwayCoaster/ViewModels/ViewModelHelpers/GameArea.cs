@@ -39,10 +39,12 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
 
         protected override void OnRender(DrawingContext drawingContext)
         {
+            drawingContext.PushTransform(new RotateTransform(this.gAreaLogic.CarObj.Angle, this.gAreaLogic.CarObj.CarBody.Left + this.gAreaLogic.CarObj.CarBody.Width/2, this.gAreaLogic.CarObj.CarBody.Top + this.gAreaLogic.CarObj.CarBody.Height / 2));
             drawingContext.DrawRectangle(
                 new ImageBrush(this.gAreaLogic.CarObj.CarBodyImage),
                 null,
                 this.gAreaLogic.CarObj.CarBody);
+            drawingContext.Pop();
 
             drawingContext.DrawEllipse(
                 new ImageBrush(this.gAreaLogic.CarObj.CarWheelImage),
