@@ -74,7 +74,7 @@ namespace HighwayCoaster.Logic
 
         public void StepCar()
         {
-
+            carObj.Step();
         }
 
         public void StepObstacle()
@@ -86,6 +86,11 @@ namespace HighwayCoaster.Logic
                 if (this.obstacles[i].X < 0 - (this.areaWidth / 8))
                 {
                     this.obstacles.RemoveAt(i);
+                }
+
+                if (obstacles[i].IntersectsWith(carObj.CarBody))
+                {
+                    gameOver = true;
                 }
             }
 

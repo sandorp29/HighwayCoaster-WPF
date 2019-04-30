@@ -27,12 +27,20 @@ namespace HighwayCoaster.Logic.Helpers
             carBodyImage = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + car.ViewResourcesPath));
             carWheelImage = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + car.WheelResource));
 
-            carBody = new Rect(areaWidth / 3, areaHeight / 3, carBodyImage.Width / 6, carBodyImage.Height / 6);
+            carBody = new Rect(areaWidth / 6, areaHeight / 2.32, areaWidth / 9.4, areaHeight / 18.37);
 
-            wheelSize = 15;
+            double size = areaWidth/(carBodyImage.Width / 16);
+            double size2 = areaHeight/(carBodyImage.Height / 16);
 
-            frontWheelPoint = new Point(carBody.Right, carBody.Bottom);
-            RearWheelPoint = new Point(carBody.Left, carBody.Bottom);
+            wheelSize = carBody.Width / 10;
+
+            frontWheelPoint = new Point(carBody.Left + wheelSize + carBody.Width / 1.4, carBody.Bottom - wheelSize/1.5);
+            RearWheelPoint = new Point(carBody.Left + wheelSize + carBody.Width / 15, carBody.Bottom - wheelSize/1.5);
+        }
+
+        public void Step()
+        {
+
         }
 
         public Rect CarBody { get => carBody; private set => carBody = value; }

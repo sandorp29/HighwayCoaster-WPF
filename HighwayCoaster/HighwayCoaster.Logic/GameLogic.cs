@@ -83,6 +83,7 @@
                     CarId = this.GetCars.First(y => y.PointRequirement == this.GetCars.Min(x => x.PointRequirement)).CarId,
                     IsAdmin = false,
                     Highscore = null,
+                    Car = this.GetCars.First(y => y.PointRequirement == this.GetCars.Min(x => x.PointRequirement))
                 };
 
                 this.repo.Register(newPlayer);
