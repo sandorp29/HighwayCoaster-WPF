@@ -101,6 +101,7 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
 
         private void Leave()
         {
+            this.dt.Stop();
             this.mainWindowViewModel.UnsubscribeEventOnWindow(this.GameArea_KeyDown);
             this.mainWindowViewModel.ChangeWindowState(MainWindowState.MainMenu);
         }

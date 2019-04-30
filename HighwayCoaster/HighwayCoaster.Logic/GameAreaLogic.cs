@@ -43,7 +43,7 @@ namespace HighwayCoaster.Logic
             points.Add(new Point(areaWidth / 3, areaHeight / 2));
 
             obstacles = new List<Rect>();
-            obstacles.Add(new Rect(areaWidth + areaWidth / 14, r.Next(areaWidth / 14, areaHeight - 45 - areaWidth / 14), areaWidth / 7, areaWidth / 7));
+            obstacles.Add(new Rect(areaWidth + (areaWidth / 14), r.Next(areaWidth / 14, areaHeight - 45 - (areaWidth / 14)), areaWidth / 7, areaWidth / 7));
         }
 
         public bool GameOver { get => this.gameOver; }
@@ -89,7 +89,7 @@ namespace HighwayCoaster.Logic
         {
             stepCount++;
 
-            if (previousDirection != direction || stepCount == 50)
+            if (previousDirection != direction || stepCount == 30)
             {
                 points.Add(new Point(points.Last().X, points.Last().Y));
                 stepCount = 0;
