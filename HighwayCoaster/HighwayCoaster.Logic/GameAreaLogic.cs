@@ -24,6 +24,7 @@ namespace HighwayCoaster.Logic
         private List<Rect> obstacles;
 
         private double speed;
+        private double ySpeed;
 
         private int stepCount;
 
@@ -38,6 +39,7 @@ namespace HighwayCoaster.Logic
             this.score = 0;
             this.stepCount = 0;
             this.speed = areaWidth / 160;
+            this.ySpeed = areaHeight / 112.5;
 
             this.line = new PathGeometry();
             this.points = new List<Point>();
@@ -121,14 +123,14 @@ namespace HighwayCoaster.Logic
                 case Direction.Up:
                     if (this.points.Last().Y - 5 > 0)
                     {
-                        this.points[this.points.Count - 1] = new Point(this.points.Last().X, this.points.Last().Y - 4);
+                        this.points[this.points.Count - 1] = new Point(this.points.Last().X, this.points.Last().Y - this.ySpeed);
                     }
 
                     break;
                 case Direction.Down:
                     if (this.points.Last().Y + 5 < this.areaHeight - 45)
                     {
-                        this.points[this.points.Count - 1] = new Point(this.points.Last().X, this.points.Last().Y + 4);
+                        this.points[this.points.Count - 1] = new Point(this.points.Last().X, this.points.Last().Y + this.ySpeed);
                     }
 
                     break;
