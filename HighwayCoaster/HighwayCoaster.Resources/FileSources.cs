@@ -13,7 +13,10 @@ namespace HighwayCoaster.Resources
         private string resourceFolderPath;
 
         public string LogoIMG { get { return resourceFolderPath + @"LOGO.png"; } }
+
         public string BackgroundLoop { get { return resourceFolderPath + @"backgroundloop.wmv"; } }
+
+        public string ObstacleImg { get { return resourceFolderPath + @"obstacle.png"; } }
 
         public FileSources(bool isInDesignerMode)
         {

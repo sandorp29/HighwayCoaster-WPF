@@ -2,11 +2,13 @@
 using HighwayCoaster.Logic.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
@@ -30,14 +32,40 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
             this.direction = Direction.None;
 
             this.dt = new DispatcherTimer();
-            this.dt.Interval = TimeSpan.FromMilliseconds(10);
+            this.dt.Interval = TimeSpan.FromMilliseconds(15);
             this.dt.Tick += this.DT_Tick;
             this.dt.Start();
         }
 
         protected override void OnRender(DrawingContext drawingContext)
         {
+            drawingContext.DrawRectangle(
+                new ImageBrush(this.gAreaLogic.CarObj.CarBodyImage),
+                null,
+                this.gAreaLogic.CarObj.CarBody);
+
+            drawingContext.DrawEllipse(
+                new ImageBrush(this.gAreaLogic.CarObj.CarWheelImage),
+                null,
+                this.gAreaLogic.CarObj.FrontWheelPoint,
+                this.gAreaLogic.CarObj.WheelSize,
+                this.gAreaLogic.CarObj.WheelSize);
+
+            drawingContext.DrawEllipse(
+                new ImageBrush(this.gAreaLogic.CarObj.CarWheelImage),
+                null,
+                this.gAreaLogic.CarObj.RearWheelPoint,
+                this.gAreaLogic.CarObj.WheelSize,
+                this.gAreaLogic.CarObj.WheelSize);
+
+            foreach (var item in this.gAreaLogic.Obstacles)
+            {
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(this.gameLogic.Sc.ObstacleImg))), null, item);
+            }
+
             drawingContext.DrawGeometry(Brushes.Transparent, new Pen(Brushes.White, 6), this.gAreaLogic.Line);
+
+            drawingContext.DrawText(new FormattedText($"Score: {this.gAreaLogic.Score}", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Comic Sans MS Bold"), mainWindowViewModel.WindowWidth / 50, Brushes.Gold), new Point(mainWindowViewModel.WindowWidth - mainWindowViewModel.WindowWidth / 5, mainWindowViewModel.WindowHeight / 16));
         }
 
         private void DT_Tick(object sender, EventArgs e)
@@ -92,6 +120,7 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
 
         private void Leave()
         {
+            this.dt.Stop();
             this.mainWindowViewModel.UnsubscribeEventOnWindow(this.GameArea_KeyDown);
             this.mainWindowViewModel.ChangeWindowState(MainWindowState.MainMenu);
         }

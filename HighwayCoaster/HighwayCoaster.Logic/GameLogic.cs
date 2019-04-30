@@ -86,6 +86,7 @@
                     CarId = this.GetCars.First(y => y.PointRequirement == this.GetCars.Min(x => x.PointRequirement)).CarId,
                     IsAdmin = false,
                     Highscore = null,
+                    Car = this.GetCars.First(y => y.PointRequirement == this.GetCars.Min(x => x.PointRequirement))
                 };
 
                 this.repo.Register(newPlayer);
@@ -105,7 +106,7 @@
 
         public void SetupGameAreaLogic(int areaHeight, int areaWidth)
         {
-            this.GAreaLogic = new GameAreaLogic(areaHeight, areaWidth);
+            this.GAreaLogic = new GameAreaLogic(areaHeight, areaWidth, loggedInPlayer.Car);
         }
 
         public void Dispose()
