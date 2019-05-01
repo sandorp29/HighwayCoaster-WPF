@@ -18,32 +18,18 @@
         <StackPanel Grid.Row="0" MaxHeight="50">
             <Label Content="Highscores" Grid.Row="0" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </StackPanel>
-        <ListView Background="{StaticResource TransparentBlack}" Margin="10,10.4,10,10.2" Grid.Row="1" HorizontalAlignment="Stretch">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Username:" Width="394">
-                        <GridViewColumn.HeaderContainerStyle>
-                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                            <Setter Property="HorizontalAlignment" Value="Left"/>
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                                <Setter Property="IsEnabled" Value="False"/>
-                            </Style>
-                        </GridViewColumn.HeaderContainerStyle>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Highscore:" Width="394">
-                        <GridViewColumn.HeaderContainerStyle>
-                            <Style TargetType="{x:Type GridViewColumnHeader}">
-                                <Setter Property="HorizontalAlignment" Value="Left"/>
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="IsEnabled" Value="False"/>
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                            </Style>
-                        </GridViewColumn.HeaderContainerStyle>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <ListBox Background="{StaticResource TransparentBlack}" Margin="10,10.4,10,10.2" Grid.Row="1" HorizontalAlignment="Stretch" ItemsSource="{Binding GameLogic.AllPlayers}" Foreground="Gold">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Username}" Foreground="Gold"/>
+                        <StackPanel>
+                            <Label Content="{Binding Highscore}" Foreground="Gold"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <StackPanel Grid.Row="2" Width="150" HorizontalAlignment="Left"  Margin="10,10.4,10,10.2">
             <Button Content="Cancel" Height="40"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding CancelCommand}"/>
         </StackPanel>

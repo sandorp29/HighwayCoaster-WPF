@@ -10,7 +10,9 @@
 
     public interface IGameLogic : IDisposable
     {
-        bool PrevWindow { get; set; }
+        bool PrevWindow { get; set;}
+
+        List<Player> AllPlayers { get; }
 
         IEnumerable<Player> GetPlayers { get; }
 

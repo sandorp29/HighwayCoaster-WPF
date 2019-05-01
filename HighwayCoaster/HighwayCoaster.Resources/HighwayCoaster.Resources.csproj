@@ -64,6 +64,14 @@
     <Content Include="Resources\Final_Assets\Supercar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Final_Assets\Supercar_black.png" />
+    <Content Include="Resources\Final_Assets\Supercar_blackGreen.png" />
+    <Content Include="Resources\Final_Assets\Supercar_BluePurp.png" />
+    <Content Include="Resources\Final_Assets\Supercar_darkGreen.png" />
+    <Content Include="Resources\Final_Assets\Supercar_Orange.png" />
+    <Content Include="Resources\Final_Assets\Supercar_purp.png" />
+    <Content Include="Resources\Final_Assets\Supercar_red.png" />
+    <Content Include="Resources\Final_Assets\Supercar_Venom.png" />
     <Content Include="Resources\Final_Assets\truck.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

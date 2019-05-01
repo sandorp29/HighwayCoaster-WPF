@@ -18,6 +18,7 @@
         private Player loggedInPlayer;
         private bool disposedValue = false; // To detect redundant calls
         private bool prevWindow;
+        private List<Player> allPlayers;
 
         public GameLogic(IGameRepository repo)
         {
@@ -52,6 +53,8 @@
         public GameAreaLogic GAreaLogic { get; private set; }
 
         public bool PrevWindow { get => prevWindow; set => prevWindow = value; }
+
+        public List<Player> AllPlayers { get => GetPlayers.ToList(); }
 
         public void ChangeCar(decimal playerId, decimal carId)
         {

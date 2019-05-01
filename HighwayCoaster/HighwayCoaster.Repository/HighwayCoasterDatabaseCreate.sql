@@ -23,22 +23,30 @@ Alter Table Car
 Add WheelResource VARCHAR(MAX) NOT NULL;
 
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
-Values (0, '/Resources/Final_Assets/Audi.png', '/Resources/Wheel/AudiWheel.png');
+Values (0, '/Resources/Final_Assets/Supercar.png', '/Resources/Wheel/SupercarWheel.png');
 
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
-Values (1000, '/Resources/Final_Assets/Offroad.png', '/Resources/Wheel/OffroadWheel.png');
+Values (1000, '/Resources/Final_Assets/Supercar_black.png', '/Resources/Wheel/SupercarWheel.png');
 
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
-Values (2000, '/Resources/Final_Assets/Unknown.png', '/Resources/Wheel/UnknownWheel.png');
+Values (2000, '/Resources/Final_Assets/Supercar_blackGreen.png', '/Resources/Wheel/SupercarWheel.png');
 
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
-Values (3000, '/Resources/Final_Assets/Mustang.gif', '/Resources/Wheel/MustangWheel.gif');
+Values (3000, '/Resources/Final_Assets/Supercar_Venom.png', '/Resources/Wheel/SupercarWheel.gif');
 
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
-Values (4000, '/Resources/Final_Assets/truck.png', '/Resources/Wheel/TruckWheel.png');
+Values (4000, '/Resources/Final_Assets/Supercar_Orange.png', '/Resources/Wheel/SupercarWheel.png');
 
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
-Values (5000, '/Resources/Final_Assets/Supercar.png', '/Resources/Wheel/SupercarWheel.png');
+Values (5000, '/Resources/Final_Assets/Supercar_red.png', '/Resources/Wheel/SupercarWheel.png');
 
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
-Values (6000, '/Resources/Final_Assets/Icecream.png', '/Resources/Wheel/IcecreamWheel.png');
+Values (6000, '/Resources/Final_Assets/Supercar_purp.png', '/Resources/Wheel/SupercarWheel.png');
+
+Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
+Values (0, '/Resources/Final_Assets/Supercar_BluePurp.png', '/Resources/Wheel/SupercarWheel.png');
+
+Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
+Values (0, '/Resources/Final_Assets/Supercar_darkGreen.png', '/Resources/Wheel/SupercarWheel.png');
+
+
