@@ -21,10 +21,14 @@ namespace HighwayCoaster.Logic.Helpers
         BitmapImage carBodyImage;
         BitmapImage carWheelImage;
         double angle;
-
+        int areaWidth;
+        int areaHeight;
 
         public CarObject(Car car, int areaWidth, int areaHeight)
         {
+            this.areaWidth = areaWidth;
+            this.areaHeight = areaWidth;
+
             carBodyImage = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + car.ViewResourcesPath));
             carWheelImage = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + car.WheelResource));
 
@@ -36,29 +40,30 @@ namespace HighwayCoaster.Logic.Helpers
             wheelSize = carBody.Width / 10;
             angle = 0;
 
-            frontWheelPoint = new Point(carBody.Left + wheelSize + carBody.Width / 1.4, carBody.Bottom - wheelSize/1.5);
-            RearWheelPoint = new Point(carBody.Left + wheelSize + carBody.Width / 15, carBody.Bottom - wheelSize/1.5);
+            frontWheelPoint = new Point(Math.Round(carBody.Left + wheelSize + carBody.Width / 1.4), carBody.Bottom - wheelSize/1.5);
+            rearWheelPoint = new Point(Math.Round(carBody.Left + wheelSize + carBody.Width / 15), carBody.Bottom - wheelSize/1.5);
         }
 
         public void Step(List<Point> carGuidePoints)
         {
-            //angle++;
+            Point pointAtFront = carGuidePoints.First(x => x.X == frontWheelPoint.X);
+            Point pointAtRear = carGuidePoints.First(x => x.X == rearWheelPoint.X);
 
-            EllipseGeometry frontWG = new EllipseGeometry(frontWheelPoint, wheelSize, wheelSize);
-            EllipseGeometry rearWG = new EllipseGeometry(rearWheelPoint, wheelSize, wheelSize);
+            FrontWheelPoint = new Point(frontWheelPoint.X , pointAtFront.Y - wheelSize - wheelSize/3);
+            RearWheelPoint = new Point(rearWheelPoint.X, pointAtRear.Y - wheelSize - wheelSize/3);
 
-            Point pointAtFront = carGuidePoints.Last(x => frontWG.FillContains(x) || x.X == carGuidePoints.Aggregate((y, z) => Math.Abs(y.X - frontWheelPoint.X) < Math.Abs(z.X - frontWheelPoint.X) ? x : y).X);
-            Point pointAtRear = carGuidePoints.Last(x => rearWG.FillContains(x) || x.X == carGuidePoints.Aggregate((y, z) => Math.Abs(y.X - rearWheelPoint.X) < Math.Abs(z.X - rearWheelPoint.X) ? x : y).X);
+            var radian = Math.Atan2((rearWheelPoint.Y - frontWheelPoint.Y), (frontWheelPoint.X - rearWheelPoint.X));
 
-            frontWheelPoint = new Point(frontWheelPoint.X , pointAtFront.Y - wheelSize);
-            rearWheelPoint = new Point(rearWheelPoint.X, pointAtRear.Y - wheelSize);
+            angle = 360 - (radian * (180 / Math.PI) + 360) % 360;
+
+            carBody.Y = carGuidePoints.First(x => x.X == Math.Round(carBody.Left + carBody.Width / 2)).Y - carBody.Height - wheelSize/2;
         }
 
         public Rect CarBody { get => carBody; private set => carBody = value; }
 
         public Point FrontWheelPoint { get => frontWheelPoint; private set => frontWheelPoint = value; }
 
-        public Point RearWheelPoint { get => rearWheelPoint; private set => rearWheelPoint = value; }
+        public Point RearWheelPoint { get => rearWheelPoint; private set { rearWheelPoint = value; } }
 
         public double WheelSize { get => wheelSize; private set => wheelSize = value; }
 

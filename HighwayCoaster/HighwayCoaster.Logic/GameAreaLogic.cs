@@ -55,7 +55,7 @@ namespace HighwayCoaster.Logic
 
             this.carObj = new CarObject(car, areaWidth, areaHeight);
 
-            for (int i = 0; i < (areaWidth / 3) - 1; i++)
+            for (double i = 0; i < (areaWidth / 3) - 1 - speed; i++)
             {
                 carGuidePoints.Add(new Point(i, areaHeight / 2));
             }
@@ -101,7 +101,7 @@ namespace HighwayCoaster.Logic
                 }
             }
 
-            if (this.obstacles.Last().X < this.areaWidth - (this.areaWidth / 5))
+            if (this.obstacles.Last().X < this.areaWidth - (this.areaWidth / 4))
             {
                 this.obstacles.Add(
                     new Rect(
@@ -139,26 +139,49 @@ namespace HighwayCoaster.Logic
             switch (direction)
             {
                 case Direction.Up:
-                    if (this.points.Last().Y - 5 > 0)
+                    if (this.points.Last().Y - carObj.CarBody.Height - carObj.WheelSize - areaHeight/20 > 0)
                     {
                         this.points[this.points.Count - 1] = new Point(this.points.Last().X, this.points.Last().Y - this.ySpeed);
-                    }
 
+                        for (int i = 0; i < speed; i++)
+                        {
+                                carGuidePoints.Add(new Point(this.carGuidePoints.Last().X + 1, this.carGuidePoints.Last().Y - this.ySpeed/speed));
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < speed; i++)
+                        {
+                            carGuidePoints.Add(new Point(this.carGuidePoints.Last().X + 1, this.carGuidePoints.Last().Y));
+                        }
+                    }
                     break;
                 case Direction.Down:
                     if (this.points.Last().Y + 5 < this.areaHeight - 45)
                     {
                         this.points[this.points.Count - 1] = new Point(this.points.Last().X, this.points.Last().Y + this.ySpeed);
+                        for (int i = 0; i < speed; i++)
+                        {
+                            carGuidePoints.Add(new Point(this.carGuidePoints.Last().X + 1, this.carGuidePoints.Last().Y + this.ySpeed / speed));
+                        }
                     }
-
+                    else
+                    {
+                        for (int i = 0; i < speed; i++)
+                        {
+                            carGuidePoints.Add(new Point(this.carGuidePoints.Last().X + 1, this.carGuidePoints.Last().Y));
+                        }
+                    }
                     break;
                 default:
+                    for (int i = 0; i < speed; i++)
+                    {
+                        carGuidePoints.Add(new Point(this.carGuidePoints.Last().X + 1, this.carGuidePoints.Last().Y));
+                    }
                     break;
             }
 
-            carGuidePoints.Add(new Point(this.points.Last().X, this.points.Last().Y));
-
-            for (int i = 0; i < this.carGuidePoints.Count - 1; i++)
+            for (int i = 0; i < this.carGuidePoints.Count; i++)
             {
                 if (this.carGuidePoints[i].X < 0)
                 {
@@ -166,7 +189,7 @@ namespace HighwayCoaster.Logic
                 }
                 else
                 {
-                    this.carGuidePoints[i] = new Point(this.carGuidePoints[i].X - this.speed, this.carGuidePoints[i].Y);
+                    this.carGuidePoints[i] = new Point(this.carGuidePoints[i].X - speed, this.carGuidePoints[i].Y);
                 }
             }
 
