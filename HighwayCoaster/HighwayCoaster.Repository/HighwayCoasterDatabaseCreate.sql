@@ -22,6 +22,9 @@ CREATE TABLE Player
 Alter Table Car
 Add WheelResource VARCHAR(MAX) NOT NULL;
 
+Alter Table Car
+Add TumbNail VARCHAR(MAX);
+
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
 Values (0, '/Resources/Final_Assets/Supercar.png', '/Resources/Wheel/SupercarWheel.png');
 
@@ -49,4 +52,40 @@ Values (0, '/Resources/Final_Assets/Supercar_BluePurp.png', '/Resources/Wheel/Su
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
 Values (0, '/Resources/Final_Assets/Supercar_darkGreen.png', '/Resources/Wheel/SupercarWheel.png');
 
+update Car
+Set TumbNail = '/Resources/Final_Assets/Supercar_TumbNail.png'
+where ViewResourcesPath = '/Resources/Final_Assets/Supercar.png';
+
+update Car
+Set TumbNail = '/Resources/Final_Assets/Supercar_black_TumbNail.png'
+where ViewResourcesPath = '/Resources/Final_Assets/Supercar_black.png';;
+
+
+update Car
+Set TumbNail = '/Resources/Final_Assets/Supercar_blackGreen_TumbNail.png'
+where ViewResourcesPath = '/Resources/Final_Assets/Supercar_blackGreen.png';
+
+update Car
+Set TumbNail = '/Resources/Final_Assets/Supercar_Venom_TumbNail.png'
+where ViewResourcesPath = '/Resources/Final_Assets/Supercar_Venom.png';
+
+update Car
+Set TumbNail = '/Resources/Final_Assets/Supercar_Orange_TumbNail.png'
+where ViewResourcesPath = '/Resources/Final_Assets/Supercar_Orange.png';
+
+update Car
+Set TumbNail = '/Resources/Final_Assets/Supercar_red_TumbNail.png'
+where ViewResourcesPath = '/Resources/Final_Assets/Supercar_red.png';
+
+update Car
+Set TumbNail = '/Resources/Final_Assets/Supercar_purp_TumbNail.png'
+where ViewResourcesPath = '/Resources/Final_Assets/Supercar_purp.png';
+
+update Car
+Set TumbNail = '/Resources/Final_Assets/Supercar_BluePurp_TumbNail.png'
+where ViewResourcesPath = '/Resources/Final_Assets/Supercar_BluewPurp.png';
+
+update Car
+Set TumbNail = '/Resources/Final_Assets/Supercar_darkGreen_TumbNail.png'
+where ViewResourcesPath = '/Resources/Final_Assets/Supercar_darkGreen.png';
 

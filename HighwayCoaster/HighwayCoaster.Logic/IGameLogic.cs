@@ -5,14 +5,17 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows.Media.Imaging;
     using HighwayCoaster.Repository;
     using HighwayCoaster.Resources;
 
     public interface IGameLogic : IDisposable
     {
-        bool PrevWindow { get; set;}
+        bool PrevWindow { get; set; }
 
         List<Player> AllPlayers { get; }
+
+        List<Car> AllCars { get; }
 
         IEnumerable<Player> GetPlayers { get; }
 

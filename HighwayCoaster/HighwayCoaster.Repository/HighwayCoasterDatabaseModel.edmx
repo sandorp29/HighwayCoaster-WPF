@@ -13,6 +13,7 @@
           <Property Name="PointRequirement" Type="int" Nullable="false" />
           <Property Name="ViewResourcesPath" Type="varchar(max)" Nullable="false" />
           <Property Name="WheelResource" Type="varchar(max)" Nullable="false" />
+          <Property Name="TumbNail" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -58,6 +59,7 @@
           <Property Name="ViewResourcesPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Player" Relationship="Self.Car_FK" FromRole="Car" ToRole="Player" />
           <Property Name="WheelResource" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TumbNail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -100,6 +102,7 @@
           <EntitySetMapping Name="Car">
             <EntityTypeMapping TypeName="HighwayCoasterDatabaseModel.Car">
               <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="TumbNail" ColumnName="TumbNail" />
                 <ScalarProperty Name="WheelResource" ColumnName="WheelResource" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="PointRequirement" ColumnName="PointRequirement" />

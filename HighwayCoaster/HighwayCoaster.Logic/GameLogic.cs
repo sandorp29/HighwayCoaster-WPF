@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media.Imaging;
     using HighwayCoaster.Repository;
     using HighwayCoaster.Resources;
 
@@ -19,6 +20,7 @@
         private bool disposedValue = false; // To detect redundant calls
         private bool prevWindow;
         private List<Player> allPlayers;
+        private List<Car> allCars;
 
         public GameLogic(IGameRepository repo)
         {
@@ -55,6 +57,8 @@
         public bool PrevWindow { get => prevWindow; set => prevWindow = value; }
 
         public List<Player> AllPlayers { get => GetPlayers.ToList(); }
+
+        public List<Car> AllCars { get => this.GetCars.ToList(); }
 
         public void ChangeCar(decimal playerId, decimal carId)
         {
