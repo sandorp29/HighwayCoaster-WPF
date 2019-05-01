@@ -95,9 +95,21 @@ namespace HighwayCoaster.Logic
                     this.obstacles.RemoveAt(i);
                 }
 
-                if (obstacles[i].IntersectsWith(carObj.CarBody))
+                if (carObj.Angle != 0 || carObj.Angle != 360)
                 {
-                    gameOver = true;
+                    Rect rect = new Rect(carObj.CarBody.X + (carObj.CarBody.Width - (carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle)) / 360)))/2, carObj.CarBody.Y - (carObj.CarBody.Height * (1 + (Math.Abs(carObj.Angle))/360)- carObj.CarBody.Height)/2 , carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle))/360), carObj.CarBody.Height * (1 + (Math.Abs(carObj.Angle))/360));
+
+                    if (obstacles[i].IntersectsWith(rect))
+                    {
+                        gameOver = true;
+                    }
+                }
+                else
+                {
+                    if (obstacles[i].IntersectsWith(carObj.CarBody))
+                    {
+                        gameOver = true;
+                    }
                 }
             }
 

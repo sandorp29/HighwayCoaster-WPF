@@ -56,7 +56,7 @@ namespace HighwayCoaster.Logic.Helpers
 
             angle = 360 - (radian * (180 / Math.PI) + 360) % 360;
 
-            carBody.Y = carGuidePoints.First(x => x.X == Math.Round(carBody.Left + carBody.Width / 2)).Y - carBody.Height - wheelSize/2;
+            carBody.Y = carGuidePoints.First(x => x.X == Math.Round(carBody.Left + carBody.Width / 2)).Y - carBody.Height - wheelSize/1.5;
         }
 
         public Rect CarBody { get => carBody; private set => carBody = value; }
