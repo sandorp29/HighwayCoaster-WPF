@@ -46,19 +46,23 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
                 this.gAreaLogic.CarObj.CarBody);
             drawingContext.Pop();
 
+            drawingContext.PushTransform(new RotateTransform(this.gAreaLogic.CarObj.WheelRotation, this.gAreaLogic.CarObj.FrontWheelPoint.X, this.gAreaLogic.CarObj.FrontWheelPoint.Y));
             drawingContext.DrawEllipse(
                 new ImageBrush(this.gAreaLogic.CarObj.CarWheelImage),
                 null,
                 this.gAreaLogic.CarObj.FrontWheelPoint,
                 this.gAreaLogic.CarObj.WheelSize,
                 this.gAreaLogic.CarObj.WheelSize);
+            drawingContext.Pop();
 
+            drawingContext.PushTransform(new RotateTransform(this.gAreaLogic.CarObj.WheelRotation, this.gAreaLogic.CarObj.RearWheelPoint.X, this.gAreaLogic.CarObj.RearWheelPoint.Y));
             drawingContext.DrawEllipse(
                 new ImageBrush(this.gAreaLogic.CarObj.CarWheelImage),
                 null,
                 this.gAreaLogic.CarObj.RearWheelPoint,
                 this.gAreaLogic.CarObj.WheelSize,
                 this.gAreaLogic.CarObj.WheelSize);
+            drawingContext.Pop();
 
             foreach (var item in this.gAreaLogic.Obstacles)
             {
