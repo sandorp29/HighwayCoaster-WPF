@@ -13,13 +13,15 @@ namespace HighwayCoaster.Logic
 {
     public class GameAreaLogic
     {
-        private int areaHeight;
-        private int areaWidth;
+        private double areaHeight;
+        private double areaWidth;
         private bool gameOver;
         private int score;
         private PathGeometry line;
         private Direction previousDirection;
         private Random r;
+        private Player player;
+        private IGameLogic gameLogic;
 
         private List<Point> points;
         private List<Point> carGuidePoints;
@@ -31,7 +33,7 @@ namespace HighwayCoaster.Logic
 
         private int stepCount;
 
-        public GameAreaLogic(int areaHeight, int areaWidth, Car car)
+        public GameAreaLogic(int areaHeight, int areaWidth, IGameLogic gameLogic)
         {
             r = new Random();
 
@@ -43,6 +45,8 @@ namespace HighwayCoaster.Logic
             this.stepCount = 0;
             this.speed = areaWidth / 160;
             this.ySpeed = areaHeight / 112.5;
+            this.player = gameLogic.LoggedInPlayer;
+            this.gameLogic = gameLogic;
 
             this.line = new PathGeometry();
             this.points = new List<Point>();
@@ -53,7 +57,7 @@ namespace HighwayCoaster.Logic
             this.obstacles = new List<Rect>();
             this.obstacles.Add(new Rect(areaWidth + (areaWidth / 14), this.r.Next(areaWidth / 14, areaHeight - 45 - (areaWidth / 14)), areaWidth / 7, areaWidth / 7));
 
-            this.carObj = new CarObject(car, areaWidth, areaHeight);
+            this.carObj = new CarObject(player.Car, areaWidth, areaHeight);
 
             for (double i = 0; i < (areaWidth / 3) - 1 - speed; i++)
             {
@@ -95,20 +99,27 @@ namespace HighwayCoaster.Logic
                     this.obstacles.RemoveAt(i);
                 }
 
-                if (carObj.Angle != 0 || carObj.Angle != 360)
+                if (carObj.Angle != 0 && carObj.Angle != 360)
                 {
+                    double tempAngle = carObj.Angle;
+
+                    if (tempAngle > 180)
+                    {
+                        tempAngle = 360 - tempAngle;
+                    }
+
                     Rect rect = new Rect(carObj.CarBody.X + (carObj.CarBody.Width - (carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle)) / 360)))/2, carObj.CarBody.Y - (carObj.CarBody.Height * (1 + (Math.Abs(carObj.Angle))/360)- carObj.CarBody.Height)/2 , carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle))/360), carObj.CarBody.Height * (1 + (Math.Abs(carObj.Angle))/360));
 
                     if (obstacles[i].IntersectsWith(rect))
                     {
-                        gameOver = true;
+                        DoGameOver();
                     }
                 }
                 else
                 {
                     if (obstacles[i].IntersectsWith(carObj.CarBody))
                     {
-                        gameOver = true;
+                        DoGameOver();
                     }
                 }
             }
@@ -118,9 +129,9 @@ namespace HighwayCoaster.Logic
                 this.obstacles.Add(
                     new Rect(
                         this.r.Next(
-                            this.areaWidth + (this.areaWidth / 14),
-                        this.areaWidth + (this.areaWidth / 14) + (this.areaWidth / 3)),
-                        this.r.Next(this.areaWidth / 14, this.areaHeight - 45 - (this.areaWidth / 14)),
+                            (int)Math.Round(this.areaWidth + (this.areaWidth / 14)),
+                        (int)Math.Round(this.areaWidth + (this.areaWidth / 14) + (this.areaWidth / 3))),
+                        this.r.Next((int)Math.Round(this.areaWidth / 14), (int)Math.Round(this.areaHeight - 45 - (this.areaWidth / 14))),
                         this.areaWidth / 7,
                         this.areaWidth / 7));
             }
@@ -190,6 +201,7 @@ namespace HighwayCoaster.Logic
                     {
                         carGuidePoints.Add(new Point(this.carGuidePoints.Last().X + 1, this.carGuidePoints.Last().Y));
                     }
+
                     break;
             }
 
@@ -207,6 +219,16 @@ namespace HighwayCoaster.Logic
 
             this.line = this.MakeCurve(this.points.ToArray(), 0.2);
             this.previousDirection = direction;
+        }
+
+        public void DoGameOver()
+        {
+            gameOver = true;
+
+            if (player.Highscore == null || player.Highscore < score)
+            {
+                gameLogic.SaveHighscore(player.PlayerId, score);
+            }
         }
 
         private Point[] MakeCurvePoints(Point[] points, double tension)

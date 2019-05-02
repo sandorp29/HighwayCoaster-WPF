@@ -23,9 +23,12 @@ namespace HighwayCoaster.Logic.Helpers
         double angle;
         int areaWidth;
         int areaHeight;
+        int wheelRotation;
 
         public CarObject(Car car, int areaWidth, int areaHeight)
         {
+            wheelRotation = 0;
+
             this.areaWidth = areaWidth;
             this.areaHeight = areaWidth;
 
@@ -57,6 +60,15 @@ namespace HighwayCoaster.Logic.Helpers
             angle = 360 - (radian * (180 / Math.PI) + 360) % 360;
 
             carBody.Y = carGuidePoints.First(x => x.X == Math.Round(carBody.Left + carBody.Width / 2)).Y - carBody.Height - wheelSize/1.5;
+
+            if (wheelRotation == 360)
+            {
+                wheelRotation = 0;
+            }
+            else
+            {
+                wheelRotation += 5;
+            }
         }
 
         public Rect CarBody { get => carBody; private set => carBody = value; }
@@ -72,5 +84,7 @@ namespace HighwayCoaster.Logic.Helpers
         public BitmapImage CarWheelImage { get => carWheelImage; private set => carWheelImage = value; }
 
         public double Angle { get => angle; private set => angle = value; }
+
+        public int WheelRotation { get => wheelRotation; set => wheelRotation = value; }
     }
 }
