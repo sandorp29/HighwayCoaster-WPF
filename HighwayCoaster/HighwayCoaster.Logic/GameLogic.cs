@@ -131,7 +131,7 @@
 
         public void SetupGameAreaLogic(int areaHeight, int areaWidth)
         {
-            this.GAreaLogic = new GameAreaLogic(areaHeight, areaWidth, loggedInPlayer.Car);
+            this.GAreaLogic = new GameAreaLogic(areaHeight, areaWidth, this);
         }
 
         public void Dispose()
@@ -165,7 +165,7 @@
                 }
             }
 
-            p.Sort();
+            p.OrderByDescending(x => x.Highscore);
             return p;
         }
     }
