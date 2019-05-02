@@ -58,6 +58,8 @@
 
         public List<Player> AllPlayers { get => GetPlayers.ToList(); }
 
+        public List<Player> HighScoreHelper { get => HShelpList(); }
+
         public List<Car> AllCars { get => this.GetCars.ToList(); }
 
         public void ChangeCar(decimal playerId, decimal carId)
@@ -86,15 +88,31 @@
         {
             try
             {
-                Player newPlayer = new Player()
+                Player newPlayer;
+                if (userName == "admin" && password == "admin")
                 {
-                    Username = userName,
-                    PW = GameRepository.CreateMD5(password),
-                    CarId = this.GetCars.First(y => y.PointRequirement == this.GetCars.Min(x => x.PointRequirement)).CarId,
-                    IsAdmin = false,
-                    Highscore = null,
-                    Car = this.GetCars.First(y => y.PointRequirement == this.GetCars.Min(x => x.PointRequirement))
-                };
+                    newPlayer = new Player()
+                    {
+                        Username = userName,
+                        PW = GameRepository.CreateMD5(password),
+                        CarId = this.GetCars.First(y => y.PointRequirement == this.GetCars.Min(x => x.PointRequirement)).CarId,
+                        IsAdmin = true,
+                        Highscore = 10000000,
+                        Car = this.GetCars.First(y => y.PointRequirement == this.GetCars.Min(x => x.PointRequirement))
+                    };
+                }
+                else
+                {
+                    newPlayer = new Player()
+                    {
+                        Username = userName,
+                        PW = GameRepository.CreateMD5(password),
+                        CarId = this.GetCars.First(y => y.PointRequirement == this.GetCars.Min(x => x.PointRequirement)).CarId,
+                        IsAdmin = false,
+                        Highscore = null,
+                        Car = this.GetCars.First(y => y.PointRequirement == this.GetCars.Min(x => x.PointRequirement))
+                    };
+                }
 
                 this.repo.Register(newPlayer);
 
@@ -134,6 +152,21 @@
 
                 this.disposedValue = true;
             }
+        }
+
+        private List<Player> HShelpList()
+        {
+            List<Player> p = new List<Player>();
+            foreach (var item in this.GetPlayers)
+            {
+                if (item.Highscore != null)
+                {
+                    p.Add(item);
+                }
+            }
+
+            p.Sort();
+            return p;
         }
     }
 }

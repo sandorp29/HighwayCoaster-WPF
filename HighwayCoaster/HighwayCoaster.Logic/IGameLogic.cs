@@ -27,6 +27,8 @@
 
         FileSources Sc { get; }
 
+        List<Player> HighScoreHelper { get; }
+
         void Login(string userName, string password);
 
         bool Register(string userName, string password);

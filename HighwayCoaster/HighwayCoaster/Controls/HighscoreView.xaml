@@ -18,15 +18,17 @@
         <StackPanel Grid.Row="0" MaxHeight="50">
             <Label Content="Highscores" Grid.Row="0" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </StackPanel>
-        <ListBox Background="{StaticResource TransparentBlack}" Margin="10,10.4,10,10.2" Grid.Row="1" HorizontalAlignment="Stretch" ItemsSource="{Binding GameLogic.AllPlayers}" Foreground="Gold">
+        <ListBox HorizontalContentAlignment="Stretch" Background="{StaticResource TransparentBlack}" Margin="10,10.4,10,10.2" Grid.Row="1" HorizontalAlignment="Stretch" ItemsSource="{Binding GameLogic.HighScoreHelper}" Foreground="Gold">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding Username}" Foreground="Gold"/>
-                        <StackPanel>
-                            <Label Content="{Binding Highscore}" Foreground="Gold"/>
-                        </StackPanel>
-                    </StackPanel>
+                    <DockPanel HorizontalAlignment="Stretch" >
+                        <DockPanel HorizontalAlignment="Left">
+                            <Label Content="{Binding Username}" Foreground="Gold"/>
+                        </DockPanel>
+                        <DockPanel HorizontalAlignment="Right">
+                            <Label  Content="{Binding Highscore}" Foreground="Gold"/>
+                        </DockPanel>
+                    </DockPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
