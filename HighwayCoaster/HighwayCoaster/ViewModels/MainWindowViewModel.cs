@@ -49,9 +49,9 @@
 
         public ResizeMode ResizeMode { get; set; }
 
-        public double WindowWidth { get; set; }
+        public int WindowWidth { get; set; }
 
-        public double WindowHeight { get; set; }
+        public int WindowHeight { get; set; }
 
         public Car SelectedCar { get => selectedCar; set => selectedCar = value; }
 

@@ -129,7 +129,7 @@
             this.repo.SaveHighscore(playerId, highScore);
         }
 
-        public void SetupGameAreaLogic(double areaHeight, double areaWidth)
+        public void SetupGameAreaLogic(int areaHeight, int areaWidth)
         {
             this.GAreaLogic = new GameAreaLogic(areaHeight, areaWidth, this);
         }

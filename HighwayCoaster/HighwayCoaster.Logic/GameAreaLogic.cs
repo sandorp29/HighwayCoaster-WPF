@@ -33,7 +33,7 @@ namespace HighwayCoaster.Logic
 
         private int stepCount;
 
-        public GameAreaLogic(double areaHeight, double areaWidth, IGameLogic gameLogic)
+        public GameAreaLogic(int areaHeight, int areaWidth, IGameLogic gameLogic)
         {
             r = new Random();
 
@@ -55,7 +55,7 @@ namespace HighwayCoaster.Logic
             this.points.Add(new Point(areaWidth / 3, areaHeight / 2));
 
             this.obstacles = new List<Rect>();
-            this.obstacles.Add(new Rect(areaWidth + (areaWidth / 14), this.r.Next((int)Math.Round(areaWidth / 14), (int)Math.Round(areaHeight - 45 - (areaWidth / 14))), areaWidth / 7, areaWidth / 7));
+            this.obstacles.Add(new Rect(areaWidth + (areaWidth / 14), this.r.Next(areaWidth / 14, areaHeight - 45 - (areaWidth / 14)), areaWidth / 7, areaWidth / 7));
 
             this.carObj = new CarObject(player.Car, areaWidth, areaHeight);
 
@@ -99,8 +99,15 @@ namespace HighwayCoaster.Logic
                     this.obstacles.RemoveAt(i);
                 }
 
-                if (carObj.Angle != 0 || carObj.Angle != 360)
+                if (carObj.Angle != 0 && carObj.Angle != 360)
                 {
+                    double tempAngle = carObj.Angle;
+
+                    if (tempAngle > 180)
+                    {
+                        tempAngle = 360 - tempAngle;
+                    }
+
                     Rect rect = new Rect(carObj.CarBody.X + (carObj.CarBody.Width - (carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle)) / 360)))/2, carObj.CarBody.Y - (carObj.CarBody.Height * (1 + (Math.Abs(carObj.Angle))/360)- carObj.CarBody.Height)/2 , carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle))/360), carObj.CarBody.Height * (1 + (Math.Abs(carObj.Angle))/360));
 
                     if (obstacles[i].IntersectsWith(rect))

@@ -41,6 +41,6 @@
 
         void ChangeCar(decimal playerId, decimal carId);
 
-        void SetupGameAreaLogic(double areaHeight, double areaWidth);
+        void SetupGameAreaLogic(int areaHeight, int areaWidth);
     }
 }
