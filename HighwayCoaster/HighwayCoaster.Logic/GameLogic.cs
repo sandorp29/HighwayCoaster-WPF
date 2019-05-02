@@ -89,7 +89,7 @@
             try
             {
                 Player newPlayer;
-                if (userName == "admin" && password == "admin")
+                if (userName == "admin")
                 {
                     newPlayer = new Player()
                     {
