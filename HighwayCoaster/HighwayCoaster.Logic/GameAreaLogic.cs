@@ -13,8 +13,8 @@ namespace HighwayCoaster.Logic
 {
     public class GameAreaLogic
     {
-        private int areaHeight;
-        private int areaWidth;
+        private double areaHeight;
+        private double areaWidth;
         private bool gameOver;
         private int score;
         private PathGeometry line;
@@ -33,7 +33,7 @@ namespace HighwayCoaster.Logic
 
         private int stepCount;
 
-        public GameAreaLogic(int areaHeight, int areaWidth, IGameLogic gameLogic)
+        public GameAreaLogic(double areaHeight, double areaWidth, IGameLogic gameLogic)
         {
             r = new Random();
 
@@ -55,7 +55,7 @@ namespace HighwayCoaster.Logic
             this.points.Add(new Point(areaWidth / 3, areaHeight / 2));
 
             this.obstacles = new List<Rect>();
-            this.obstacles.Add(new Rect(areaWidth + (areaWidth / 14), this.r.Next(areaWidth / 14, areaHeight - 45 - (areaWidth / 14)), areaWidth / 7, areaWidth / 7));
+            this.obstacles.Add(new Rect(areaWidth + (areaWidth / 14), this.r.Next((int)Math.Round(areaWidth / 14), (int)Math.Round(areaHeight - 45 - (areaWidth / 14))), areaWidth / 7, areaWidth / 7));
 
             this.carObj = new CarObject(player.Car, areaWidth, areaHeight);
 
@@ -122,9 +122,9 @@ namespace HighwayCoaster.Logic
                 this.obstacles.Add(
                     new Rect(
                         this.r.Next(
-                            this.areaWidth + (this.areaWidth / 14),
-                        this.areaWidth + (this.areaWidth / 14) + (this.areaWidth / 3)),
-                        this.r.Next(this.areaWidth / 14, this.areaHeight - 45 - (this.areaWidth / 14)),
+                            (int)Math.Round(this.areaWidth + (this.areaWidth / 14)),
+                        (int)Math.Round(this.areaWidth + (this.areaWidth / 14) + (this.areaWidth / 3))),
+                        this.r.Next((int)Math.Round(this.areaWidth / 14), (int)Math.Round(this.areaHeight - 45 - (this.areaWidth / 14))),
                         this.areaWidth / 7,
                         this.areaWidth / 7));
             }

@@ -21,11 +21,11 @@ namespace HighwayCoaster.Logic.Helpers
         BitmapImage carBodyImage;
         BitmapImage carWheelImage;
         double angle;
-        int areaWidth;
-        int areaHeight;
+        double areaWidth;
+        double areaHeight;
         int wheelRotation;
 
-        public CarObject(Car car, int areaWidth, int areaHeight)
+        public CarObject(Car car, double areaWidth, double areaHeight)
         {
             wheelRotation = 0;
 
