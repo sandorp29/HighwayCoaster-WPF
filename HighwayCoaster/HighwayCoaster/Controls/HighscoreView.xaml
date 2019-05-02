@@ -32,8 +32,17 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Row="2" Width="150" HorizontalAlignment="Left"  Margin="10,10.4,10,10.2">
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        <StackPanel Width="150" HorizontalAlignment="Left"  Margin="10,10.4,10,10.2">
             <Button Content="Cancel" Height="40"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding CancelCommand}"/>
         </StackPanel>
+            <StackPanel Grid.Column="1" Width="150" HorizontalAlignment="Right"  Margin="10,10.4,10,10.2">
+                <Button Content="Delete" Height="40"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding CancelCommand}"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

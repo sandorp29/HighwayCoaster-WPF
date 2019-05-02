@@ -15,18 +15,21 @@
 
     public class HighscoreViewModel : ViewModelBase
     {
-        public IGameLogic GameLogic { get; set; }
-
-        public MainWindowViewModel MainWindowViewModel { get; set; }
-
-        public ICommand CancelCommand { get; private set; }
 
         public HighscoreViewModel()
         {
             this.CancelCommand = new RelayCommand(this.CancelMethod);
         }
 
-            public void CancelMethod()
+        public IGameLogic GameLogic { get; set; }
+
+        public MainWindowViewModel MainWindowViewModel { get; set; }
+
+        public ICommand CancelCommand { get; private set; }
+
+        public ICommand DeleteCommand { get; set; }
+
+        public void CancelMethod()
             {
                 if (this.GameLogic.PrevWindow == true)
                 {
