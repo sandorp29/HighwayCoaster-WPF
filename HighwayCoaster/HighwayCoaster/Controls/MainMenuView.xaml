@@ -13,7 +13,7 @@
     <Grid  DataContext="{Binding Source={StaticResource Locator}, Path=Menu}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1.4*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <StackPanel VerticalAlignment="Center"  Grid.Column="1" Margin="5 10" MaxWidth="300" >

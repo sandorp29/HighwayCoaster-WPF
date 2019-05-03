@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
@@ -20,7 +21,7 @@
         public HighscoreViewModel()
         {
             this.CancelCommand = new RelayCommand(this.CancelMethod);
-            this.DeleteCommand = new RelayCommand(this.DeleteMethod, () => this.GameLogic.LoggedInPlayer.IsAdmin == true);
+            this.DeleteCommand = new RelayCommand(this.DeleteMethod, () => this.GameLogic.LoggedInPlayer != null && this.GameLogic.LoggedInPlayer.IsAdmin == true);
 
         }
 
@@ -35,6 +36,8 @@
         public ObservableCollection<Player> HighscoreList { get => GameLogic.HighScoreHelper; }
 
         public Player SelectedPlayer { get; set; }
+
+        public Visibility IsDeleteButtonActive { get => (this.GameLogic.LoggedInPlayer != null && this.GameLogic.LoggedInPlayer.IsAdmin == true) ? Visibility.Visible : Visibility.Hidden; }
 
         public void CancelMethod()
             {
