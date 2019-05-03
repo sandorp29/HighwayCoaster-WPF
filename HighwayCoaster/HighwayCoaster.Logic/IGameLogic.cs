@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -27,7 +28,7 @@
 
         FileSources Sc { get; }
 
-        List<Player> HighScoreHelper { get; }
+        ObservableCollection<Player> HighScoreHelper { get; }
 
         void Login(string userName, string password);
 

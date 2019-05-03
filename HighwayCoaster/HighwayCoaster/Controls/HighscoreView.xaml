@@ -18,7 +18,7 @@
         <StackPanel Grid.Row="0" MaxHeight="50">
             <Label Content="Highscores" Grid.Row="0" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </StackPanel>
-        <ListBox HorizontalContentAlignment="Stretch" Background="{StaticResource TransparentBlack}" Margin="10,10.4,10,10.2" Grid.Row="1" HorizontalAlignment="Stretch" ItemsSource="{Binding GameLogic.HighScoreHelper}" Foreground="Gold">
+        <ListBox HorizontalContentAlignment="Stretch" Background="{StaticResource TransparentBlack}" Margin="10,10.4,10,10.2" Grid.Row="1" HorizontalAlignment="Stretch" ItemsSource="{Binding HighscoreList}" SelectedItem="{Binding SelectedPlayer}" Foreground="Gold">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel HorizontalAlignment="Stretch" >
@@ -41,7 +41,7 @@
             <Button Content="Cancel" Height="40"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding CancelCommand}"/>
         </StackPanel>
             <StackPanel Grid.Column="1" Width="150" HorizontalAlignment="Right"  Margin="10,10.4,10,10.2">
-                <Button Content="Delete" Height="40"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding CancelCommand}"/>
+                <Button Content="Delete" Height="40"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding DeleteCommand}"/>
             </StackPanel>
         </Grid>
     </Grid>

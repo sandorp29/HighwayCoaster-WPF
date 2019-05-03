@@ -12,6 +12,7 @@
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using HighwayCoaster.Logic;
+    using HighwayCoaster.Repository;
 
     public class HighscoreViewModel : ViewModelBase
     {
@@ -19,6 +20,8 @@
         public HighscoreViewModel()
         {
             this.CancelCommand = new RelayCommand(this.CancelMethod);
+            this.DeleteCommand = new RelayCommand(this.DeleteMethod, () => this.GameLogic.LoggedInPlayer.IsAdmin == true);
+
         }
 
         public IGameLogic GameLogic { get; set; }
@@ -28,6 +31,10 @@
         public ICommand CancelCommand { get; private set; }
 
         public ICommand DeleteCommand { get; set; }
+
+        public ObservableCollection<Player> HighscoreList { get => GameLogic.HighScoreHelper; }
+
+        public Player SelectedPlayer { get; set; }
 
         public void CancelMethod()
             {
@@ -40,5 +47,11 @@
                     this.MainWindowViewModel.ChangeWindowState(MainWindowState.Login);
                 }
             }
+
+        public void DeleteMethod()
+        {
+            this.GameLogic.DeleteHighscore(SelectedPlayer.PlayerId);
+            this.RaisePropertyChanged("HighscoreList");
+        }
     }
 }

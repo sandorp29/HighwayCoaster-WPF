@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Linq;
     using System.Text;
@@ -58,7 +59,7 @@
 
         public List<Player> AllPlayers { get => GetPlayers.ToList(); }
 
-        public List<Player> HighScoreHelper { get => HShelpList(); }
+        public ObservableCollection<Player> HighScoreHelper { get => HShelpList(); }
 
         public List<Car> AllCars { get => this.GetCars.ToList(); }
 
@@ -154,9 +155,9 @@
             }
         }
 
-        private List<Player> HShelpList()
+        private ObservableCollection<Player> HShelpList()
         {
-            List<Player> p = new List<Player>();
+            ObservableCollection<Player> p = new ObservableCollection<Player>();
             foreach (var item in this.GetPlayers)
             {
                 if (item.Highscore != null)
