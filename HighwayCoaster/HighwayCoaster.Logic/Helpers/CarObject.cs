@@ -65,13 +65,8 @@ namespace HighwayCoaster.Logic.Helpers
                 frontWheelPoint.Y -= ySpeed;
             }
 
-            var radian = Math.Atan2((rearWheelPoint.Y - frontWheelPoint.Y), (frontWheelPoint.X - rearWheelPoint.X));
+            rearWheelPoint.X = (frontWheelPoint.X - carBody.Width / 1.54) + Math.Abs((rearWheelPoint.Y - frontWheelPoint.Y)*CarBody.Height/CarBody.Width);
 
-            this.angle = 360 - (((radian * (180 / Math.PI)) + 360) % 360);
-
-            //rearWheelPoint.X = (frontWheelPoint.X - carBody.Width / 1.54) * tempAngle/360;
-
-            carBody.X = ((frontWheelPoint.X + rearWheelPoint.X) / 2) - (carBody.Width - carBody.Width / 2);
 
             if (rearWheelIntersection.GetArea() == 0)
             {
@@ -86,6 +81,11 @@ namespace HighwayCoaster.Logic.Helpers
                 rearWheelPoint.Y -= ySpeed;
             }
 
+            var radian = Math.Atan2((rearWheelPoint.Y - frontWheelPoint.Y), (frontWheelPoint.X - rearWheelPoint.X));
+
+            this.angle = 360 - (((radian * (180 / Math.PI)) + 360) % 360);
+
+            carBody.X = ((frontWheelPoint.X + rearWheelPoint.X) / 2) - (carBody.Width - carBody.Width / 1.95);
             carBody.Y = ((frontWheelPoint.Y + rearWheelPoint.Y) / 2) - (carBody.Height - wheelSize / 1.5);
 
             if (wheelRotation == 360)
