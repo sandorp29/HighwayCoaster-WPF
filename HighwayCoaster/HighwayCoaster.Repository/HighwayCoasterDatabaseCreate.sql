@@ -47,10 +47,10 @@ Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
 Values (6000, '/Resources/Final_Assets/Supercar_purp.png', '/Resources/Wheel/SupercarWheel.png');
 
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
-Values (0, '/Resources/Final_Assets/Supercar_BluePurp.png', '/Resources/Wheel/SupercarWheel.png');
+Values (7000, '/Resources/Final_Assets/Supercar_BluePurp.png', '/Resources/Wheel/SupercarWheel.png');
 
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
-Values (0, '/Resources/Final_Assets/Supercar_darkGreen.png', '/Resources/Wheel/SupercarWheel.png');
+Values (10000, '/Resources/Final_Assets/Supercar_darkGreen.png', '/Resources/Wheel/SupercarWheel.png');
 
 update Car
 Set TumbNail = '/Resources/Final_Assets/Supercar_TumbNail.png'
@@ -58,8 +58,7 @@ where ViewResourcesPath = '/Resources/Final_Assets/Supercar.png';
 
 update Car
 Set TumbNail = '/Resources/Final_Assets/Supercar_black_TumbNail.png'
-where ViewResourcesPath = '/Resources/Final_Assets/Supercar_black.png';;
-
+where ViewResourcesPath = '/Resources/Final_Assets/Supercar_black.png';
 
 update Car
 Set TumbNail = '/Resources/Final_Assets/Supercar_blackGreen_TumbNail.png'
@@ -83,9 +82,12 @@ where ViewResourcesPath = '/Resources/Final_Assets/Supercar_purp.png';
 
 update Car
 Set TumbNail = '/Resources/Final_Assets/Supercar_BluePurp_TumbNail.png'
-where ViewResourcesPath = '/Resources/Final_Assets/Supercar_BluewPurp.png';
+where ViewResourcesPath = '/Resources/Final_Assets/Supercar_BluePurp.png';
 
 update Car
 Set TumbNail = '/Resources/Final_Assets/Supercar_darkGreen_TumbNail.png'
 where ViewResourcesPath = '/Resources/Final_Assets/Supercar_darkGreen.png';
+
+
+
 

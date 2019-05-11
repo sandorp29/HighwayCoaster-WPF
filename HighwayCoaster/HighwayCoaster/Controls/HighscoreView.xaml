@@ -23,10 +23,10 @@
                 <DataTemplate>
                     <DockPanel HorizontalAlignment="Stretch" >
                         <DockPanel HorizontalAlignment="Left">
-                            <Label Content="{Binding Username}" Foreground="Gold"/>
+                            <Label Content="{Binding Username}" Foreground="Gold" FontSize="20"  FontFamily="Comic Sans MS Bold"/>
                         </DockPanel>
                         <DockPanel HorizontalAlignment="Right">
-                            <Label  Content="{Binding Highscore}" Foreground="Gold"/>
+                            <Label  Content="{Binding Highscore}" Foreground="Gold" FontSize="20"  FontFamily="Comic Sans MS Bold"/>
                         </DockPanel>
                     </DockPanel>
                 </DataTemplate>

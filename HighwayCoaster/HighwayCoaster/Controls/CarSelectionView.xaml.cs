@@ -25,9 +25,10 @@ namespace HighwayCoaster.Controls
     {
         public CarSelectionView(IGameLogic gameLogic, MainWindowViewModel mainWindowViewModel)
         {
-            InitializeComponent();
             ServiceLocator.Current.GetInstance<CarSelectionViewModel>().GameLogic = gameLogic;
             ServiceLocator.Current.GetInstance<CarSelectionViewModel>().MainWindowViewModel = mainWindowViewModel;
+
+            InitializeComponent();
         }
     }
 }
