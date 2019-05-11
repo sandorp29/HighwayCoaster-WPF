@@ -4,42 +4,32 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HighwayCoaster.Controls"
+             xmlns:converter="clr-namespace:HighwayCoaster.Controls.ControlConverters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <converter:ImgPathConverter x:Key="ImgPathConverter" />
         <SolidColorBrush x:Key="TransparentBlack" Color="#000000" Opacity="0.5" />
     </UserControl.Resources>
     <Grid DataContext="{Binding Source={StaticResource Locator}, Path=CarSelect}">
         <Label Margin ="5 0 5 0"  Content="Select your car" FontFamily="Comic Sans MS Bold" Foreground="Gold" HorizontalAlignment="Center"/>
         <Grid Background="{StaticResource TransparentBlack}"  Margin="25 30 25 100">
-            <!--<ItemsControl ItemsSource="{Binding GameLogic.AllCars}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel >
-                            <Image Source="{Binding TumbNail}" Height="100"/>
-                        </WrapPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-                <ItemsControl.ItemsPanel>
+            <ListView Background="{StaticResource TransparentBlack}" ItemsSource="{Binding GameLogic.AllCars}">
+                <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel >
-                            <Image Source="{Binding TumbNail}" Height="100"/>
-                        </WrapPanel>
+                        <WrapPanel />
                     </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>-->
-            <ListBox ItemsSource="{Binding GameLogic.AllCars}">
-                <ListBox.ItemTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="{Binding TumbNail}"/>
+                        <StackPanel>
+                            <Image Source="{Binding TumbNail, Converter={StaticResource ImgPathConverter}}" MaxWidth="200" MinWidth="25" />
+                            <Label Content="{Binding PointRequirement}" ContentStringFormat="Req. points: {0}"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-
-            
-            <Border Grid.RowSpan="4" Grid.ColumnSpan="4" BorderBrush="LightGray" BorderThickness="5 5 5 5"/>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Border Grid.RowSpan="4" Grid.ColumnSpan="4" BorderBrush="Gold" BorderThickness="5 5 5 5"/>
         </Grid>
         <StackPanel VerticalAlignment="Bottom" Margin="200,0,200,20" Height="58" MaxWidth="400">
             <Grid Height="50">

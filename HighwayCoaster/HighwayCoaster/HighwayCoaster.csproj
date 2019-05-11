@@ -83,6 +83,7 @@
     <Compile Include="Controls\CarSelectionView.xaml.cs">
       <DependentUpon>CarSelectionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ControlConverters\ImgPathConverter.cs" />
     <Compile Include="Controls\HighscoreView.xaml.cs">
       <DependentUpon>HighscoreView.xaml</DependentUpon>
     </Compile>
