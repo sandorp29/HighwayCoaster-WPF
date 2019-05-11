@@ -1,19 +1,14 @@
-﻿using HighwayCoaster.Logic;
-using HighwayCoaster.Logic.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Windows.Threading;
-
-namespace HighwayCoaster.ViewModels.ViewModelHelpers
+﻿namespace HighwayCoaster.ViewModels.ViewModelHelpers
 {
+    using System;
+    using System.Globalization;
+    using System.Windows;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Threading;
+    using HighwayCoaster.Logic;
+    using HighwayCoaster.Logic.Helpers;
+
     public class GameArea : FrameworkElement
     {
         private IGameLogic gameLogic;
@@ -39,7 +34,7 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            drawingContext.PushTransform(new RotateTransform(this.gAreaLogic.CarObj.Angle, this.gAreaLogic.CarObj.CarBody.Left + this.gAreaLogic.CarObj.CarBody.Width/2, this.gAreaLogic.CarObj.CarBody.Top + this.gAreaLogic.CarObj.CarBody.Height / 2));
+            drawingContext.PushTransform(new RotateTransform(this.gAreaLogic.CarObj.Angle, this.gAreaLogic.CarObj.CarBody.Left + (this.gAreaLogic.CarObj.CarBody.Width /2), this.gAreaLogic.CarObj.CarBody.Top + (this.gAreaLogic.CarObj.CarBody.Height / 2)));
             drawingContext.DrawRectangle(
                 new ImageBrush(this.gAreaLogic.CarObj.CarBodyImage),
                 null,
@@ -69,7 +64,7 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
                 drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(this.gameLogic.Sc.ObstacleImg))), null, item);
             }
 
-            drawingContext.DrawGeometry(Brushes.Transparent, new Pen(Brushes.White, 6), this.gAreaLogic.Line);
+            drawingContext.DrawGeometry(Brushes.Transparent, new Pen(Brushes.White, this.gAreaLogic.LineThickness), this.gAreaLogic.Line);
 
             drawingContext.DrawText(new FormattedText($"Score: {this.gAreaLogic.Score}", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Comic Sans MS Bold"), mainWindowViewModel.WindowWidth / 50, Brushes.Gold), new Point(mainWindowViewModel.WindowWidth - mainWindowViewModel.WindowWidth / 5, mainWindowViewModel.WindowHeight / 16));
         }

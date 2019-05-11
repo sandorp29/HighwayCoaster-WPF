@@ -44,22 +44,49 @@ namespace HighwayCoaster.Logic.Helpers
             angle = 0;
 
             frontWheelPoint = new Point(Math.Round(carBody.Left + wheelSize + carBody.Width / 1.4), carBody.Bottom - wheelSize/1.5);
-            rearWheelPoint = new Point(Math.Round(carBody.Left + wheelSize + carBody.Width / 15), carBody.Bottom - wheelSize/1.5);
+            rearWheelPoint = new Point(Math.Round(frontWheelPoint.X - carBody.Width / 1.54), carBody.Bottom - wheelSize/1.5);
         }
 
-        public void Step(List<Point> carGuidePoints)
+        public void Step(PathGeometry line, double ySpeed)
         {
-            Point pointAtFront = carGuidePoints.First(x => x.X == frontWheelPoint.X);
-            Point pointAtRear = carGuidePoints.First(x => x.X == rearWheelPoint.X);
+            Geometry frontWheelIntersection = Geometry.Combine(line.GetWidenedPathGeometry(new Pen(null, Math.Round((double)(areaWidth / 266.6666666666667)))), new EllipseGeometry(frontWheelPoint, wheelSize, wheelSize), GeometryCombineMode.Intersect, null);
+            Geometry rearWheelIntersection = Geometry.Combine(line.GetWidenedPathGeometry(new Pen(null, Math.Round((double)(areaWidth / 266.6666666666667)))), new EllipseGeometry(rearWheelPoint, wheelSize, wheelSize), GeometryCombineMode.Intersect, null);
 
-            FrontWheelPoint = new Point(frontWheelPoint.X , pointAtFront.Y - wheelSize - wheelSize/3);
-            RearWheelPoint = new Point(rearWheelPoint.X, pointAtRear.Y - wheelSize - wheelSize/3);
+            if (frontWheelIntersection.GetArea() == 0)
+            {
+                frontWheelPoint.Y += ySpeed;
+            }
+            else if (frontWheelIntersection.GetArea() > 0 && frontWheelIntersection.GetArea() < WheelSize*ySpeed)
+            {
+                // do nothing
+            }
+            else
+            {
+                frontWheelPoint.Y -= ySpeed;
+            }
 
             var radian = Math.Atan2((rearWheelPoint.Y - frontWheelPoint.Y), (frontWheelPoint.X - rearWheelPoint.X));
 
-            angle = 360 - (radian * (180 / Math.PI) + 360) % 360;
+            this.angle = 360 - (((radian * (180 / Math.PI)) + 360) % 360);
 
-            carBody.Y = carGuidePoints.First(x => x.X == Math.Round(carBody.Left + carBody.Width / 2)).Y - carBody.Height - wheelSize/1.5;
+            //rearWheelPoint.X = (frontWheelPoint.X - carBody.Width / 1.54) * tempAngle/360;
+
+            carBody.X = ((frontWheelPoint.X + rearWheelPoint.X) / 2) - (carBody.Width - carBody.Width / 2);
+
+            if (rearWheelIntersection.GetArea() == 0)
+            {
+                rearWheelPoint.Y += ySpeed;
+            }
+            else if (rearWheelIntersection.GetArea() > 0 && rearWheelIntersection.GetArea() < WheelSize*ySpeed)
+            {
+                // do nothing
+            }
+            else
+            {
+                rearWheelPoint.Y -= ySpeed;
+            }
+
+            carBody.Y = ((frontWheelPoint.Y + rearWheelPoint.Y) / 2) - (carBody.Height - wheelSize / 1.5);
 
             if (wheelRotation == 360)
             {

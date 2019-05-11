@@ -15,6 +15,7 @@ namespace HighwayCoaster.Logic
     {
         private double areaHeight;
         private double areaWidth;
+        private double lineThickness;
         private bool gameOver;
         private int score;
         private PathGeometry line;
@@ -24,7 +25,6 @@ namespace HighwayCoaster.Logic
         private IGameLogic gameLogic;
 
         private List<Point> points;
-        private List<Point> carGuidePoints;
         private List<Rect> obstacles;
         private CarObject carObj;
 
@@ -47,10 +47,10 @@ namespace HighwayCoaster.Logic
             this.ySpeed = areaHeight / 112.5;
             this.player = gameLogic.LoggedInPlayer;
             this.gameLogic = gameLogic;
+            this.lineThickness = Math.Round((double)(areaWidth / 266.6666666666667));
 
             this.line = new PathGeometry();
             this.points = new List<Point>();
-            this.carGuidePoints = new List<Point>();
             this.points.Add(new Point(0, areaHeight / 2));
             this.points.Add(new Point(areaWidth / 3, areaHeight / 2));
 
@@ -59,10 +59,6 @@ namespace HighwayCoaster.Logic
 
             this.carObj = new CarObject(player.Car, areaWidth, areaHeight);
 
-            for (double i = 0; i < (areaWidth / 3) - 1 - speed; i++)
-            {
-                carGuidePoints.Add(new Point(i, areaHeight / 2));
-            }
         }
 
         public bool GameOver { get => this.gameOver; }
@@ -75,6 +71,8 @@ namespace HighwayCoaster.Logic
 
         public CarObject CarObj { get => this.carObj; }
 
+        public double LineThickness { get => lineThickness; set => lineThickness = value; }
+
         public void Step(Direction direction)
         {
             this.StepLine(direction);
@@ -85,7 +83,7 @@ namespace HighwayCoaster.Logic
 
         public void StepCar()
         {
-            carObj.Step(carGuidePoints);
+            carObj.Step(line, ySpeed);
         }
 
         public void StepObstacle()
@@ -108,18 +106,18 @@ namespace HighwayCoaster.Logic
                         tempAngle = 360 - tempAngle;
                     }
 
-                    Rect rect = new Rect(carObj.CarBody.X + (carObj.CarBody.Width - (carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle)) / 360)))/2, carObj.CarBody.Y - (carObj.CarBody.Height * (1 + (Math.Abs(carObj.Angle))/360)- carObj.CarBody.Height)/2 , carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle))/360), carObj.CarBody.Height * (1 + (Math.Abs(carObj.Angle))/360));
+                    Rect rect = new Rect(carObj.CarBody.X + (carObj.CarBody.Width - (carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle)) / 360)))/2, carObj.CarBody.Y - (carObj.CarBody.Height * (1 - (Math.Abs(carObj.Angle))/360)- carObj.CarBody.Height)/2 , carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle))/360), carObj.CarBody.Height * (1 + (Math.Abs(carObj.Angle))/360));
 
                     if (obstacles[i].IntersectsWith(rect))
                     {
-                        DoGameOver();
+                        //DoGameOver();
                     }
                 }
                 else
                 {
                     if (obstacles[i].IntersectsWith(carObj.CarBody))
                     {
-                        DoGameOver();
+                        //DoGameOver();
                     }
                 }
             }
@@ -141,7 +139,7 @@ namespace HighwayCoaster.Logic
         {
             this.stepCount++;
 
-            if (this.previousDirection != direction || this.stepCount == 30)
+            if (this.previousDirection != direction || this.stepCount == speed*8)
             {
                 this.points.Add(new Point(this.points.Last().X, this.points.Last().Y));
                 this.stepCount = 0;
@@ -162,59 +160,21 @@ namespace HighwayCoaster.Logic
             switch (direction)
             {
                 case Direction.Up:
-                    if (this.points.Last().Y - carObj.CarBody.Height - carObj.WheelSize - areaHeight/20 > 0)
+                    if (this.points.Last().Y - carObj.CarBody.Height - carObj.WheelSize - areaHeight / 20 > 0)
                     {
                         this.points[this.points.Count - 1] = new Point(this.points.Last().X, this.points.Last().Y - this.ySpeed);
+                    }
 
-                        for (int i = 0; i < speed; i++)
-                        {
-                                carGuidePoints.Add(new Point(this.carGuidePoints.Last().X + 1, this.carGuidePoints.Last().Y - this.ySpeed/speed));
-                        }
-                    }
-                    else
-                    {
-                        for (int i = 0; i < speed; i++)
-                        {
-                            carGuidePoints.Add(new Point(this.carGuidePoints.Last().X + 1, this.carGuidePoints.Last().Y));
-                        }
-                    }
                     break;
                 case Direction.Down:
                     if (this.points.Last().Y + 5 < this.areaHeight - 45)
                     {
                         this.points[this.points.Count - 1] = new Point(this.points.Last().X, this.points.Last().Y + this.ySpeed);
-                        for (int i = 0; i < speed; i++)
-                        {
-                            carGuidePoints.Add(new Point(this.carGuidePoints.Last().X + 1, this.carGuidePoints.Last().Y + this.ySpeed / speed));
-                        }
                     }
-                    else
-                    {
-                        for (int i = 0; i < speed; i++)
-                        {
-                            carGuidePoints.Add(new Point(this.carGuidePoints.Last().X + 1, this.carGuidePoints.Last().Y));
-                        }
-                    }
+
                     break;
                 default:
-                    for (int i = 0; i < speed; i++)
-                    {
-                        carGuidePoints.Add(new Point(this.carGuidePoints.Last().X + 1, this.carGuidePoints.Last().Y));
-                    }
-
                     break;
-            }
-
-            for (int i = 0; i < this.carGuidePoints.Count; i++)
-            {
-                if (this.carGuidePoints[i].X < 0)
-                {
-                    this.carGuidePoints.RemoveAt(i);
-                }
-                else
-                {
-                    this.carGuidePoints[i] = new Point(this.carGuidePoints[i].X - speed, this.carGuidePoints[i].Y);
-                }
             }
 
             this.line = this.MakeCurve(this.points.ToArray(), 0.2);
