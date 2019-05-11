@@ -13,8 +13,13 @@
     </UserControl.Resources>
     <Grid DataContext="{Binding Source={StaticResource Locator}, Path=CarSelect}">
         <Label Margin ="5 0 5 0"  Content="Select your car" FontFamily="Comic Sans MS Bold" Foreground="Gold" HorizontalAlignment="Center"/>
-        <Grid Background="{StaticResource TransparentBlack}"  Margin="25 30 25 100">
-            <ListView Background="{StaticResource TransparentBlack}" ItemsSource="{Binding GameLogic.AllCars}">
+        <Grid  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="17*"/>
+                <RowDefinition Height="177*"/>
+                <RowDefinition Height="31*"/>
+            </Grid.RowDefinitions>
+            <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Background="{StaticResource TransparentBlack}" ItemsSource="{Binding GameLogic.AllCars}" SelectedItem="{Binding SelectedCar}" Margin="10,10,10,0">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel />
@@ -22,24 +27,26 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
+                        <StackPanel Margin="15 0 15 0">
                             <Image Source="{Binding TumbNail, Converter={StaticResource ImgPathConverter}}" MaxWidth="200" MinWidth="25" />
                             <Label Content="{Binding PointRequirement}" ContentStringFormat="Req. points: {0}"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Border Grid.RowSpan="4" Grid.ColumnSpan="4" BorderBrush="Gold" BorderThickness="5 5 5 5"/>
-        </Grid>
-        <StackPanel VerticalAlignment="Bottom" Margin="200,0,200,20" Height="58" MaxWidth="400">
-            <Grid Height="50">
+            <Border Grid.Row="1" Grid.RowSpan="1" BorderBrush="Gold" BorderThickness="5 5 5 5" Margin="10,10,10, 0"/>
+            <Grid Grid.Row="2" >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Select" Grid.Column="0" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding SelectCommand}"/>
-                <Button Content="Cancel" Grid.Column="1" Margin="5 10 5 5" Height="35" Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding CancelCommand}"/>
+                <StackPanel Width="150" HorizontalAlignment="Left"  Margin="10,10,10,10">
+                    <Button Content="Select" Height="40"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding SelectCommand}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Width="150" HorizontalAlignment="Right"  Margin="10,10,10,10">
+                    <Button  Content="Cancel" Height="40"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" Command="{Binding CancelCommand}"/>
+                </StackPanel>
             </Grid>
-        </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

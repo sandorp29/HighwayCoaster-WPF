@@ -54,8 +54,6 @@
 
         public int WindowHeight { get; set; }
 
-        public Car SelectedCar { get => selectedCar; set => selectedCar = value; }
-
         public Player SelectedPlayer { get => selectedPlayer; set => selectedPlayer = value; }
 
         public void OpenModal(string msg)
