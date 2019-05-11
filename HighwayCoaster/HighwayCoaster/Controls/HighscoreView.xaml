@@ -11,13 +11,15 @@
     </UserControl.Resources>
     <Grid  DataContext="{Binding Source={StaticResource Locator}, Path=Highscore}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="177*"/>
-            <RowDefinition Height="31*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" MaxHeight="50">
-            <Label Content="Highscores" Grid.Row="0" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        </StackPanel>
+        <Border Background="{StaticResource TransparentBlack}">
+            <Viewbox Grid.Row="0" Margin="10 10 10 10" >
+                <TextBlock Text="Highscores" Grid.Row="0" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Viewbox>
+        </Border>
         <ListBox HorizontalContentAlignment="Stretch" Background="{StaticResource TransparentBlack}" Margin="10,10,10,0" Grid.Row="1" HorizontalAlignment="Stretch" ItemsSource="{Binding HighscoreList}" SelectedItem="{Binding SelectedPlayer}" Foreground="Gold">
             <ListBox.ItemTemplate>
                 <DataTemplate>

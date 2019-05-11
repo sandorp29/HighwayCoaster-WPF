@@ -1,31 +1,26 @@
-﻿namespace HighwayCoaster.ViewModels
+﻿// <copyright file="MainWindowViewModel.cs" company="OENIK_PROG4_2019_1_X90NPX_XLS22H">
+// Copyright (c) OENIK_PROG4_2019_1_X90NPX_XLS22H. All rights reserved.
+// </copyright>
+
+namespace HighwayCoaster.ViewModels
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.ComponentModel;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
     using CommonServiceLocator;
     using GalaSoft.MvvmLight;
     using HighwayCoaster.Controls;
     using HighwayCoaster.Controls.ModalControls;
     using HighwayCoaster.Logic;
     using HighwayCoaster.Repository;
-    using HighwayCoaster.Resources;
-    using HighwayCoaster.ViewModel;
 
     public class MainWindowViewModel : ViewModelBase
     {
         private IGameLogic gameLogic;
         private ContentControl windowContent;
-        private Car selectedCar;
         private Player selectedPlayer;
         private List<string> resolutions;
         private string selectedResolution;

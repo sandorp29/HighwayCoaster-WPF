@@ -12,13 +12,17 @@
         <SolidColorBrush x:Key="TransparentBlack" Color="#000000" Opacity="0.5" />
     </UserControl.Resources>
     <Grid DataContext="{Binding Source={StaticResource Locator}, Path=CarSelect}">
-        <Label Margin ="5 0 5 0"  Content="Select your car" FontFamily="Comic Sans MS Bold" Foreground="Gold" HorizontalAlignment="Center"/>
         <Grid  >
             <Grid.RowDefinitions>
-                <RowDefinition Height="17*"/>
-                <RowDefinition Height="177*"/>
-                <RowDefinition Height="31*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
+            <Border Background="{StaticResource TransparentBlack}">
+                <Viewbox Grid.Row="0" Margin="10 10 10 10" >
+                    <TextBlock Text="Select your car" Grid.Row="0" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Viewbox>
+            </Border>
             <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Background="{StaticResource TransparentBlack}" ItemsSource="{Binding GameLogic.AllCars}" SelectedItem="{Binding SelectedCar}" Margin="10,10,10,0">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
