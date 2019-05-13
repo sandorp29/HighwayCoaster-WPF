@@ -61,7 +61,7 @@
 
             foreach (var item in this.gAreaLogic.Obstacles)
             {
-                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(this.gameLogic.Sc.ObstacleImg))), null, item);
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(this.gameLogic.SC.ObstacleImg))), null, item);
             }
 
             drawingContext.DrawGeometry(Brushes.Transparent, new Pen(Brushes.White, this.gAreaLogic.LineThickness), this.gAreaLogic.Line);

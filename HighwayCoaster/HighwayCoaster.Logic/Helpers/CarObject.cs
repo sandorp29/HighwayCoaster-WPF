@@ -45,9 +45,6 @@ namespace HighwayCoaster.Logic.Helpers
 
             this.carBody = new Rect(areaWidth / 6, areaHeight / 2.32, areaWidth / 9.4, areaHeight / 18.37);
 
-            double size = areaWidth / (this.carBodyImage.Width / 16);
-            double size2 = areaHeight / (this.carBodyImage.Height / 16);
-
             this.wheelSize = this.carBody.Width / 10;
             this.angle = 0;
 
@@ -71,7 +68,10 @@ namespace HighwayCoaster.Logic.Helpers
         /// <summary>
         /// Gets the center of the rear wheel
         /// </summary>
-        public Point RearWheelPoint { get => this.rearWheelPoint; private set { this.rearWheelPoint = value; } }
+        public Point RearWheelPoint
+        {
+            get => this.rearWheelPoint; private set { this.rearWheelPoint = value; }
+        }
 
         /// <summary>
         /// Gets the size of the wheel
@@ -103,7 +103,7 @@ namespace HighwayCoaster.Logic.Helpers
         /// </summary>
         /// <param name="line">The line where the car should be placed on</param>
         /// <param name="ySpeed">The speed of the y axis change</param>
-        public void Step(PathGeometry line, double ySpeed)
+        public void Step(Geometry line, double ySpeed)
         {
             Geometry frontWheelIntersection = Geometry.Combine(line.GetWidenedPathGeometry(new Pen(null, Math.Round((double)(this.areaWidth / 266.6666666666667)))), new EllipseGeometry(this.frontWheelPoint, this.wheelSize, this.wheelSize), GeometryCombineMode.Intersect, null);
             Geometry rearWheelIntersection = Geometry.Combine(line.GetWidenedPathGeometry(new Pen(null, Math.Round((double)(this.areaWidth / 266.6666666666667)))), new EllipseGeometry(this.rearWheelPoint, this.wheelSize, this.wheelSize), GeometryCombineMode.Intersect, null);

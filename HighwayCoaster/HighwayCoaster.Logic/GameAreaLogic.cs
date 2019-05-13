@@ -254,10 +254,6 @@ namespace HighwayCoaster.Logic
                 Point pt_after = points[i + 1];
                 Point pt_after2 = points[Math.Min(i + 2, points.Length - 1)];
 
-                double dx1 = pt_after.X - pt_before.X;
-                double dy1 = pt_after.Y - pt_before.Y;
-
-                Point p1 = points[i];
                 Point p4 = pt_after;
 
                 double dx = pt_after.X - pt_before.X;

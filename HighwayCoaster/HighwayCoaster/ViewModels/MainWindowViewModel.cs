@@ -42,7 +42,7 @@ namespace HighwayCoaster.ViewModels
         {
             get
             {
-                return this.gameLogic.Sc.BackgroundLoop;
+                return this.gameLogic.SC.BackgroundLoop;
             }
 
         }

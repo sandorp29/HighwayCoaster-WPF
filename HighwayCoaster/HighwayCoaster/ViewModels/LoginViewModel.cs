@@ -102,7 +102,7 @@ namespace HighwayCoaster.ViewModels
         {
             get
             {
-                return new BitmapImage(new Uri(this.GameLogic.Sc.LogoIMG, UriKind.Relative));
+                return new BitmapImage(new Uri(this.GameLogic.SC.LogoImg, UriKind.Relative));
             }
         }
 
