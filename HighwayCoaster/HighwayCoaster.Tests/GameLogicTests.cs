@@ -86,6 +86,15 @@ namespace HighwayCoaster.Tests
         }
 
         /// <summary>
+        /// Tests if the HighscoreHelper works properly
+        /// </summary>
+        [Test]
+        public void TestHighscoreHelpList()
+        {
+            Assert.That(this.gameLogic.HighScoreHelper.Count == 1);
+        }
+
+        /// <summary>
         /// Dispose function
         /// </summary>
         public void Dispose()

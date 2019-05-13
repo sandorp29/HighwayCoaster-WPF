@@ -19,12 +19,11 @@ namespace HighwayCoaster.Logic.Helpers
         private Point frontWheelPoint;
         private Point rearWheelPoint;
         private double wheelSize;
-        private BitmapImage carBodyImage;
-        private BitmapImage carWheelImage;
         private double angle;
         private int areaWidth;
         private int areaHeight;
         private int wheelRotation;
+        private Car car;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CarObject"/> class.
@@ -37,11 +36,10 @@ namespace HighwayCoaster.Logic.Helpers
         {
             this.wheelRotation = 0;
 
+            this.car = car;
+
             this.areaWidth = areaWidth;
             this.areaHeight = areaWidth;
-
-            this.carBodyImage = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + car.ViewResourcesPath));
-            this.carWheelImage = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + car.WheelResource));
 
             this.carBody = new Rect(areaWidth / 6, areaHeight / 2.32, areaWidth / 9.4, areaHeight / 18.37);
 
@@ -81,12 +79,12 @@ namespace HighwayCoaster.Logic.Helpers
         /// <summary>
         /// Gets the image of the car
         /// </summary>
-        public BitmapImage CarBodyImage { get => this.carBodyImage; private set => this.carBodyImage = value; }
+        public BitmapImage CarBodyImage { get => new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + this.car.ViewResourcesPath)); }
 
         /// <summary>
         /// Gets the image of the wheel
         /// </summary>
-        public BitmapImage CarWheelImage { get => this.carWheelImage; private set => this.carWheelImage = value; }
+        public BitmapImage CarWheelImage { get => new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + this.car.WheelResource)); }
 
         /// <summary>
         /// Gets the actual angle of the car
