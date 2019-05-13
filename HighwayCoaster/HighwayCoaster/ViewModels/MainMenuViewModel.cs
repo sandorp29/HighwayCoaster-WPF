@@ -1,19 +1,22 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using HighwayCoaster.Logic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-
-namespace HighwayCoaster.ViewModels
+﻿namespace HighwayCoaster.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Command;
+    using HighwayCoaster.Logic;
+
     public class MainMenuViewModel : ViewModelBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainMenuViewModel"/> class.
+        /// </summary>
         public MainMenuViewModel()
         {
             this.PlayGameCommand = new RelayCommand(this.PlayGameMethod);
@@ -22,14 +25,29 @@ namespace HighwayCoaster.ViewModels
             this.ExitCommand = new RelayCommand(this.ExitMethod);
         }
 
+        /// <summary>
+        /// Gets Play game command.
+        /// </summary>
         public ICommand PlayGameCommand { get; private set; }
 
+        /// <summary>
+        /// Gets Car select command.
+        /// </summary>
         public ICommand CarSelectCommand { get; private set; }
 
+        /// <summary>
+        /// Gets Highscore command.
+        /// </summary>
         public ICommand HighscoreCommand { get; private set; }
 
+        /// <summary>
+        /// Gets Exit command.
+        /// </summary>
         public ICommand ExitCommand { get; private set; }
 
+        /// <summary>
+        /// Gets or sets gamelogic object.
+        /// </summary>
         public IGameLogic GameLogic { get; set; }
 
         public MainWindowViewModel MainWindowViewModel { get; set; }

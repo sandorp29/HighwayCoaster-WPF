@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HighwayCoaster.Logic.Helpers
+﻿namespace HighwayCoaster.Logic.Helpers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Enum with the directions for the game movement.
+    /// </summary>
     public enum Direction
     {
         Up, Down, None
