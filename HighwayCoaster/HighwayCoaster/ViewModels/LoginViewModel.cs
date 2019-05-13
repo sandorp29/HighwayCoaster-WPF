@@ -1,4 +1,8 @@
-﻿namespace HighwayCoaster.ViewModels
+﻿// <copyright file="LoginViewModel.cs" company="OENIK_PROG4_2019_1_X90NPX_XLS22H">
+// Copyright (c) OENIK_PROG4_2019_1_X90NPX_XLS22H. All rights reserved.
+// </copyright>
+
+namespace HighwayCoaster.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -15,11 +19,17 @@
     using HighwayCoaster.Controls.ModalControls;
     using HighwayCoaster.Logic;
 
+    /// <summary>
+    /// Viewmodel for Login View.
+    /// </summary>
     public class LoginViewModel : ViewModelBase
     {
         private string userName;
         private string password;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginViewModel"/> class.
+        /// </summary>
         public LoginViewModel()
         {
             this.LoginCommand = new RelayCommand(this.LoginMethod, () => !string.IsNullOrEmpty(this.UserName) && !string.IsNullOrEmpty(this.Password));
@@ -28,6 +38,9 @@
             this.HighscoreCommand = new RelayCommand(this.HighscoreMethod);
         }
 
+        /// <summary>
+        /// Gets or sets the Property for Username.
+        /// </summary>
         public string UserName
         {
             get => this.userName;
@@ -40,6 +53,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets password.
+        /// </summary>
         public string Password
         {
             get => this.password;
@@ -52,16 +68,34 @@
             }
         }
 
+        /// <summary>
+        /// Gets Login Command,
+        /// </summary>
         public ICommand LoginCommand { get; private set; }
 
+        /// <summary>
+        /// Gets Register Command.
+        /// </summary>
         public ICommand RegisterCommand { get; private set; }
 
+        /// <summary>
+        /// Gets Password changed command.
+        /// </summary>
         public ICommand PasswordChanged { get; private set; }
 
+        /// <summary>
+        /// Gets Highscore command
+        /// </summary>
         public ICommand HighscoreCommand { get; private set; }
 
+        /// <summary>
+        /// Gets or sets Gamelogic.
+        /// </summary>
         public IGameLogic GameLogic { get; set; }
 
+        /// <summary>
+        /// Gets or sets MainWindowViewModel object.
+        /// </summary>
         public MainWindowViewModel MainWindowViewModel { get; set; }
 
         public ImageSource Logo
@@ -72,11 +106,18 @@
             }
         }
 
+        /// <summary>
+        /// OnPasswordChange method.
+        /// </summary>
+        /// <param name="obj">obj</param>
         public void OnPasswordChangedMethod(object obj)
         {
             this.Password = (obj as PasswordBox).Password;
         }
 
+        /// <summary>
+        /// Login method for Login Command.
+        /// </summary>
         public void LoginMethod()
         {
             this.GameLogic.Login(this.UserName, this.Password);
@@ -91,6 +132,9 @@
             }
         }
 
+        /// <summary>
+        /// Register method for Register command.
+        /// </summary>
         public void RegisterMethod()
         {
             if (this.GameLogic.Register(this.UserName, this.Password))
@@ -103,6 +147,9 @@
             }
         }
 
+        /// <summary>
+        /// Highscore method for highscore command. 
+        /// </summary>
         public void HighscoreMethod()
         {
             this.MainWindowViewModel.ChangeWindowState(MainWindowState.Highscore);
