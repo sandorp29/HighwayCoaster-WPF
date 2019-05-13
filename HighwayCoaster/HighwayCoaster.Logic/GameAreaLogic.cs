@@ -1,16 +1,20 @@
-﻿using HighwayCoaster.Logic.Helpers;
-using HighwayCoaster.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Shapes;
+﻿// <copyright file="GameAreaLogic.cs" company="OENIK_PROG4_2019_1_X90NPX_XLS22H">
+// Copyright (c) OENIK_PROG4_2019_1_X90NPX_XLS22H. All rights reserved.
+// </copyright>
 
 namespace HighwayCoaster.Logic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Media;
+    using HighwayCoaster.Logic.Helpers;
+    using HighwayCoaster.Repository;
+
+    /// <summary>
+    /// GameAreaLogic class
+    /// </summary>
     public class GameAreaLogic
     {
         private double areaHeight;
@@ -33,9 +37,15 @@ namespace HighwayCoaster.Logic
 
         private int stepCount;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameAreaLogic"/> class.
+        /// </summary>
+        /// <param name="areaHeight">The height of the window</param>
+        /// <param name="areaWidth">The width of the window</param>
+        /// <param name="gameLogic">The actual GameLogic instance</param>
         public GameAreaLogic(int areaHeight, int areaWidth, IGameLogic gameLogic)
         {
-            r = new Random();
+            this.r = new Random();
 
             this.previousDirection = Direction.None;
             this.areaHeight = areaHeight;
@@ -57,22 +67,43 @@ namespace HighwayCoaster.Logic
             this.obstacles = new List<Rect>();
             this.obstacles.Add(new Rect(areaWidth + (areaWidth / 14), this.r.Next(areaWidth / 14, areaHeight - 45 - (areaWidth / 14)), areaWidth / 7, areaWidth / 7));
 
-            this.carObj = new CarObject(player.Car, areaWidth, areaHeight);
-
+            this.carObj = new CarObject(this.player.Car, areaWidth, areaHeight);
         }
 
+        /// <summary>
+        /// Gets a value indicating whether gets the game state
+        /// </summary>
         public bool GameOver { get => this.gameOver; }
 
+        /// <summary>
+        /// Gets the score
+        /// </summary>
         public int Score { get => this.score; }
 
+        /// <summary>
+        /// Gets the line that should be drawn
+        /// </summary>
         public PathGeometry Line { get => this.line; }
 
+        /// <summary>
+        /// Gets the obstacles that should be drawn
+        /// </summary>
         public List<Rect> Obstacles { get => this.obstacles;  }
 
+        /// <summary>
+        /// Gets the CarObj that should be drawn
+        /// </summary>
         public CarObject CarObj { get => this.carObj; }
 
-        public double LineThickness { get => lineThickness; set => lineThickness = value; }
+        /// <summary>
+        /// Gets the thickness of the line
+        /// </summary>
+        public double LineThickness { get => this.lineThickness; }
 
+        /// <summary>
+        /// The step that should be called at every tick
+        /// </summary>
+        /// <param name="direction">Actual direction of the line</param>
         public void Step(Direction direction)
         {
             this.StepLine(direction);
@@ -81,11 +112,17 @@ namespace HighwayCoaster.Logic
             this.score++;
         }
 
+        /// <summary>
+        /// Step of the car
+        /// </summary>
         public void StepCar()
         {
-            carObj.Step(line, ySpeed);
+            this.carObj.Step(this.line, this.ySpeed);
         }
 
+        /// <summary>
+        /// Step of the obstacles
+        /// </summary>
         public void StepObstacle()
         {
             for (int i = 0; i < this.obstacles.Count; i++)
@@ -97,27 +134,27 @@ namespace HighwayCoaster.Logic
                     this.obstacles.RemoveAt(i);
                 }
 
-                if (carObj.Angle != 0 && carObj.Angle != 360)
+                if (this.carObj.Angle != 0 && this.carObj.Angle != 360)
                 {
-                    double tempAngle = carObj.Angle;
+                    double tempAngle = this.carObj.Angle;
 
                     if (tempAngle > 180)
                     {
                         tempAngle = 360 - tempAngle;
                     }
 
-                    Rect rect = new Rect(carObj.CarBody.X + (carObj.CarBody.Width - (carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle)) / 360)))/2, carObj.CarBody.Y - (carObj.CarBody.Height * (1 - (Math.Abs(carObj.Angle))/360)- carObj.CarBody.Height)/2 , carObj.CarBody.Width * (1 - (Math.Abs(carObj.Angle))/360), carObj.CarBody.Height * (1 + (Math.Abs(carObj.Angle))/360));
+                    Rect rect = new Rect(this.carObj.CarBody.X + ((this.carObj.CarBody.Width - (this.carObj.CarBody.Width * (1 - (Math.Abs(this.carObj.Angle) / 360)))) / 2), this.carObj.CarBody.Y - (((this.carObj.CarBody.Height * (1 - (Math.Abs(this.carObj.Angle) / 360))) - this.carObj.CarBody.Height) / 2), this.carObj.CarBody.Width * (1 - (Math.Abs(this.carObj.Angle) / 360)), this.carObj.CarBody.Height * (1 + (Math.Abs(this.carObj.Angle) / 360)));
 
-                    if (obstacles[i].IntersectsWith(rect))
+                    if (this.obstacles[i].IntersectsWith(rect))
                     {
-                        //DoGameOver();
+                        this.DoGameOver();
                     }
                 }
                 else
                 {
-                    if (obstacles[i].IntersectsWith(carObj.CarBody))
+                    if (this.obstacles[i].IntersectsWith(this.carObj.CarBody))
                     {
-                        //DoGameOver();
+                        this.DoGameOver();
                     }
                 }
             }
@@ -135,11 +172,15 @@ namespace HighwayCoaster.Logic
             }
         }
 
+        /// <summary>
+        /// Step of the line
+        /// </summary>
+        /// <param name="direction">Actual direction of the line</param>
         public void StepLine(Direction direction)
         {
             this.stepCount++;
 
-            if (this.previousDirection != direction || this.stepCount == speed*8)
+            if (this.previousDirection != direction || this.stepCount == this.speed * 7)
             {
                 this.points.Add(new Point(this.points.Last().X, this.points.Last().Y));
                 this.stepCount = 0;
@@ -160,7 +201,7 @@ namespace HighwayCoaster.Logic
             switch (direction)
             {
                 case Direction.Up:
-                    if (this.points.Last().Y - carObj.CarBody.Height - carObj.WheelSize - areaHeight / 20 > 0)
+                    if (this.points.Last().Y - this.carObj.CarBody.Height - this.carObj.WheelSize - (this.areaHeight / 20) > 0)
                     {
                         this.points[this.points.Count - 1] = new Point(this.points.Last().X, this.points.Last().Y - this.ySpeed);
                     }
@@ -181,19 +222,23 @@ namespace HighwayCoaster.Logic
             this.previousDirection = direction;
         }
 
-        public void DoGameOver()
+        private void DoGameOver()
         {
-            gameOver = true;
+            this.gameOver = true;
 
-            if (player.Highscore == null || player.Highscore < score)
+            if (this.player.Highscore == null || this.player.Highscore < this.score)
             {
-                gameLogic.SaveHighscore(player.PlayerId, score);
+                this.gameLogic.SaveHighscore(this.player.PlayerId, this.score);
             }
         }
 
         private Point[] MakeCurvePoints(Point[] points, double tension)
         {
-            if (points.Length < 2) return null;
+            if (points.Length < 2)
+            {
+                return null;
+            }
+
             double control_scale = tension / 0.5 * 0.175;
 
             // Make a list containing the points and
@@ -218,14 +263,14 @@ namespace HighwayCoaster.Logic
                 double dx = pt_after.X - pt_before.X;
                 double dy = pt_after.Y - pt_before.Y;
                 Point p2 = new Point(
-                    pt.X + control_scale * dx,
-                    pt.Y + control_scale * dy);
+                    pt.X + (control_scale * dx),
+                    pt.Y + (control_scale * dy));
 
                 dx = pt_after2.X - pt.X;
                 dy = pt_after2.Y - pt.Y;
                 Point p3 = new Point(
-                    pt_after.X - control_scale * dx,
-                    pt_after.Y - control_scale * dy);
+                    pt_after.X - (control_scale * dx),
+                    pt_after.Y - (control_scale * dy));
 
                 // Save points p2, p3, and p4.
                 result_points.Add(p2);
