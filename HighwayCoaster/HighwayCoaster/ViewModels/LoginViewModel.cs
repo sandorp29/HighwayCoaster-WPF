@@ -112,10 +112,10 @@ namespace HighwayCoaster.ViewModels
         /// <summary>
         /// OnPasswordChange method.
         /// </summary>
-        /// <param name="obj">obj</param>
-        public void OnPasswordChangedMethod(object obj)
+        /// <param name="value">value</param>
+        public void OnPasswordChangedMethod(object value)
         {
-            this.Password = (obj as PasswordBox).Password;
+            this.Password = (value as PasswordBox).Password;
         }
 
         /// <summary>

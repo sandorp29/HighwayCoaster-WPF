@@ -168,10 +168,6 @@ namespace HighwayCoaster.Logic
             {
                 return false;
             }
-            catch (Exception)
-            {
-                return false;
-            }
         }
 
         /// <summary>
@@ -233,7 +229,6 @@ namespace HighwayCoaster.Logic
             }
 
             return new ObservableCollection<Player>(p.OrderByDescending(x => x.Highscore));
-
         }
     }
 }

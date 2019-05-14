@@ -29,16 +29,8 @@ namespace HighwayCoaster.Controls.ControlConverters
         /// <returns>object</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            try
-            {
-                ImageSource imageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + (value as string)));
-                return imageSource;
-            }
-            catch
-            {
-            }
-
-            return null;
+            ImageSource imageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + (value as string)));
+            return imageSource;
         }
 
         /// <summary>

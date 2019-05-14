@@ -14,7 +14,7 @@ namespace HighwayCoaster.Tests
     /// GameAreaLogicTests class
     /// </summary>
     [TestFixture]
-    public class GameAreaLogicTests
+    public class GameAreaLogicTests : IDisposable
     {
         private GameAreaLogic gAreaLogic;
         private Mock<IGameRepository> mockRepo;
@@ -142,6 +142,28 @@ namespace HighwayCoaster.Tests
             }
 
             Assert.That(this.gAreaLogic.GameOver);
+        }
+
+        /// <summary>
+        /// Dispose function
+        /// </summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Dispose function
+        /// </summary>
+        /// <param name="disposing">Gets if the disposal already started</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this.gameLogic.Dispose();
+            }
         }
     }
 }

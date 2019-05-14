@@ -20,22 +20,22 @@ namespace HighwayCoaster.ViewModels
     /// <summary>
     /// Viewmodel for Main window
     /// </summary>
-    public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ViewModelBase, IDisposable
     {
         private IGameLogic gameLogic;
         private ContentControl windowContent;
         private Player selectedPlayer;
         private List<string> resolutions;
         private string selectedResolution;
+        private bool disposedValue;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
         /// </summary>
         public MainWindowViewModel()
         {
+            this.disposedValue = false;
             this.gameLogic = new GameLogic();
-
-            AppDomain.CurrentDomain.ProcessExit += (s, e) => this.gameLogic.Dispose();
 
             this.ChangeWindowState(MainWindowState.Login);
             this.ResizeMode = ResizeMode.NoResize;
@@ -171,6 +171,33 @@ namespace HighwayCoaster.ViewModels
 
             this.RaisePropertyChanged("WindowContent");
             this.RaisePropertyChanged("ResizeMode");
+        }
+
+        /// <summary>
+        /// Dispose function
+        /// </summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Dispose function
+        /// </summary>
+        /// <param name="disposing">Gets if the disposal already started</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposedValue)
+            {
+                if (disposing)
+                {
+                    this.gameLogic.Dispose();
+                }
+
+                this.disposedValue = true;
+            }
         }
     }
 }

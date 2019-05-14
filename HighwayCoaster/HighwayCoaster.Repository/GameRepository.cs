@@ -75,9 +75,9 @@ namespace HighwayCoaster.Repository
         }
 
         /// <inheritdoc/>
-        public void Register(Player newPlayer)
+        public void Register(Player player)
         {
-            this.en.Player.Add(newPlayer);
+            this.en.Player.Add(player);
             this.en.SaveChanges();
         }
 

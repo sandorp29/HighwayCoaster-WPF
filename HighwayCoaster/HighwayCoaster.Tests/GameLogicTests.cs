@@ -46,7 +46,7 @@ namespace HighwayCoaster.Tests
         [Test]
         public void TestRegistration()
         {
-            this.mockRepo.Setup(x => x.Register(It.Is<Player>(y => y.Username.Equals("teszt1")))).Throws(new Exception());
+            this.mockRepo.Setup(x => x.Register(It.Is<Player>(y => y.Username.Equals("teszt1")))).Throws(new System.Data.Entity.Infrastructure.DbUpdateException());
 
             Assert.That(this.gameLogic.Register("teszt1", "asd123") == false);
             Assert.That(this.gameLogic.Register("teszt2", "asd123") == true);

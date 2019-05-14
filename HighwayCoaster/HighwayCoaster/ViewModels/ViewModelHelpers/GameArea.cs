@@ -13,6 +13,9 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
     using HighwayCoaster.Logic;
     using HighwayCoaster.Logic.Helpers;
 
+    /// <summary>
+    /// GameArea class
+    /// </summary>
     public class GameArea : FrameworkElement
     {
         private IGameLogic gameLogic;
@@ -21,6 +24,11 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
         private DispatcherTimer dt;
         private Direction direction;
 
+        /// <summary>
+        /// Setup of the game area
+        /// </summary>
+        /// <param name="gameLogic">GameLogic</param>
+        /// <param name="mainWindowViewModel">MainWindowViewModel</param>
         public void Setup(IGameLogic gameLogic, MainWindowViewModel mainWindowViewModel)
         {
             this.gameLogic = gameLogic;
@@ -36,6 +44,10 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
             this.dt.Start();
         }
 
+        /// <summary>
+        /// Gets called on every frame rendering
+        /// </summary>
+        /// <param name="drawingContext">The drawing context</param>
         protected override void OnRender(DrawingContext drawingContext)
         {
             drawingContext.PushTransform(new RotateTransform(this.gAreaLogic.CarObj.Angle, this.gAreaLogic.CarObj.CarBody.Left + (this.gAreaLogic.CarObj.CarBody.Width / 2), this.gAreaLogic.CarObj.CarBody.Top + (this.gAreaLogic.CarObj.CarBody.Height / 2)));
