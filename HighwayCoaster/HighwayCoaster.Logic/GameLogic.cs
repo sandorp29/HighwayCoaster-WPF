@@ -232,8 +232,8 @@ namespace HighwayCoaster.Logic
                 }
             }
 
-            p.OrderByDescending(x => x.Highscore);
-            return p;
+            return new ObservableCollection<Player>(p.OrderByDescending(x => x.Highscore));
+
         }
     }
 }

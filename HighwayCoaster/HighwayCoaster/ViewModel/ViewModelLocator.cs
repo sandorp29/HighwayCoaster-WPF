@@ -1,24 +1,27 @@
-/*
+// <copyright file="ViewModelLocator.cs" company="OENIK_PROG4_2019_1_X90NPX_XLS22H">
+// Copyright (c) OENIK_PROG4_2019_1_X90NPX_XLS22H. All rights reserved.
+// </copyright>
+
+namespace HighwayCoaster.ViewModel
+{
+    /*
   In App.xaml:
   <Application.Resources>
       <vm:ViewModelLocator xmlns:vm="clr-namespace:HighwayCoaster"
                            x:Key="Locator" />
   </Application.Resources>
-  
+
   In the View:
   DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
 
   You can also use Blend to do all this with the tool's support.
   See http://www.galasoft.ch/mvvm
 */
+    using CommonServiceLocator;
+    using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Ioc;
+    using HighwayCoaster.ViewModels;
 
-using CommonServiceLocator;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Ioc;
-using HighwayCoaster.ViewModels;
-
-namespace HighwayCoaster.ViewModel
-{
     /// <summary>
     /// This class contains static references to all the view models in the
     /// application and provides an entry point for the bindings.
@@ -26,7 +29,7 @@ namespace HighwayCoaster.ViewModel
     public class ViewModelLocator
     {
         /// <summary>
-        /// Initializes a new instance of the ViewModelLocator class.
+        /// Initializes a new instance of the <see cref="ViewModelLocator"/> class.
         /// </summary>
         public ViewModelLocator()
         {
@@ -51,6 +54,9 @@ namespace HighwayCoaster.ViewModel
             SimpleIoc.Default.Register<PlayViewModel>();
         }
 
+        /// <summary>
+        /// Gets main window view model
+        /// </summary>
         public MainWindowViewModel Main
         {
             get
@@ -59,6 +65,9 @@ namespace HighwayCoaster.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets login view model
+        /// </summary>
         public LoginViewModel Login
         {
             get
@@ -67,6 +76,9 @@ namespace HighwayCoaster.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets main menu view model
+        /// </summary>
         public MainMenuViewModel Menu
         {
             get
@@ -75,6 +87,9 @@ namespace HighwayCoaster.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets highscore view model
+        /// </summary>
         public HighscoreViewModel Highscore
         {
             get
@@ -83,6 +98,9 @@ namespace HighwayCoaster.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets car selection view model
+        /// </summary>
         public CarSelectionViewModel CarSelect
         {
             get
@@ -91,6 +109,9 @@ namespace HighwayCoaster.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets play view model
+        /// </summary>
         public PlayViewModel Play
         {
             get
@@ -99,6 +120,9 @@ namespace HighwayCoaster.ViewModel
             }
         }
 
+        /// <summary>
+        /// Cleanup
+        /// </summary>
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

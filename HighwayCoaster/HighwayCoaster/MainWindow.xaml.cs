@@ -1,4 +1,8 @@
-﻿namespace HighwayCoaster
+﻿// <copyright file="MainWindow.xaml.cs" company="OENIK_PROG4_2019_1_X90NPX_XLS22H">
+// Copyright (c) OENIK_PROG4_2019_1_X90NPX_XLS22H. All rights reserved.
+// </copyright>
+
+namespace HighwayCoaster
 {
     using System;
     using System.Collections.Generic;
@@ -21,9 +25,12 @@
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

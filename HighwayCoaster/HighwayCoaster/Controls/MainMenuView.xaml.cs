@@ -1,4 +1,8 @@
-﻿namespace HighwayCoaster.Controls
+﻿// <copyright file="MainMenuView.xaml.cs" company="OENIK_PROG4_2019_1_X90NPX_XLS22H">
+// Copyright (c) OENIK_PROG4_2019_1_X90NPX_XLS22H. All rights reserved.
+// </copyright>
+
+namespace HighwayCoaster.Controls
 {
     using System;
     using System.Collections.Generic;
@@ -23,11 +27,16 @@
     /// </summary>
     public partial class MainMenuView : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainMenuView"/> class.
+        /// </summary>
+        /// <param name="gameLogic">GL object</param>
+        /// <param name="mainWindowViewModel">MWVM object</param>
         public MainMenuView(IGameLogic gameLogic, MainWindowViewModel mainWindowViewModel)
         {
             ServiceLocator.Current.GetInstance<MainMenuViewModel>().GameLogic = gameLogic;
             ServiceLocator.Current.GetInstance<MainMenuViewModel>().MainWindowViewModel = mainWindowViewModel;
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

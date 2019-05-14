@@ -1,4 +1,8 @@
-﻿namespace HighwayCoaster.Controls.ModalControls
+﻿// <copyright file="MessageWindow.xaml.cs" company="OENIK_PROG4_2019_1_X90NPX_XLS22H">
+// Copyright (c) OENIK_PROG4_2019_1_X90NPX_XLS22H. All rights reserved.
+// </copyright>
+
+namespace HighwayCoaster.Controls.ModalControls
 {
     using System;
     using System.Collections.Generic;
@@ -19,9 +23,14 @@
     /// </summary>
     public partial class MessageWindow : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageWindow"/> class.
+        /// </summary>
+        /// <param name="owner">owner</param>
+        /// <param name="msg">messege</param>
         public MessageWindow(Window owner, string msg)
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.Owner = owner;
             this.Text.Text = msg;

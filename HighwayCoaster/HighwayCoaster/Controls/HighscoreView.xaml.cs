@@ -1,4 +1,8 @@
-﻿namespace HighwayCoaster.Controls
+﻿// <copyright file="HighscoreView.xaml.cs" company="OENIK_PROG4_2019_1_X90NPX_XLS22H">
+// Copyright (c) OENIK_PROG4_2019_1_X90NPX_XLS22H. All rights reserved.
+// </copyright>
+
+namespace HighwayCoaster.Controls
 {
     using System;
     using System.Collections.Generic;
@@ -23,6 +27,11 @@
     /// </summary>
     public partial class HighscoreView : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HighscoreView"/> class.
+        /// </summary>
+        /// <param name="gameLogic">Game loc obj</param>
+        /// <param name="mainWindowViewModel"> MWVM object</param>
         public HighscoreView(IGameLogic gameLogic, MainWindowViewModel mainWindowViewModel)
         {
             ServiceLocator.Current.GetInstance<HighscoreViewModel>().GameLogic = gameLogic;

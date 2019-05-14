@@ -18,17 +18,31 @@ namespace HighwayCoaster.Repository
     /// </summary>
     public partial class HighwayCoasterDatabaseEntities : DbContext
     {
+        /// <summary>
+        /// Constructor for highway coaster DB entities
+        /// </summary>
         public HighwayCoasterDatabaseEntities()
             : base("name=HighwayCoasterDatabaseEntities")
         {
         }
     
+        /// <summary>
+        /// On model creating
+        /// </summary>
+        /// <param name="modelBuilder">model builder</param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
+        /// <summary>
+        /// Gets or sets car
+        /// </summary>
         public virtual DbSet<Car> Car { get; set; }
+
+        /// <summary>
+        /// Gets or sets Player
+        /// </summary>
         public virtual DbSet<Player> Player { get; set; }
     }
 }

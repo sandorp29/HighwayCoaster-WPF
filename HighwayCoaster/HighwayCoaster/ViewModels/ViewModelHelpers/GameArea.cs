@@ -1,4 +1,8 @@
-﻿namespace HighwayCoaster.ViewModels.ViewModelHelpers
+﻿// <copyright file="GameArea.cs" company="OENIK_PROG4_2019_1_X90NPX_XLS22H">
+// Copyright (c) OENIK_PROG4_2019_1_X90NPX_XLS22H. All rights reserved.
+// </copyright>
+
+namespace HighwayCoaster.ViewModels.ViewModelHelpers
 {
     using System;
     using System.Globalization;
@@ -34,7 +38,7 @@
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            drawingContext.PushTransform(new RotateTransform(this.gAreaLogic.CarObj.Angle, this.gAreaLogic.CarObj.CarBody.Left + (this.gAreaLogic.CarObj.CarBody.Width /2), this.gAreaLogic.CarObj.CarBody.Top + (this.gAreaLogic.CarObj.CarBody.Height / 2)));
+            drawingContext.PushTransform(new RotateTransform(this.gAreaLogic.CarObj.Angle, this.gAreaLogic.CarObj.CarBody.Left + (this.gAreaLogic.CarObj.CarBody.Width / 2), this.gAreaLogic.CarObj.CarBody.Top + (this.gAreaLogic.CarObj.CarBody.Height / 2)));
             drawingContext.DrawRectangle(
                 new ImageBrush(this.gAreaLogic.CarObj.CarBodyImage),
                 null,
@@ -66,7 +70,7 @@
 
             drawingContext.DrawGeometry(Brushes.Transparent, new Pen(Brushes.White, this.gAreaLogic.LineThickness), this.gAreaLogic.Line);
 
-            drawingContext.DrawText(new FormattedText($"Score: {this.gAreaLogic.Score}", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Comic Sans MS Bold"), mainWindowViewModel.WindowWidth / 50, Brushes.Gold), new Point(mainWindowViewModel.WindowWidth - mainWindowViewModel.WindowWidth / 5, mainWindowViewModel.WindowHeight / 16));
+            drawingContext.DrawText(new FormattedText($"Score: {this.gAreaLogic.Score}", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Comic Sans MS Bold"), this.mainWindowViewModel.WindowWidth / 50, Brushes.Gold), new Point(this.mainWindowViewModel.WindowWidth - (this.mainWindowViewModel.WindowWidth / 5), this.mainWindowViewModel.WindowHeight / 16));
         }
 
         private void DT_Tick(object sender, EventArgs e)
