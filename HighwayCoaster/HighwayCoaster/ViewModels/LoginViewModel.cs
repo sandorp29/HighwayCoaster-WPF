@@ -98,6 +98,9 @@ namespace HighwayCoaster.ViewModels
         /// </summary>
         public MainWindowViewModel MainWindowViewModel { get; set; }
 
+        /// <summary>
+        /// Gets the Bitmap image of the logo
+        /// </summary>
         public ImageSource Logo
         {
             get
@@ -148,7 +151,7 @@ namespace HighwayCoaster.ViewModels
         }
 
         /// <summary>
-        /// Highscore method for highscore command. 
+        /// Highscore method for highscore command.
         /// </summary>
         public void HighscoreMethod()
         {

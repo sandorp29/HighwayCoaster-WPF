@@ -13,6 +13,9 @@ namespace HighwayCoaster.Repository
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
+    /// <summary>
+    /// Database entities
+    /// </summary>
     public partial class HighwayCoasterDatabaseEntities : DbContext
     {
         public HighwayCoasterDatabaseEntities()

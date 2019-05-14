@@ -17,6 +17,9 @@ namespace HighwayCoaster.ViewModels
     using HighwayCoaster.Logic;
     using HighwayCoaster.Repository;
 
+    /// <summary>
+    /// Viewmodel for Main window
+    /// </summary>
     public class MainWindowViewModel : ViewModelBase
     {
         private IGameLogic gameLogic;
@@ -25,6 +28,9 @@ namespace HighwayCoaster.ViewModels
         private List<string> resolutions;
         private string selectedResolution;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
+        /// </summary>
         public MainWindowViewModel()
         {
             this.gameLogic = new GameLogic();
@@ -35,31 +41,39 @@ namespace HighwayCoaster.ViewModels
             this.ResizeMode = ResizeMode.NoResize;
 
             this.resolutions = new List<string>() { "800x450", "960x540", "1024x576", "1280x720", "1366x768", "1600x900" };
-            selectedResolution = resolutions.First();
+            this.selectedResolution = this.resolutions.First();
         }
 
+        /// <summary>
+        /// Gets the background.
+        /// </summary>
         public string Background
         {
             get
             {
                 return this.gameLogic.SC.BackgroundLoop;
             }
-
         }
 
+        /// <summary>
+        /// Gets all the resolution.
+        /// </summary>
         public List<string> Resolutions
         {
             get
             {
-                return resolutions;
+                return this.resolutions;
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selected rsolution.
+        /// </summary>
         public string SelectedResolution
         {
             get
             {
-                return selectedResolution;
+                return this.selectedResolution;
             }
 
             set
@@ -68,37 +82,68 @@ namespace HighwayCoaster.ViewModels
                 this.RaisePropertyChanged("WindowWidth");
                 this.WindowHeight = int.Parse(value.Split('x')[1]);
                 this.RaisePropertyChanged("WindowHeight");
-                selectedResolution = value;
+                this.selectedResolution = value;
             }
         }
 
+        /// <summary>
+        /// Gets the window content.
+        /// </summary>
         public ContentControl WindowContent { get => this.windowContent; private set => this.windowContent = value; }
 
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
         public ResizeMode ResizeMode { get; set; }
 
+        /// <summary>
+        /// Gets or sets window width
+        /// </summary>
         public int WindowWidth { get; set; }
 
+        /// <summary>
+        /// Gets or sets Window height.
+        /// </summary>
         public int WindowHeight { get; set; }
 
-        public Player SelectedPlayer { get => selectedPlayer; set => selectedPlayer = value; }
+        /// <summary>
+        /// Gets or sets selected player.
+        /// </summary>
+        public Player SelectedPlayer { get => this.selectedPlayer; set => this.selectedPlayer = value; }
 
+        /// <summary>
+        /// Opens pop up window.
+        /// </summary>
+        /// <param name="msg">message</param>
         public void OpenModal(string msg)
         {
             new MessageWindow(Window.GetWindow(this.windowContent), msg).ShowDialog();
         }
 
+        /// <summary>
+        /// Subscribe event on window.
+        /// </summary>
+        /// <param name="func">Function event handler</param>
         public void SubscribeEventOnWindow(KeyEventHandler func)
         {
             Window.GetWindow(this.windowContent).KeyDown += func;
             Window.GetWindow(this.windowContent).KeyUp += func;
         }
 
+        /// <summary>
+        /// Unsubscribe event on window.
+        /// </summary>
+        /// <param name="func">function event handler</param>
         public void UnsubscribeEventOnWindow(KeyEventHandler func)
         {
             Window.GetWindow(this.windowContent).KeyDown -= func;
             Window.GetWindow(this.windowContent).KeyUp -= func;
         }
 
+        /// <summary>
+        /// Change the main window state.
+        /// </summary>
+        /// <param name="windowState">windowstate</param>
         public void ChangeWindowState(MainWindowState windowState)
         {
             switch (windowState)

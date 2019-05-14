@@ -1,4 +1,8 @@
-﻿namespace HighwayCoaster.ViewModels
+﻿// <copyright file="MainMenuViewModel.cs" company="OENIK_PROG4_2019_1_X90NPX_XLS22H">
+// Copyright (c) OENIK_PROG4_2019_1_X90NPX_XLS22H. All rights reserved.
+// </copyright>
+
+namespace HighwayCoaster.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -12,6 +16,9 @@
     using GalaSoft.MvvmLight.Command;
     using HighwayCoaster.Logic;
 
+    /// <summary>
+    /// View model for main menu window
+    /// </summary>
     public class MainMenuViewModel : ViewModelBase
     {
         /// <summary>
@@ -50,35 +57,53 @@
         /// </summary>
         public IGameLogic GameLogic { get; set; }
 
+        /// <summary>
+        /// Gets or sets main window view model bject.
+        /// </summary>
         public MainWindowViewModel MainWindowViewModel { get; set; }
 
-        public void PlayGameMethod()
-        {
-            this.MainWindowViewModel.ChangeWindowState(MainWindowState.Play);
-        }
-
-        public void CarSelectMethod()
-        {
-            this.MainWindowViewModel.ChangeWindowState(MainWindowState.CarSelection);
-        }
-
-        public void HighscoreMethod()
-        {
-            this.GameLogic.PrevWindow = true;
-            this.MainWindowViewModel.ChangeWindowState(MainWindowState.Highscore);
-        }
-
-        public void ExitMethod()
-        {
-            Environment.Exit(0);
-        }
-
+        /// <summary>
+        /// Gets the Bitmap image of the logo
+        /// </summary>
         public ImageSource Logo
         {
             get
             {
                 return new BitmapImage(new Uri(this.GameLogic.SC.LogoImg, UriKind.Relative));
             }
+        }
+
+        /// <summary>
+        /// Method to start playing the game
+        /// </summary>
+        public void PlayGameMethod()
+        {
+            this.MainWindowViewModel.ChangeWindowState(MainWindowState.Play);
+        }
+
+        /// <summary>
+        /// Method to enter the car selection view
+        /// </summary>
+        public void CarSelectMethod()
+        {
+            this.MainWindowViewModel.ChangeWindowState(MainWindowState.CarSelection);
+        }
+
+        /// <summary>
+        /// Method to enter the highscore view.
+        /// </summary>
+        public void HighscoreMethod()
+        {
+            this.GameLogic.PrevWindow = true;
+            this.MainWindowViewModel.ChangeWindowState(MainWindowState.Highscore);
+        }
+
+        /// <summary>
+        /// method to close the game.
+        /// </summary>
+        public void ExitMethod()
+        {
+            Environment.Exit(0);
         }
     }
 }
