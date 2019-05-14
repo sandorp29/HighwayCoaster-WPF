@@ -134,28 +134,16 @@ namespace HighwayCoaster.Logic
                     this.obstacles.RemoveAt(i);
                 }
 
-                if (this.carObj.Angle != 0 && this.carObj.Angle != 360)
+                RectangleGeometry tempCarBody = new RectangleGeometry(this.carObj.CarBody)
                 {
-                    double tempAngle = this.carObj.Angle;
+                    Transform = new RotateTransform(this.carObj.Angle, this.carObj.CarBody.Left + (this.carObj.CarBody.Width / 2), this.carObj.CarBody.Top + (this.carObj.CarBody.Height / 2))
+                };
 
-                    if (tempAngle > 180)
-                    {
-                        tempAngle = 360 - tempAngle;
-                    }
+                Geometry collisionGeometry = Geometry.Combine(tempCarBody, new RectangleGeometry(this.obstacles[i]), GeometryCombineMode.Intersect, null);
 
-                    Rect rect = new Rect(this.carObj.CarBody.X + ((this.carObj.CarBody.Width - (this.carObj.CarBody.Width * (1 - (Math.Abs(this.carObj.Angle) / 360)))) / 2), this.carObj.CarBody.Y - (((this.carObj.CarBody.Height * (1 - (Math.Abs(this.carObj.Angle) / 360))) - this.carObj.CarBody.Height) / 2), this.carObj.CarBody.Width * (1 - (Math.Abs(this.carObj.Angle) / 360)), this.carObj.CarBody.Height * (1 + (Math.Abs(this.carObj.Angle) / 360)));
-
-                    if (this.obstacles[i].IntersectsWith(rect))
-                    {
-                        this.DoGameOver();
-                    }
-                }
-                else
+                if (collisionGeometry.GetArea() != 0)
                 {
-                    if (this.obstacles[i].IntersectsWith(this.carObj.CarBody))
-                    {
-                        this.DoGameOver();
-                    }
+                    this.DoGameOver();
                 }
             }
 
