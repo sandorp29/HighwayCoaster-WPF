@@ -35,7 +35,7 @@ Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
 Values (2000, '/Resources/Final_Assets/Supercar_blackGreen.png', '/Resources/Wheel/SupercarWheel.png');
 
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
-Values (3000, '/Resources/Final_Assets/Supercar_Venom.png', '/Resources/Wheel/SupercarWheel.gif');
+Values (3000, '/Resources/Final_Assets/Supercar_Venom.png', '/Resources/Wheel/SupercarWheel.png');
 
 Insert into Car (PointRequirement, ViewResourcesPath, WheelResource)
 Values (4000, '/Resources/Final_Assets/Supercar_Orange.png', '/Resources/Wheel/SupercarWheel.png');
