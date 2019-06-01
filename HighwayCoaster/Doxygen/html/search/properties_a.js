@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['main',['Main',['../class_highway_coaster_1_1_view_model_1_1_view_model_locator.html#af89e6d977419e68ef356895cade3e04f',1,'HighwayCoaster::ViewModel::ViewModelLocator']]],
-  ['mainwindowviewmodel',['MainWindowViewModel',['../class_highway_coaster_1_1_view_models_1_1_car_selection_view_model.html#ac8670c2df00d3968bed36c4b4ef6faac',1,'HighwayCoaster.ViewModels.CarSelectionViewModel.MainWindowViewModel()'],['../class_highway_coaster_1_1_view_models_1_1_highscore_view_model.html#aae94e47460becfe0da8f88ce34b32966',1,'HighwayCoaster.ViewModels.HighscoreViewModel.MainWindowViewModel()'],['../class_highway_coaster_1_1_view_models_1_1_login_view_model.html#ab1cd6a88c7a39c4eb9a882e7908b5fa0',1,'HighwayCoaster.ViewModels.LoginViewModel.MainWindowViewModel()'],['../class_highway_coaster_1_1_view_models_1_1_main_menu_view_model.html#af2b41a4d46e3026eb6704a4c17365514',1,'HighwayCoaster.ViewModels.MainMenuViewModel.MainWindowViewModel()'],['../class_highway_coaster_1_1_view_models_1_1_play_view_model.html#a9e5e27397fa8b96555dc81fe0ba6b8db',1,'HighwayCoaster.ViewModels.PlayViewModel.MainWindowViewModel()']]],
-  ['menu',['Menu',['../class_highway_coaster_1_1_view_model_1_1_view_model_locator.html#ada6a6501c4ee3d78096731e4b9c19350',1,'HighwayCoaster::ViewModel::ViewModelLocator']]]
-];
