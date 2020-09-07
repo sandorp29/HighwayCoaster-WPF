@@ -134,12 +134,7 @@ namespace HighwayCoaster.Logic
                     this.obstacles.RemoveAt(i);
                 }
 
-                RectangleGeometry tempCarBody = new RectangleGeometry(this.carObj.CarBody)
-                {
-                    Transform = new RotateTransform(this.carObj.Angle, this.carObj.CarBody.Left + (this.carObj.CarBody.Width / 2), this.carObj.CarBody.Top + (this.carObj.CarBody.Height / 2))
-                };
-
-                Geometry collisionGeometry = Geometry.Combine(tempCarBody, new RectangleGeometry(this.obstacles[i]), GeometryCombineMode.Intersect, null);
+                Geometry collisionGeometry = Geometry.Combine(this.carObj.CollisionBody, new RectangleGeometry(this.obstacles[i]), GeometryCombineMode.Intersect, null);
 
                 if (collisionGeometry.GetArea() != 0)
                 {

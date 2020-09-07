@@ -44,12 +44,16 @@
                 <ColumnDefinition Width="3*" MaxWidth="250" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*" MaxHeight="100"/>
+                <RowDefinition Height="2*" MaxHeight="110"/>
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="2" Margin="5 5 5 5" Background="{StaticResource TransparentBlack}">
                 <Label Content="Resolution:" Margin="10 10 10 0" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
                 <ComboBox Margin="10 5 10 0" Opacity="0.5" ItemsSource="{Binding Path=MainWindowViewModel.Resolutions}" SelectedItem="{Binding Path=MainWindowViewModel.SelectedResolution}"/>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Margin="10 10 10 0" IsChecked="{Binding DebugMode}"></CheckBox>
+                    <Label Content="Debug mode" Margin="0 3 10 0" Foreground="Gold" FontFamily="Comic Sans MS Bold"/>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>

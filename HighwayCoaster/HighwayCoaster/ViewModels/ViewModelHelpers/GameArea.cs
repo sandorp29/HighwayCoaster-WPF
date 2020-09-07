@@ -5,6 +5,7 @@
 namespace HighwayCoaster.ViewModels.ViewModelHelpers
 {
     using System;
+    using System.Drawing;
     using System.Globalization;
     using System.Windows;
     using System.Windows.Media;
@@ -75,14 +76,18 @@ namespace HighwayCoaster.ViewModels.ViewModelHelpers
                 this.gAreaLogic.CarObj.WheelSize);
             drawingContext.Pop();
 
+            if (this.mainWindowViewModel.DebugMode){
+                drawingContext.DrawGeometry(new SolidColorBrush(System.Windows.Media.Color.FromArgb(128, 0, 0, 255)), null, this.gAreaLogic.CarObj.CollisionBody);
+            }
+
             foreach (var item in this.gAreaLogic.Obstacles)
             {
                 drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(this.gameLogic.SC.ObstacleImg))), null, item);
             }
 
-            drawingContext.DrawGeometry(Brushes.Transparent, new Pen(Brushes.White, this.gAreaLogic.LineThickness), this.gAreaLogic.Line);
+            drawingContext.DrawGeometry(System.Windows.Media.Brushes.Transparent, new System.Windows.Media.Pen(System.Windows.Media.Brushes.White, this.gAreaLogic.LineThickness), this.gAreaLogic.Line);
 
-            drawingContext.DrawText(new FormattedText($"Score: {this.gAreaLogic.Score}", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Comic Sans MS Bold"), this.mainWindowViewModel.WindowWidth / 50, Brushes.Gold), new Point(this.mainWindowViewModel.WindowWidth - (this.mainWindowViewModel.WindowWidth / 5), this.mainWindowViewModel.WindowHeight / 16));
+            drawingContext.DrawText(new FormattedText($"Score: {this.gAreaLogic.Score}", CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Comic Sans MS Bold"), this.mainWindowViewModel.WindowWidth / 50, System.Windows.Media.Brushes.Gold), new System.Windows.Point(this.mainWindowViewModel.WindowWidth - (this.mainWindowViewModel.WindowWidth / 5), this.mainWindowViewModel.WindowHeight / 16));
         }
 
         private void DT_Tick(object sender, EventArgs e)

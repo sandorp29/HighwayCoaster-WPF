@@ -28,6 +28,7 @@ namespace HighwayCoaster.ViewModels
         private List<string> resolutions;
         private string selectedResolution;
         private bool disposedValue;
+        private bool debugMode;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
@@ -90,6 +91,11 @@ namespace HighwayCoaster.ViewModels
         /// Gets the window content.
         /// </summary>
         public ContentControl WindowContent { get => this.windowContent; private set => this.windowContent = value; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the game is in debug mode
+        /// </summary>
+        public bool DebugMode { get => this.debugMode; set => this.debugMode = value; }
 
         /// <summary>
         /// Gets or sets

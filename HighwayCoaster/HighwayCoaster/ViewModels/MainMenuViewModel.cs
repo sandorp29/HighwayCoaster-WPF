@@ -63,6 +63,11 @@ namespace HighwayCoaster.ViewModels
         public MainWindowViewModel MainWindowViewModel { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the program is in debug mode
+        /// </summary>
+        public bool DebugMode { get => this.MainWindowViewModel.DebugMode; set => this.MainWindowViewModel.DebugMode = value; }
+
+        /// <summary>
         /// Gets the Bitmap image of the logo
         /// </summary>
         public ImageSource Logo

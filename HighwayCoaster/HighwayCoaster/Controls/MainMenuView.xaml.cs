@@ -38,5 +38,10 @@ namespace HighwayCoaster.Controls
             ServiceLocator.Current.GetInstance<MainMenuViewModel>().MainWindowViewModel = mainWindowViewModel;
             this.InitializeComponent();
         }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

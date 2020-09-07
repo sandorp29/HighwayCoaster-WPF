@@ -24,6 +24,7 @@ namespace HighwayCoaster.Logic.Helpers
         private int areaHeight;
         private int wheelRotation;
         private Car car;
+        RectangleGeometry collisionBody;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CarObject"/> class.
@@ -51,6 +52,11 @@ namespace HighwayCoaster.Logic.Helpers
 
             this.carBody.X = ((this.frontWheelPoint.X + this.rearWheelPoint.X) / 2) - (this.carBody.Width - (this.carBody.Width / 1.95));
             this.carBody.Y = ((this.frontWheelPoint.Y + this.rearWheelPoint.Y) / 2) - (this.carBody.Height - (this.wheelSize / 1.5));
+
+            this.collisionBody = new RectangleGeometry(this.CarBody)
+            {
+                Transform = new RotateTransform(this.Angle, this.CarBody.Left + (this.CarBody.Width / 2), this.CarBody.Top + (this.CarBody.Height / 2))
+            };
         }
 
         /// <summary>
@@ -95,6 +101,11 @@ namespace HighwayCoaster.Logic.Helpers
         /// Gets the rotation of the wheel
         /// </summary>
         public int WheelRotation { get => this.wheelRotation; private set => this.wheelRotation = value; }
+
+        /// <summary>
+        /// Gets the collision body of the car.
+        /// </summary>
+        public RectangleGeometry CollisionBody { get => this.collisionBody; }
 
         /// <summary>
         /// Makes a step with the car
@@ -165,6 +176,11 @@ namespace HighwayCoaster.Logic.Helpers
             {
                 this.wheelRotation += this.areaWidth / 160;
             }
+
+            this.collisionBody = new RectangleGeometry(this.CarBody)
+            {
+                Transform = new RotateTransform(this.Angle, this.CarBody.Left + (this.CarBody.Width / 2), this.CarBody.Top + (this.CarBody.Height / 2))
+            };
         }
     }
 }
