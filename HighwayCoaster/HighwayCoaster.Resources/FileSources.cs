@@ -22,24 +22,9 @@ namespace HighwayCoaster.Resources
         /// <summary>
         /// Initializes a new instance of the <see cref="FileSources"/> class.
         /// </summary>
-        /// <param name="isInDesignerMode">isInDesignerMode</param>
-        public FileSources(bool isInDesignerMode)
+        public FileSources()
         {
-            if (isInDesignerMode)
-            {
-                if (Environment.MachineName == "DESKTOP-PEM11MB")
-                {
-                    this.resourceFolderPath = @"E:\Workspace\School\dev\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster.Resources\Resources\";
-                }
-                else
-                {
-                    this.resourceFolderPath = @"C:\Users\Felhasználó\Documents\oenik_prog4_2019_1_x90npx_xls22h\HighwayCoaster\HighwayCoaster.Resources\Resources\";
-                }
-            }
-            else
-            {
-                this.resourceFolderPath = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\";
-            }
+            this.resourceFolderPath = AppDomain.CurrentDomain.BaseDirectory + @"\Resources\";
         }
 
         /// <summary>

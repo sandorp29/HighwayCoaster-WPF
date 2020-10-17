@@ -18,7 +18,7 @@ namespace HighwayCoaster.Logic
     /// </summary>
     public class GameLogic : IGameLogic
     {
-        private FileSources sc = new FileSources(DesignerProperties.GetIsInDesignMode(new DependencyObject()));
+        private FileSources sc = new FileSources();
         private IGameRepository repo;
         private Player loggedInPlayer;
         private bool disposedValue = false; // To detect redundant calls
