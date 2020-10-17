@@ -205,16 +205,6 @@ namespace HighwayCoaster.Logic
             this.previousDirection = direction;
         }
 
-        private void DoGameOver()
-        {
-            this.gameOver = true;
-
-            if (this.player.Highscore == null || this.player.Highscore < this.score)
-            {
-                this.gameLogic.SaveHighscore(this.player.PlayerId, this.score);
-            }
-        }
-
         private Point[] MakeCurvePoints(Point[] points, double tension)
         {
             if (points.Length < 2)
@@ -311,6 +301,16 @@ namespace HighwayCoaster.Logic
 
             // Use the points to create the path.
             return this.MakeBezierPath(result_points.ToArray());
+        }
+
+        private void DoGameOver()
+        {
+            this.gameOver = true;
+
+            if (this.player.Highscore == null || this.player.Highscore < this.score)
+            {
+                this.gameLogic.SaveHighscore(this.player.PlayerId, this.score);
+            }
         }
     }
 }

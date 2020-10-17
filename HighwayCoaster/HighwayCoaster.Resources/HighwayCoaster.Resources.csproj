@@ -50,58 +50,52 @@
     <Content Include="Resources\backgroundloop.wmv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar.png">
+    <Content Include="Resources\Assets\Supercar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_black.png">
+    <Content Include="Resources\Assets\Supercar_black.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_blackGreen.png">
+    <Content Include="Resources\Assets\Supercar_blackGreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_blackGreen_TumbNail.png">
+    <Content Include="Resources\Assets\Supercar_blackGreen_Thumbnail.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_black_TumbNail.png">
+    <Content Include="Resources\Assets\Supercar_black_Thumbnail.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_BluePurp.png">
+    <Content Include="Resources\Assets\Supercar_darkGreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_BluePurp_TumbNail.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Final_Assets\Supercar_darkGreen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Final_Assets\Supercar_darkGreen_TumbNail.png">
+    <Content Include="Resources\Assets\Supercar_darkGreen_Thumbnail.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_Orange.png">
+    <Content Include="Resources\Assets\Supercar_Orange.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_Orange_TumbNail.png">
+    <Content Include="Resources\Assets\Supercar_Orange_Thumbnail.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_purp.png">
+    <Content Include="Resources\Assets\Supercar_purp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_purp_TumbNail.png">
+    <Content Include="Resources\Assets\Supercar_purp_Thumbnail.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_red.png">
+    <Content Include="Resources\Assets\Supercar_red.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_red_TumbNail.png">
+    <Content Include="Resources\Assets\Supercar_red_Thumbnail.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_TumbNail.png">
+    <Content Include="Resources\Assets\Supercar_Thumbnail.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_Venom.png">
+    <Content Include="Resources\Assets\Supercar_Venom.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Final_Assets\Supercar_Venom_TumbNail.png">
+    <Content Include="Resources\Assets\Supercar_Venom_Thumbnail.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\LOGO.png">
@@ -110,7 +104,7 @@
     <Content Include="Resources\obstacle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Wheel\SupercarWheel.png">
+    <Content Include="Resources\Assets\Wheel\SupercarWheel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -32,7 +32,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="15 0 15 0">
-                            <Image Source="{Binding TumbNail, Converter={StaticResource ImgPathConverter}}" MaxWidth="200" MinWidth="25" />
+                            <Image Source="{Binding Thumbnail, Converter={StaticResource ImgPathConverter}}" MaxWidth="200" MinWidth="25" />
                             <Label Content="{Binding PointRequirement}" ContentStringFormat="Req. points: {0}"  Background="DarkOrchid" Foreground="Gold" FontFamily="Comic Sans MS Bold" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </DataTemplate>

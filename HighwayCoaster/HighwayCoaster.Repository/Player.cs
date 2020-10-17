@@ -12,44 +12,15 @@ namespace HighwayCoaster.Repository
     using System;
     using System.Collections.Generic;
     
-    /// <summary>
-    /// Class for player entity
-    /// </summary>
     public partial class Player
     {
-        /// <summary>
-        /// Gets or sets player ID
-        /// </summary>
         public decimal PlayerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets username
-        /// </summary>
         public string Username { get; set; }
-
-        /// <summary>
-        /// Gets or s pasword
-        /// </summary>
         public byte[] PW { get; set; }
-
-        /// <summary>
-        /// Gets or sets highscore
-        /// </summary>
         public Nullable<int> Highscore { get; set; }
-
-        /// <summary>
-        /// Gets or sets isAdmin
-        /// </summary>
         public bool IsAdmin { get; set; }
-
-        /// <summary>
-        /// Gets or sets car id
-        /// </summary>
         public decimal CarId { get; set; }
-
-    /// <summary>
-    /// Gets or sets car
-    /// </summary>
+    
         public virtual Car Car { get; set; }
     }
 }

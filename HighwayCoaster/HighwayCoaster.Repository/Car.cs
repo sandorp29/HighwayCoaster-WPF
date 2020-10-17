@@ -12,48 +12,20 @@ namespace HighwayCoaster.Repository
     using System;
     using System.Collections.Generic;
     
-    /// <summary>
-    /// Class for Car objects
-    /// </summary>
     public partial class Car
     {
-        /// <summary>
-        /// Constructor for car class
-        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Car()
         {
             this.Player = new HashSet<Player>();
         }
     
-        /// <summary>
-        /// Gets or sets car id
-        /// </summary>
         public decimal CarId { get; set; }
-        
-        /// <summary>
-        /// Gets or sets Point requirments
-        /// </summary>
         public int PointRequirement { get; set; }
-
-        /// <summary>
-        /// Gets or sets View resource path
-        /// </summary>
         public string ViewResourcesPath { get; set; }
-
-        /// <summary>
-        /// Gets or sets wheel resource path
-        /// </summary>
         public string WheelResource { get; set; }
-
-        /// <summary>
-        /// Gets or sets thumbnail path
-        /// </summary>
-        public string TumbNail { get; set; }
-
-        /// <summary>
-        /// Collection of players
-        /// </summary>
+        public string Thumbnail { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player> Player { get; set; }
     }

@@ -24,7 +24,7 @@ namespace HighwayCoaster.Logic.Helpers
         private int areaHeight;
         private int wheelRotation;
         private Car car;
-        RectangleGeometry collisionBody;
+        private RectangleGeometry collisionBody;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CarObject"/> class.
